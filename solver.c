@@ -2,6 +2,7 @@
 // MEEN 689 Computing Concepts Project 3
 
 #include <stdlib.h>
+#include<math.h>
 #include "init.c"
 using namespace std
 using namespace initialization
