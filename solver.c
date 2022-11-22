@@ -23,8 +23,8 @@ A[i][1] = 1 + 2*(dt/pow(dr,2))*alpha(i,layup);
 A[i][2] = (dt/pow(dr,2))*alpha(i,layup); 
 }	
 // Boundary condition at edge
-A[N-1,1] =  1 + 2*(dt/pow(dr,2))*alpha(N-1,layup);
-A[N-1,2] =  2*(dt/pow(dr,2))*alpha(N-1,layup);
+A[N-1][1] =  1 + 2*(dt/pow(dr,2))*alpha(N-1,layup);
+A[N-1][2] =  2*(dt/pow(dr,2))*alpha(N-1,layup);
 // Visualize the A matrix.
 if(v){
 cout<<"A matrix --layup:"<<layup<<endl;
