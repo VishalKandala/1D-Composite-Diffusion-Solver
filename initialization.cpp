@@ -1,5 +1,3 @@
-// Mingxin Dong 
-// MEEN689 Project3
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -11,8 +9,10 @@ namespace initialization {
     double heat_flux(double theta);
     int layup_det(double theta);
     double alpha(double r, double theta);
-    double dr(); 
+    //double dr(); 
+    double dr;
     int Num_of_nodes;
+    void define_vars();
     vector<vector<double>> T(Num_of_nodes, vector<double>(8));
     vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
@@ -114,32 +114,39 @@ double initialization::alpha(double r, double theta){
     return result;
 } 
 
-double initialization::dr(){
+// double initialization::dr(){
+//     cout << "Please type in the number of nodes N" << endl;
+//     double N;
+//     cin >> N;
+//     Num_of_nodes = N;
+//     double delta = 4/(N-1);
+//     return delta;
+// }
+
+void initialization::define_vars(){
     cout << "Please type in the number of nodes N" << endl;
-    double N;
+    int N;
     cin >> N;
     Num_of_nodes = N;
-    double delta = 4/(N-1);
-    return delta;
+    dr = 4.0/(N-1);
 }
 
 
 // if add more features
-namespace initialization{	
-	vector<vector>> A(Num_of_nodes, <vector<double>(3));
-        vector<double> B(Num_of_nodes);
+//namespace initialization{
     //add new things, the previously defined variables and methods won't disappear
-}
+//}
 
 
 //Test
-// int main(int argc, char **argv){
-//     using namespace initialization;
-//     double re = dr();
-//     cout << re << endl;
-//     double res = heat_flux(30.0);
-//     cout << res << endl;
-//     cout << Num_of_nodes << endl;
-//     return 0;
-// }
+int main(int argc, char **argv){
+    using namespace initialization;
+    //double re = dr();
+    //cout << re << endl;
+    define_vars();
+    cout << heat_flux(30.0) << endl;
+    cout << Num_of_nodes << endl;
+    cout << dr << endl;
+    return 0;
+}
 
