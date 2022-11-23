@@ -60,6 +60,13 @@ void TDMA(int layup){
   int i = 1;
   while (i < N){
     //update the diagonal value for a gauss elimination
+    A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
+    //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
+    B[i] = B[i] - (A[i][0] / A[i-1][1]) * B[i - 1];
+    //iterate through i
+    i ++;
+  }
+   //update the diagonal value for a gauss elimination
     A[i][i] = A[i][i] - (A[i][i-1] / A[i-1][i-1]) * A[i - 1][i];
     //update the collumn of temperatures in accordance w/Gauss elimination
     B[i] = B[i] - (A[i][i-1] / A[i-1][i-1]) * B[i - 1];
