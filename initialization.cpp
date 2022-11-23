@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -9,9 +10,9 @@ namespace initialization {
     int layup_det(double theta);
     double alpha(double r, double theta);
     double dr(); 
-    double Num_of_nodes;
-    vector<vector<double>> T[Num_of_nodes][8];
-    vector<vector<double>> Told[Num_of_nodes][8];
+    int Num_of_nodes;
+    vector<vector<double>> T(Num_of_nodes, vector<double>(8));
+    vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
 
 double initialization::heat_flux(double theta){
@@ -127,12 +128,14 @@ double initialization::dr(){
 //}
 
 
-// Test
+//Test
 // int main(int argc, char **argv){
 //     using namespace initialization;
 //     double re = dr();
 //     cout << re << endl;
 //     double res = heat_flux(30.0);
 //     cout << res << endl;
+//     cout << Num_of_nodes << endl;
 //     return 0;
 // }
+
