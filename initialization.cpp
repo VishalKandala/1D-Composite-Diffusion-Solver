@@ -17,8 +17,7 @@ namespace initialization {
     vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
 
-double initialization::heat_flux(double theta){
-    int layup = layup_det(theta);
+double initialization::heat_flux(int layup ){
     double result;
     if(layup==1){
         result == (2e4/0.15);
@@ -133,9 +132,12 @@ void initialization::define_vars(){
 
 
 // if add more features
-//namespace initialization{
+namespace initialization{
     //add new things, the previously defined variables and methods won't disappear
-//}
+    vector<vector<double>> A(Num_of_nodes, vector<double>(3));
+    vector<double> B(Num_of_nodes);
+
+}
 
 
 //Test
