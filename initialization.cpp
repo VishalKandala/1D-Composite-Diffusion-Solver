@@ -1,3 +1,5 @@
+// Mingxin Dong 
+// MEEN689 Project3
 #include <cmath>
 #include <iostream>
 #include <vector>
