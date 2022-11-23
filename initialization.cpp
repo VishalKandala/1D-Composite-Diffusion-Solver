@@ -1,9 +1,10 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-
+#include "initialization.h"
 using namespace std;
 
+/*
 namespace initialization {
     double dt = 0.001;
     double heat_flux(double theta);
@@ -16,7 +17,7 @@ namespace initialization {
     vector<vector<double>> T(Num_of_nodes, vector<double>(8));
     vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
-
+*/
 double initialization::heat_flux(int layup){
     double result;
     if(layup==1){
@@ -27,6 +28,7 @@ double initialization::heat_flux(int layup){
     return result;
 }
 
+/*
 int initialization::layup_det(double theta){
     if(theta>=0 && theta<90){
         return 1;
@@ -36,9 +38,9 @@ int initialization::layup_det(double theta){
         return 2;
     }
 }
-
-double initialization::alpha(double r, double theta){
-    int layup = layup_det(theta);
+*/
+double initialization::alpha(double r, int layup){
+    //int layup = layup_det(theta);
     double result;
     if(layup==1){
         if(r<=0){
@@ -124,7 +126,7 @@ double initialization::alpha(double r, double theta){
 
 void initialization::define_vars(){
     cout << "Please type in the number of nodes N" << endl;
-    int N;
+    //int N;
     cin >> N;
     Num_of_nodes = N;
     dr = 4.0/(N-1);
@@ -132,13 +134,15 @@ void initialization::define_vars(){
 
 
 // if add more features
-namespace initialization{
+// 
+/*
+  namespace initialization{
     //add new things, the previously defined variables and methods won't disappear
     vector<vector<double>> A(Num_of_nodes, vector<double>(3));
     vector<double> B(Num_of_nodes);
 
 }
-
+*/
 
 //Test
 /*

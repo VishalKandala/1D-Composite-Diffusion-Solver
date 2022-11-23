@@ -4,10 +4,11 @@
 #include <iostream>
 #include<cmath>
 #include<vector>
-//#include "initialization.cpp"
+#include "initialization.h"
 
 using namespace std;
 using namespace initialization;
+/*
 // 
 // A in:  A*u(n+1) = B
 void formA(int layup,int v);
@@ -16,6 +17,7 @@ void formB(int layup,int v);
 
 // Thomas Algorithm
 void TDMA(int layup);
+*/
 ////////////////////////////////////////////
 void formA(int layup,int v){
 // Boundary condition at center
@@ -41,10 +43,10 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 
 void formB(int layup,int v){
 for(int i =0;i<N-1;i++){
-B[i] = Told[i,layup]
+B[i] = Told[i][layup];
 }	
 // Boundary condition
-B[N-1] = Told[N-1,layup] + heat_flux(layup)*2*dr;
+B[N-1] = Told[N-1][layup] + heat_flux(layup)*2*dr;
 //Visualize the B vector
 if(v){
 cout<<"B vector --layup:"<<layup<<endl;
@@ -68,22 +70,16 @@ void TDMA(int layup){
     //iterate through i
     i ++;
   }
-   //update the diagonal value for a gauss elimination
-    A[i][i] = A[i][i] - (A[i][i-1] / A[i-1][i-1]) * A[i - 1][i];
-    //update the collumn of temperatures in accordance w/Gauss elimination
-    B[i] = B[i] - (A[i][i-1] / A[i-1][i-1]) * B[i - 1];
-    //iterate through i
-    i ++;
-  }
   //initialize a vector x (the temperatures at the current point)
   //vector<double> x (N, 0);
   // backwards substitution for the first row
   i = N-1;
-  T[i,layup] = B[i] / A[i][i];
+  
+  T[i][layup] = B[i] / A[i][i];
   i--;
   //a bit more complicated backwards substitution
   while (i >= 0){
-    T[i,layup] = (n[i]- A[i][i+1] * T[i +1,layup]) / A[i][i];
+    T[i][layup] = (B[i]- A[i][i+1] * T[i +1][layup]) / A[i][i];
     i--;
   }
   //return the temperatures
