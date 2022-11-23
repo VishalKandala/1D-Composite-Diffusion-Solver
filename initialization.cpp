@@ -3,6 +3,18 @@
 #include <vector>
 #include "initialization.h"
 using namespace std;
+//using namespace initialization;
+
+namespace initialization{
+double dt = 0.001;
+vector<vector<double>> T(Num_of_nodes, vector<double>(8));
+vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
+vector<vector<double>> A(Num_of_nodes, vector<double>(3));
+vector<double> B(Num_of_nodes);
+double dr;
+int N;
+int Num_of_nodes;
+}
 
 /*
 namespace initialization {
@@ -14,8 +26,8 @@ namespace initialization {
     double dr;
     int Num_of_nodes;
     void define_vars();
-    vector<vector<double>> T(Num_of_nodes, vector<double>(8));
-    vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
+  //  vector<vector<double>> T(Num_of_nodes, vector<double>(8));
+  //  vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
 */
 double initialization::heat_flux(int layup){
