@@ -17,7 +17,7 @@ namespace initialization {
     vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
 
-double initialization::heat_flux(int layup ){
+double initialization::heat_flux(int layup){
     double result;
     if(layup==1){
         result == (2e4/0.15);
@@ -141,6 +141,7 @@ namespace initialization{
 
 
 //Test
+/*
 int main(int argc, char **argv){
     using namespace initialization;
     //double re = dr();
@@ -151,4 +152,5 @@ int main(int argc, char **argv){
     cout << dr << endl;
     return 0;
 }
+*/
 

@@ -1,9 +1,10 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
 
-#include <stdlib.h>
-#include<math.h>
-#include "initialization.cpp"
+#include <iostream>
+#include<cmath>
+#include<vector>
+//#include "initialization.cpp"
 
 using namespace std;
 using namespace initialization;
