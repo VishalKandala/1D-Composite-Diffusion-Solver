@@ -3,9 +3,10 @@
 
 #include <stdlib.h>
 #include<math.h>
-#include "init.c"
-using namespace std
-using namespace initialization
+#include "initialization.cpp"
+
+using namespace std;
+using namespace initialization;
 // 
 // A in:  A*u(n+1) = B
 void formA(int layup,int v);
@@ -86,5 +87,3 @@ void TDMA(int layup){
   }
   //return the temperatures
   }
-
-

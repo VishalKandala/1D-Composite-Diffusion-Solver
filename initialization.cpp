@@ -123,9 +123,11 @@ double initialization::dr(){
 
 
 // if add more features
-//namespace initialization{
+namespace initialization{	
+	vector<vector>> A(Num_of_nodes, <vector<double>(3));
+        vector<double> B(Num_of_nodes);
     //add new things, the previously defined variables and methods won't disappear
-//}
+}
 
 
 //Test
