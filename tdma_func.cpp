@@ -13,9 +13,9 @@ vector<double> TDMA(vector<vector<double>>A, vector<double>n){
   int i = 1;
   while (i < N){
     //update the diagonal value for a gauss elimination
-    A[i][i] = A[i][i] - (A[i][i-1] / A[i-1][i-1]) * A[i - 1][i];
+    A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
     //update the collumn of temperatures in accordance w/Gauss elimination
-    n[i] = n[i] - (A[i][i-1] / A[i-1][i-1]) * n[i - 1];
+    n[i] = n[i] - (A[i][0] / A[i-1][1]) * n[i - 1];
     //iterate through i
     i ++;
   }
@@ -23,11 +23,11 @@ vector<double> TDMA(vector<vector<double>>A, vector<double>n){
   vector<double> x (N, 0);
   // backwards substitution for the first row
   i = N-1;
-  x[i] = n[i] / A[i][i];
+  x[i] = n[i] / A[i][1];
   i--;
   //a bit more complicated backwards substitution
   while (i >= 0){
-    x[i] = (n[i]- A[i][i+1] * x[i +1]) / A[i][i];
+    x[i] = (n[i]- A[i][2] * x[i +1]) / A[i][1];
     i--;
   }
   //return the temperatures
@@ -37,7 +37,7 @@ vector<double> TDMA(vector<vector<double>>A, vector<double>n){
 int main()
 {
     //test case matrix A and vector n
-    vector<vector<double>> A = {{2,3,0,0,0}, {1,2,3,0,0}, {0,1,2,3,0}, {0,0,1,2,3}, {0,0,0,1,2}};
+    vector<vector<double>> A = {{0,2,3}, {1,2,3}, {1,2,3}, {1,2,3}, {1,2, 0}};
     vector<double> n = {1,2,3,4,5};
     vector <double> B = TDMA(A, n);
     int i = 0;
