@@ -4,10 +4,10 @@
 #include <iostream>
 #include<cmath>
 #include<vector>
-#include "initialization.h"
+#include "init.h"
 
 using namespace std;
-using namespace initialization;
+using namespace heat;
 /*
 // 
 // A in:  A*u(n+1) = B

@@ -1,11 +1,11 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include "initialization.h"
+#include "init.h"
 using namespace std;
-//using namespace initialization;
+//using namespace heat;
 
-namespace initialization{
+namespace heat{
 double dt = 0.001;
 vector<vector<double>> T(Num_of_nodes, vector<double>(8));
 vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
@@ -17,7 +17,7 @@ int Num_of_nodes;
 }
 
 /*
-namespace initialization {
+namespace heat {
     double dt = 0.001;
     double heat_flux(double theta);
     int layup_det(double theta);
@@ -30,18 +30,18 @@ namespace initialization {
   //  vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
 }
 */
-double initialization::heat_flux(int layup){
+double heat::heat_flux(int layup){
     double result;
     if(layup==1){
-        result == (2e4/0.15);
+        result = (2e4/0.15);
     }else if(layup==2){
-        result == (4e4/0.15);
+        result = (4e4/0.15);
     }
     return result;
 }
 
 /*
-int initialization::layup_det(double theta){
+int heat::layup_det(double theta){
     if(theta>=0 && theta<90){
         return 1;
     }else if(theta>=180 && theta<270){
@@ -51,83 +51,83 @@ int initialization::layup_det(double theta){
     }
 }
 */
-double initialization::alpha(double r, int layup){
+double heat::alpha(double r, int layup){
     //int layup = layup_det(theta);
     double result;
     if(layup==1){
         if(r<=0){
             if (r>=-2 && r<=-1.99){
-                result == 0.15/(130*2e4);
+                result = 0.15/(130*2e4);
             }else if(r>-1.99 && r<=-1.965){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r>-1.965 && r<=-1.96){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r>-1.96 && r<=-1.92){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r>-1.92 && r<=-1.915){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r>-1.915 && r<=-0.915){
-                result == 210/(2700*890);
+                result = 210/(2700*890);
             }else{
-                result == 21.5/(8000*510);
+                result = 21.5/(8000*510);
             }
         }else if(r>=0){
             if(r<=2 && r>1.99){
-                result == 0.15/(130*2e4);
+                result = 0.15/(130*2e4);
             }else if(r<=1.99 && r>1.965){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r<=1.965 && r>1.96){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r<=1.96 && r>1.92){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r<=1.92 && r>1.915){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r<=1.915 && r>0.915){
-                result == 210/(2710*890);
+                result = 210/(2710*890);
             }else{
-                result == 21.5/(8000*510);
+                result = 21.5/(8000*510);
             }
         }
     }
     if(layup==2){
         if(r<=0){
             if (r>=-2 && r<=-1.985){
-                result == 0.15;
+                result = 0.15;
             }else if(r>-1.985 && r<=-1.97){
-                result == 10;
+                result = 10;
             }else if(r>-1.97 && r<=-1.965){
-                result == 0.44;
+                result = 0.44;
             }else if(r>-1.965 && r<=-1.905){
-                result == 10;
+                result = 10;
             }else if(r>-1.905 && r<=-1.9){
-                result == 0.44;
+                result = 0.44;
             }else if(r>-1.9 && r<=-0.75){
-                result == 210;
+                result = 210;
             }else{
-                result == 21.5;
+                result = 21.5;
             }
         }else if(r>=0){
             if(r<=2 && r>1.985){
-                result == 0.15/(130*2e4);
+                result = 0.15/(130*2e4);
             }else if(r<=1.985 && r>1.97){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r<=1.97 && r>1.965){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r<=1.965 && r>1.905){
-                result == 10/(1850*1100);
+                result = 10/(1850*1100);
             }else if(r<=1.905 && r>1.9){
-                result == 0.44/(300*1730);
+                result = 0.44/(300*1730);
             }else if(r<=1.9 && r>0.75){
-                result == 210/(2710*890);
+                result = 210/(2710*890);
             }else{
-                result == 21.5/(8000*510);
+                result = 21.5/(8000*510);
             }
         }        
     }
     return result;
 } 
 
-// double initialization::dr(){
+// double heat::dr(){
 //     cout << "Please type in the number of nodes N" << endl;
 //     double N;
 //     cin >> N;
@@ -136,7 +136,7 @@ double initialization::alpha(double r, int layup){
 //     return delta;
 // }
 
-void initialization::define_vars(){
+void heat::define_vars(){
     cout << "Please type in the number of nodes N" << endl;
     //int N;
     cin >> N;
@@ -148,7 +148,7 @@ void initialization::define_vars(){
 // if add more features
 // 
 /*
-  namespace initialization{
+  namespace heat{
     //add new things, the previously defined variables and methods won't disappear
     vector<vector<double>> A(Num_of_nodes, vector<double>(3));
     vector<double> B(Num_of_nodes);
@@ -159,7 +159,7 @@ void initialization::define_vars(){
 //Test
 /*
 int main(int argc, char **argv){
-    using namespace initialization;
+    using namespace heat;
     //double re = dr();
     //cout << re << endl;
     define_vars();

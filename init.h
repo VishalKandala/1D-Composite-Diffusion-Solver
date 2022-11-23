@@ -1,7 +1,7 @@
 #include<vector>
 using namespace std;
 
-namespace initialization {
+namespace heat {
     // functions
     double heat_flux(int layup);
     double alpha(double r, int layup);
