@@ -8,9 +8,9 @@ using namespace std
 using namespace initialization
 // 
 // A in:  A*u(n+1) = B
-void formA(A);
+void formA(int layup,int v);
 // B in:  A*u(n+1) = B
-void formB();
+void formB(int layup,int v);
 
 // Thomas Algorithm
 void TDMA(int layup);
