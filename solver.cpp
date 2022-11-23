@@ -1,4 +1,4 @@
-// Vishal Indivar Kandala
+// 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
 
 #include <stdlib.h>
@@ -12,6 +12,9 @@ void formA(A);
 // B in:  A*u(n+1) = B
 void formB();
 
+// Thomas Algorithm
+void TDMA(int layup);
+////////////////////////////////////////////
 void formA(int layup,int v){
 // Boundary condition at center
 A[0][0] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
@@ -48,4 +51,33 @@ cout<<B[i]<<endl;
 }
 }
 }
+////////////////////////////////////////
+// 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
+void TDMA(int layup){
+  //set N to the size of the matrix
+  //int N = n.size();
+  //begin iterating at the second row (i = 1)
+  int i = 1;
+  while (i < N){
+    //update the diagonal value for a gauss elimination
+    A[i][i] = A[i][i] - (A[i][i-1] / A[i-1][i-1]) * A[i - 1][i];
+    //update the collumn of temperatures in accordance w/Gauss elimination
+    B[i] = B[i] - (A[i][i-1] / A[i-1][i-1]) * B[i - 1];
+    //iterate through i
+    i ++;
+  }
+  //initialize a vector x (the temperatures at the current point)
+  //vector<double> x (N, 0);
+  // backwards substitution for the first row
+  i = N-1;
+  T[i,layup] = B[i] / A[i][i];
+  i--;
+  //a bit more complicated backwards substitution
+  while (i >= 0){
+    T[i,layup] = (n[i]- A[i][i+1] * T[i +1,layup]) / A[i][i];
+    i--;
+  }
+  //return the temperatures
+  }
+
 
