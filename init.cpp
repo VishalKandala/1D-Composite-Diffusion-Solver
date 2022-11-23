@@ -4,20 +4,24 @@
 #include "init.h"
 using namespace std;
 //using namespace heat;
-/*
+
 namespace heat {
     double dt = 0.001;
-    double heat_flux(double theta);
-    int layup_det(double theta);
-    double alpha(double r, double theta);
+    //double heat_flux(double theta);
+    //int layup_det(double theta);
+    //double alpha(double r, double theta);
     //double dr(); 
     double dr;
     int Num_of_nodes;
-    void define_vars();
-  //  vector<vector<double>> T(Num_of_nodes, vector<double>(8));
-  //  vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
+    int N;
+    //void define_vars();
+    //vector<vector<double>> T(Num_of_nodes, vector<double>(8));
+    //vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
+    vector<vector<double>> T(Num_of_nodes, vector<double>(8,200.0));
+    vector<vector<double>> Told(Num_of_nodes, vector<double>(8,200.0));
+    vector<vector<double>> A(Num_of_nodes, vector<double>(3,0));
+    vector<double> B(Num_of_nodes);
 }
-*/
 double heat::heat_flux(int layup){
     double result;
     if(layup==1){
@@ -127,17 +131,14 @@ double heat::alpha(double r, int layup){
 void heat::define_vars(int temp){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
-    double dt = 0.001;
+    //double dt = 0.001;
     //double dr;
-    int N = temp;
-    int Num_of_nodes = temp;
-    //Num_of_nodes = temp;
-    //N = temp;
-    double dr = 4.0/(N-1);
-    vector<vector<double>> T(Num_of_nodes, vector<double>(8));
-    vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
-    vector<vector<double>> A(Num_of_nodes, vector<double>(3));
-    vector<double> B(Num_of_nodes);
+    //int N = temp;
+    //int Num_of_nodes = temp;
+    Num_of_nodes = temp;
+    N = temp;
+    dr = 4.0/(N-1);
+
 }
 
 

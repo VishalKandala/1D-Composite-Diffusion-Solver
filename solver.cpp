@@ -20,8 +20,9 @@ void TDMA(int layup);
 */
 ////////////////////////////////////////////
 void heat::formA(int layup,int v){
+using namespace heat;
 // Boundary condition at center
-cout<<"formA"<<endl;
+cout<<A.size()<<endl;
 A[0][0] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
 A[0][1] = 2*(dt/pow(dr,2))*alpha(0,layup); 
 // Interior points
