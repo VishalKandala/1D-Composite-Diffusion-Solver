@@ -7,7 +7,7 @@
 #include "init.h"
 
 using namespace std;
-using namespace heat;
+//using namespace heat;
 /*
 // 
 // A in:  A*u(n+1) = B
@@ -19,8 +19,9 @@ void formB(int layup,int v);
 void TDMA(int layup);
 */
 ////////////////////////////////////////////
-void formA(int layup,int v){
+void heat::formA(int layup,int v){
 // Boundary condition at center
+cout<<"formA"<<endl;
 A[0][0] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
 A[0][1] = 2*(dt/pow(dr,2))*alpha(0,layup); 
 // Interior points
@@ -41,7 +42,7 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 }
 }
 
-void formB(int layup,int v){
+void heat::formB(int layup,int v){
 for(int i =0;i<N-1;i++){
 B[i] = Told[i][layup];
 }	
@@ -57,7 +58,7 @@ cout<<B[i]<<endl;
 }
 ////////////////////////////////////////
 // 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
-void TDMA(int layup){
+void heat::TDMA(int layup){
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)

@@ -4,18 +4,6 @@
 #include "init.h"
 using namespace std;
 //using namespace heat;
-
-namespace heat{
-double dt = 0.001;
-vector<vector<double>> T(Num_of_nodes, vector<double>(8));
-vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
-vector<vector<double>> A(Num_of_nodes, vector<double>(3));
-vector<double> B(Num_of_nodes);
-double dr;
-int N;
-int Num_of_nodes;
-}
-
 /*
 namespace heat {
     double dt = 0.001;
@@ -136,12 +124,20 @@ double heat::alpha(double r, int layup){
 //     return delta;
 // }
 
-void heat::define_vars(){
-    cout << "Please type in the number of nodes N" << endl;
-    //int N;
-    cin >> N;
-    Num_of_nodes = N;
-    dr = 4.0/(N-1);
+void heat::define_vars(int temp){
+ // cout << "Please type in the number of nodes N" << endl;
+ //   cin >> N;
+    double dt = 0.001;
+    //double dr;
+    int N = temp;
+    int Num_of_nodes = temp;
+    //Num_of_nodes = temp;
+    //N = temp;
+    double dr = 4.0/(N-1);
+    vector<vector<double>> T(Num_of_nodes, vector<double>(8));
+    vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
+    vector<vector<double>> A(Num_of_nodes, vector<double>(3));
+    vector<double> B(Num_of_nodes);
 }
 
 

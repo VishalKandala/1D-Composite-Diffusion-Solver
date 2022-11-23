@@ -5,8 +5,8 @@ namespace heat {
     // functions
     double heat_flux(int layup);
     double alpha(double r, int layup);
-    void define_vars();
-    void formA(int layup);
+    void define_vars(int temp);
+    void formA(int layup,int v);
     void formB(int layup,int v);
     void TDMA(int layup);
     
