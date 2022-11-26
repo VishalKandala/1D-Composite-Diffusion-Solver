@@ -1,11 +1,14 @@
+#ifndef INIT_H
+#define INIT_H
 #include<vector>
+
 using namespace std;
 
 namespace heat {
     // functions
     double heat_flux(int layup);
     double alpha(double r, int layup);
-    void define_vars(int temp);
+    void define_vars(int temp,double temp2);
     void formA(int layup,int v);
     void formB(int layup,int v);
     void TDMA(int layup);
@@ -21,4 +24,7 @@ namespace heat {
     extern vector<double> B; //(Num_of_nodes);
 
 
-} 
+}
+
+#endif
+

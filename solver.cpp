@@ -4,7 +4,7 @@
 #include <iostream>
 #include<cmath>
 #include<vector>
-#include "init.h"
+#include "init.hpp"
 
 using namespace std;
 //using namespace heat;
@@ -20,11 +20,11 @@ void TDMA(int layup);
 */
 ////////////////////////////////////////////
 void heat::formA(int layup,int v){
-using namespace heat;
+
 // Boundary condition at center
-cout<<A.size()<<endl;
-A[0][0] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
-A[0][1] = 2*(dt/pow(dr,2))*alpha(0,layup); 
+
+A[0][1] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
+A[0][2] = 2*(dt/pow(dr,2))*alpha(0,layup); 
 // Interior points
 for(int i=1;i<N-1;i++){
 A[i][0] = (dt/pow(dr,2))*alpha(i,layup); 
@@ -32,10 +32,10 @@ A[i][1] = 1 + 2*(dt/pow(dr,2))*alpha(i,layup);
 A[i][2] = (dt/pow(dr,2))*alpha(i,layup); 
 }	
 // Boundary condition at edge
-A[N-1][1] =  1 + 2*(dt/pow(dr,2))*alpha(N-1,layup);
-A[N-1][2] =  2*(dt/pow(dr,2))*alpha(N-1,layup);
+A[N-1][0] =  1 + 2*(dt/pow(dr,2))*alpha(N-1,layup);
+A[N-1][1] =  2*(dt/pow(dr,2))*alpha(N-1,layup);
 // Visualize the A matrix.
-if(v){
+if(v==2){
 cout<<"A matrix --layup:"<<layup<<endl;
 for(int i = 0;i<N;i++){
 cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
@@ -44,13 +44,14 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 }
 
 void heat::formB(int layup,int v){
+
 for(int i =0;i<N-1;i++){
 B[i] = Told[i][layup];
 }	
 // Boundary condition
 B[N-1] = Told[N-1][layup] + heat_flux(layup)*2*dr;
 //Visualize the B vector
-if(v){
+if(v==3){
 cout<<"B vector --layup:"<<layup<<endl;
 for(int i = 0;i<N;i++){
 cout<<B[i]<<endl;

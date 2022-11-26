@@ -1,27 +1,21 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include "init.h"
+#include "init.hpp"
 using namespace std;
 //using namespace heat;
 
 namespace heat {
-    double dt = 0.001;
-    //double heat_flux(double theta);
-    //int layup_det(double theta);
-    //double alpha(double r, double theta);
-    //double dr(); 
+    double dt;
     double dr;
     int Num_of_nodes;
     int N;
-    //void define_vars();
-    //vector<vector<double>> T(Num_of_nodes, vector<double>(8));
-    //vector<vector<double>> Told(Num_of_nodes, vector<double>(8));
-    vector<vector<double>> T(Num_of_nodes, vector<double>(8,200.0));
-    vector<vector<double>> Told(Num_of_nodes, vector<double>(8,200.0));
-    vector<vector<double>> A(Num_of_nodes, vector<double>(3,0));
-    vector<double> B(Num_of_nodes);
+    std::vector<std::vector<double>> T;
+    std::vector<std::vector<double>> Told;
+    std::vector<std::vector<double>> A;
+    std::vector<double> B;
 }
+
 double heat::heat_flux(int layup){
     double result;
     if(layup==1){
@@ -128,30 +122,55 @@ double heat::alpha(double r, int layup){
 //     return delta;
 // }
 
-void heat::define_vars(int temp){
+void heat::define_vars(int temp,double temp2){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
-    //double dt = 0.001;
-    //double dr;
-    //int N = temp;
-    //int Num_of_nodes = temp;
+    dt = temp2;
     Num_of_nodes = temp;
     N = temp;
     dr = 4.0/(N-1);
+
+// Initializing T
+    T.resize(N);
+    for(int i=0;i<N;i++){
+	T[i].resize(8);
+	for(int j=0;j<8;j++){
+	T[i][j] = 0;
+	}
+}
+
+// Initializing Told
+    Told.resize(N);
+    for(int i=0;i<N;i++){
+	Told[i].resize(8);
+	for(int j=0;j<8;j++){
+	Told[i][j] = 0;
+	}
+}
+// Initializing A
+    A.resize(N);
+    for(int i=0;i<N;i++){
+	A[i].resize(3);
+	for(int j=0;j<3;j++){
+	A[i][j] = 0;
+	}
+}
+
+// Initializing B
+B.resize(N);
 
 }
 
 
 // if add more features
 // 
-/*
-  namespace heat{
-    //add new things, the previously defined variables and methods won't disappear
-    vector<vector<double>> A(Num_of_nodes, vector<double>(3));
-    vector<double> B(Num_of_nodes);
 
-}
-*/
+//  namespace heat{
+    //add new things, the previously defined variables and methods won't disappear
+//(Num_of_nodes,0);
+
+//}
+
 
 //Test
 /*
