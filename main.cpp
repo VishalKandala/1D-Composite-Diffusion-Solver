@@ -14,6 +14,7 @@ int main(int argc, char **argv){
     int N = stoi(argv[2]); // Command line input for Number of nodes in radial direction.  
     double dt = stod(argv[3]); // Command line input for time step size. 
     double ft = stod(argv[4]); // Command line input for simulation interval.
+    int outfreq = stoi(argv[5]);     
     int layup;
     layup = 1;
     // Define global variables using inputs.
@@ -37,12 +38,14 @@ int main(int argc, char **argv){
     heat::Advance_dt(layup,v);
     // Update solution monitor time t.
     heat::t+=heat::dt;
-    // Print the simulation monitor time.
-    cout<<"t = "<<heat::t<<endl;
+    // If statement for outputting to file
+    if(it%outfreq == 0){
     // Print solution at t to file.
     heat::Print_File(it,0);
+    // Print the simulation monitor time.
+    cout<<"t = "<<heat::t<<endl;
+    	}
     }
-
     if(v==1){
     cout<<"Average CPU Time for T_Solve in ms: "<<heat::avgcput/heat::Nt<<endl;
     }
