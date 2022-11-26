@@ -28,7 +28,9 @@ int main(int argc, char **argv){
     }
     //-------------------
     // Time loop
-    for(int it = 0;it<heat::Nt;it++){
+    heat::Print_File(0,0);
+    
+    for(int it = 1;it<=heat::Nt;it++){
     // Advance the solution by one Timestep(dt)	    
     heat::Advance_dt(layup,v);
     // Update solution monitor time t.

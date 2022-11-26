@@ -149,7 +149,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     for(int i=0;i<N;i++){
 	T[i].resize(8);
 	for(int j=0;j<8;j++){
-	T[i][j] = 0;
+	T[i][j] = 200;
 	}
 }
 
@@ -158,7 +158,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     for(int i=0;i<N;i++){
 	Told[i].resize(8);
 	for(int j=0;j<8;j++){
-	Told[i][j] = 0;
+	Told[i][j] = 200;
 	}
 }
 // Initializing A
