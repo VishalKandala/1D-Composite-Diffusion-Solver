@@ -9,6 +9,7 @@ using namespace std;
 ////////////////////////////////////////////
 void heat::Form_A(int layup,int v){
 // Boundary condition at center
+A[0][0] = 0.0;
 A[0][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
 A[0][2] = 2*(dt/pow(dr,2))*Define_Alpha(0,layup); 
 // Interior points
@@ -20,6 +21,7 @@ A[i][2] = (dt/pow(dr,2))*Define_Alpha(i,layup);
 // Boundary condition at edge
 A[N-1][0] =  1 + 2*(dt/pow(dr,2))*Define_Alpha(N-1,layup);
 A[N-1][1] =  2*(dt/pow(dr,2))*Define_Alpha(N-1,layup);
+A[N-1][2] = 0.0;
 // Visualize the A matrix.
 if(v==2){
 cout<<"A matrix --layup:"<<layup<<endl;
@@ -73,7 +75,6 @@ void heat::Solve_T(int layup){
   }
   //return the temperatures
   }
-
 void heat::Push_T(int layup){
 for(int i=0;i<N;i++){
 	Told[i][layup] = T[i][layup];
