@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -g -Wall 
 #DEPS = 
-OBJ = main.o init.o solver.o data.o 
+OBJ = main.o setup.o solver.o data.o 
 
 %.o: %.cpp #$(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

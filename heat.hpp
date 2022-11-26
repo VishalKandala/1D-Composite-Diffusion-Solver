@@ -7,7 +7,7 @@ using namespace std;
 
 namespace heat {
     // functions
-    void Print_File(int interactive);
+    void Print_File(int it,int interactive);
     double Define_Q(int layup);
     double Define_Alpha(double r, int layup);
     void Define_Vars(int temp,double temp2,double temp3);

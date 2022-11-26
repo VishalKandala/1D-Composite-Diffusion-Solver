@@ -2,19 +2,22 @@
 // Meen 689 Project 3
 #include<iostream>
 #include<fstream>
+#include<sstream>
 #include "heat.hpp"
 
 using namespace std;
 
-void heat::Print_File(int interactive){
+void heat::Print_File(int it,int interactive){
 	ofstream outputfile;
 	string ofilename;
+	stringstream ss;
+	ss << it;
 	if(interactive){
 	cout<<"Name of output file:"<<endl;
 	cin>>ofilename;
 	}
 	else{
-	ofilename = "t_profile.csv";
+	ofilename = "data/t_profile_" + ss.str()+".csv";
 	}
 	outputfile.open(ofilename);
 	int length = heat::T.size();

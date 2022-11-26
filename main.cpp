@@ -33,9 +33,12 @@ int main(int argc, char **argv){
     heat::Advance_dt(layup,v);
     // Update solution monitor time t.
     heat::t+=heat::dt;
+    // Print the simulation monitor time.
     cout<<"t = "<<heat::t<<endl;
+    // Print solution at t to file.
+    heat::Print_File(it,0);
     }
-    heat::Print_File(0);
+  
 
 return 0;
 }
