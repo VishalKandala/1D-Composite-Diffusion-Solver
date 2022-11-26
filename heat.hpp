@@ -24,6 +24,7 @@ namespace heat {
     extern double ft;
     extern double dt;
     extern double t;
+    extern double avgcput;
     extern vector<vector<double>> T; 
     extern vector<vector<double>> Told; 
     extern vector<vector<double>> A; 

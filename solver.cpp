@@ -2,6 +2,7 @@
 // MEEN 689 Computing Concepts Project 3
 #include <iostream>
 #include<cmath>
+#include<ctime>
 #include<vector>
 #include "heat.hpp"
 
@@ -49,6 +50,7 @@ cout<<B[i]<<endl;
 ////////////////////////////////////////
 // 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
 void heat::Solve_T(int layup){
+  clock_t cputstart = clock();
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)
@@ -74,7 +76,11 @@ void heat::Solve_T(int layup){
     i--;
   }
   //return the temperatures
-  }
+  
+clock_t cputend = clock();
+double cput = 1000.0*(cputend-cputstart)/CLOCKS_PER_SEC; // calculating the time for calculation in milliseconds from clock speed.
+avgcput+=cput;
+}
 void heat::Push_T(int layup){
 for(int i=0;i<N;i++){
 	Told[i][layup] = T[i][layup];

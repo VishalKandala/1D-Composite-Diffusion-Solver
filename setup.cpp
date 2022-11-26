@@ -13,6 +13,7 @@ namespace heat {
     int Nt;
     double ft;
     double t;
+    double avgcput;
     std::vector<std::vector<double>> T;
     std::vector<std::vector<double>> Told;
     std::vector<std::vector<double>> A;
@@ -133,6 +134,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     ft = temp3;
     Nt = ceil(ft/dt); // Nt = dt/ft + 1
     Num_of_nodes = temp;
+    avgcput = 0.0;
     N = temp;
     dr = 4.0/(N-1);
     t = 0.0;

@@ -40,6 +40,10 @@ int main(int argc, char **argv){
     // Print solution at t to file.
     heat::Print_File(it,0);
     }
+
+    if(v==1){
+    cout<<"Average CPU Time for T_Solve in ms: "<<heat::avgcput/heat::Nt<<endl;
+    }
   
 
 return 0;
