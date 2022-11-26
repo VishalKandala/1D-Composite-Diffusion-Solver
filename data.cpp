@@ -1,22 +1,24 @@
 //Vishal Indivar Kandala
 // Meen 689 Project 3
 #include<iostream>
-using namespace std
-using namespace initialization
+#include<fstream>
+#include "heat.hpp"
 
-void print_to_file(int interactive);
+using namespace std;
 
-void print_to_file(int interactive){
+void heat::Print_File(int interactive){
 	ofstream outputfile;
 	string ofilename;
 	if(interactive){
 	cout<<"Name of output file:"<<endl;
 	cin>>ofilename;
 	}
-	ofilename = "t_profile.csv"
+	else{
+	ofilename = "t_profile.csv";
+	}
 	outputfile.open(ofilename);
-	int length = T.size();
-	int count = T[0].size();
+	int length = heat::T.size();
+	int count = heat::T[0].size();
 	string print;
 	if(outputfile.is_open()){
 
@@ -51,10 +53,10 @@ void print_to_file(int interactive){
 	for(int i = 0; i<length; i++){
 		for(int j = 0;j<count;j++){
 			if(j == ((count)-1)){
-				outputfile << T[i][j] << endl;
+				outputfile << heat::T[i][j] << endl;
 			}
 			else{
-				outputfile << T[i][j] << ',';
+				outputfile << heat::T[i][j] << ',';
 			}
 		}
 	}

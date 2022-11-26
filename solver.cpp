@@ -3,7 +3,7 @@
 #include <iostream>
 #include<cmath>
 #include<vector>
-#include "init.hpp"
+#include "heat.hpp"
 
 using namespace std;
 ////////////////////////////////////////////

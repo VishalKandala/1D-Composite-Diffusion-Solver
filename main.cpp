@@ -1,17 +1,17 @@
 #include<iostream>
 #include<cmath>
-#include "init.hpp"
+#include "heat.hpp"
 using namespace std;
 int main(int argc, char **argv){
-    int v = stoi(argv[3]);  
+    int v = stoi(argv[1]);  
     // v for verbose: when v = 1, basic info.
     // v = 2, A matrix.
     // v = 3 , B vector at every time step.
 
     // Reading command line inputs.	
-    int N = stoi(argv[1]); // Command line input for Number of nodes in radial direction.  
-    double dt = stod(argv[2]); // Command line input for time step size. 
-    double ft = stod(argv[3]); // Command line input for simulation interval.
+    int N = stoi(argv[2]); // Command line input for Number of nodes in radial direction.  
+    double dt = stod(argv[3]); // Command line input for time step size. 
+    double ft = stod(argv[4]); // Command line input for simulation interval.
     int layup;
     layup = 1;
     // Define global variables using inputs.
@@ -35,6 +35,7 @@ int main(int argc, char **argv){
     heat::t+=heat::dt;
     cout<<"t = "<<heat::t<<endl;
     }
+    heat::Print_File(0);
 
 return 0;
 }

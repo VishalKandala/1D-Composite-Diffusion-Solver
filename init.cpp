@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include "init.hpp"
+#include "heat.hpp"
 using namespace std;
 //using namespace heat;
 
@@ -143,8 +143,6 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     for(int i=1;i<N;i++){
 	r[i] = r[i-1] + dr;
     }
-
-    cout<<"R: "<<r[N-1]<<endl;
 
 // Initializing T
     T.resize(N);
