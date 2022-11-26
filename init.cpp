@@ -12,6 +12,7 @@ namespace heat {
     int N;
     int Nt;
     double ft;
+    double t;
     std::vector<std::vector<double>> T;
     std::vector<std::vector<double>> Told;
     std::vector<std::vector<double>> A;
@@ -19,7 +20,7 @@ namespace heat {
     vector<double> r;
 }
 
-double heat::heat_flux(int layup){
+double heat::Define_Q(int layup){
     double result;
     if(layup==1){
         result = (2e4/0.15);
@@ -40,7 +41,7 @@ int heat::layup_det(double theta){
     }
 }
 */
-double heat::alpha(double r, int layup){
+double heat::Define_Alpha(double r, int layup){
     //int layup = layup_det(theta);
     double result;
     if(layup==1){
@@ -125,7 +126,7 @@ double heat::alpha(double r, int layup){
 //     return delta;
 // }
 
-void heat::define_vars(int temp,double temp2,double temp3){
+void heat::Define_Vars(int temp,double temp2,double temp3){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
     dt = temp2;
@@ -134,7 +135,7 @@ void heat::define_vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     N = temp;
     dr = 4.0/(N-1);
-
+    t = 0.0;
 // Initializing r
     r.resize(N);
     r[0] = 0;

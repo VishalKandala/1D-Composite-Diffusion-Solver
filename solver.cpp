@@ -1,39 +1,25 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
-
 #include <iostream>
 #include<cmath>
 #include<vector>
 #include "init.hpp"
 
 using namespace std;
-//using namespace heat;
-/*
-// 
-// A in:  A*u(n+1) = B
-void formA(int layup,int v);
-// B in:  A*u(n+1) = B
-void formB(int layup,int v);
-
-// Thomas Algorithm
-void TDMA(int layup);
-*/
 ////////////////////////////////////////////
-void heat::formA(int layup,int v){
-
+void heat::Form_A(int layup,int v){
 // Boundary condition at center
-
-A[0][1] = 1 + 2*(dt/pow(dr,2))*alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
-A[0][2] = 2*(dt/pow(dr,2))*alpha(0,layup); 
+A[0][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(0,layup); // The thermal diffusivity of steel is used here as steel is always the
+A[0][2] = 2*(dt/pow(dr,2))*Define_Alpha(0,layup); 
 // Interior points
 for(int i=1;i<N-1;i++){
-A[i][0] = (dt/pow(dr,2))*alpha(i,layup); 
-A[i][1] = 1 + 2*(dt/pow(dr,2))*alpha(i,layup);        	
-A[i][2] = (dt/pow(dr,2))*alpha(i,layup); 
+A[i][0] = (dt/pow(dr,2))*Define_Alpha(i,layup); 
+A[i][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(i,layup);        	
+A[i][2] = (dt/pow(dr,2))*Define_Alpha(i,layup); 
 }	
 // Boundary condition at edge
-A[N-1][0] =  1 + 2*(dt/pow(dr,2))*alpha(N-1,layup);
-A[N-1][1] =  2*(dt/pow(dr,2))*alpha(N-1,layup);
+A[N-1][0] =  1 + 2*(dt/pow(dr,2))*Define_Alpha(N-1,layup);
+A[N-1][1] =  2*(dt/pow(dr,2))*Define_Alpha(N-1,layup);
 // Visualize the A matrix.
 if(v==2){
 cout<<"A matrix --layup:"<<layup<<endl;
@@ -43,13 +29,13 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 }
 }
 
-void heat::formB(int layup,int v){
+void heat::Form_B(int layup,int v){
 
 for(int i =0;i<N-1;i++){
 B[i] = Told[i][layup];
 }	
 // Boundary condition
-B[N-1] = Told[N-1][layup] + heat_flux(layup)*2*dr;
+B[N-1] = Told[N-1][layup] + Define_Q(layup)*2*dr;
 //Visualize the B vector
 if(v==3){
 cout<<"B vector --layup:"<<layup<<endl;
@@ -60,7 +46,7 @@ cout<<B[i]<<endl;
 }
 ////////////////////////////////////////
 // 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
-void heat::TDMA(int layup){
+void heat::Solve_T(int layup){
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)
@@ -87,3 +73,18 @@ void heat::TDMA(int layup){
   }
   //return the temperatures
   }
+
+void heat::Push_T(int layup){
+for(int i=0;i<N;i++){
+	Told[i][layup] = T[i][layup];
+	}
+}
+
+void heat::Advance_dt(int layup,int v){
+	// Form the right hand side vector for the linear equation which depends on Told.
+	Form_B(layup,v);
+	// Solve the linear system with A formed outside the implicit function before the temporal loop.
+	Solve_T(layup);
+	// Push T values back to Told for next timestep 
+	Push_T(layup);
+}
