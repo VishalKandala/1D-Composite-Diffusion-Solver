@@ -1,3 +1,5 @@
+// 11/22 Vishal Indivar Kandala
+// MEEN 689 Computing Concepts Project 3
 #include<iostream>
 #include<cmath>
 #include "heat.hpp"

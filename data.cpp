@@ -1,5 +1,5 @@
 //Vishal Indivar Kandala
-// Meen 689 Project 3
+// MEEN 689 Computing Concepts Project 3
 #include<iostream>
 #include<fstream>
 #include<sstream>

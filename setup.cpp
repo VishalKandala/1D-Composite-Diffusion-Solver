@@ -1,5 +1,5 @@
-// 11/22 Mingxin
-// 11/25 Vishal Kandala
+// 11/22 Mingxin, 11/25 Vishal Indivar Kandala
+// MEEN 689 Computing Concepts Project 3
 #include <cmath>
 #include <iostream>
 #include <vector>
