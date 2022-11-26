@@ -16,6 +16,7 @@ namespace heat {
     std::vector<std::vector<double>> Told;
     std::vector<std::vector<double>> A;
     std::vector<double> B;
+    vector<double> r;
 }
 
 double heat::heat_flux(int layup){
@@ -133,6 +134,16 @@ void heat::define_vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     N = temp;
     dr = 4.0/(N-1);
+
+// Initializing r
+    r.resize(N);
+    r[0] = 0;
+    
+    for(int i=1;i<N;i++){
+	r[i] = r[i-1] + dr;
+    }
+
+    cout<<"R: "<<r[N-1]<<endl;
 
 // Initializing T
     T.resize(N);

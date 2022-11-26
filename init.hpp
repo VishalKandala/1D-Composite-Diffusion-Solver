@@ -24,7 +24,7 @@ namespace heat {
     extern vector<vector<double>> Told; //(Num_of_nodes, vector<double>(8));
     extern vector<vector<double>> A; //(Num_of_nodes, vector<double>(3));
     extern vector<double> B; //(Num_of_nodes);
-
+    extern vector<double> r;
 
 }
 
