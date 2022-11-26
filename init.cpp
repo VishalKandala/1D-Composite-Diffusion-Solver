@@ -10,6 +10,8 @@ namespace heat {
     double dr;
     int Num_of_nodes;
     int N;
+    int Nt;
+    double ft;
     std::vector<std::vector<double>> T;
     std::vector<std::vector<double>> Told;
     std::vector<std::vector<double>> A;
@@ -122,10 +124,12 @@ double heat::alpha(double r, int layup){
 //     return delta;
 // }
 
-void heat::define_vars(int temp,double temp2){
+void heat::define_vars(int temp,double temp2,double temp3){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
     dt = temp2;
+    ft = temp3;
+    Nt = ceil(ft/dt); // Nt = dt/ft + 1
     Num_of_nodes = temp;
     N = temp;
     dr = 4.0/(N-1);

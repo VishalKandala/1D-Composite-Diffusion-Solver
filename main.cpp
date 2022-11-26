@@ -9,17 +9,20 @@ int main(int argc, char **argv){
 
     int temp = stoi(argv[1]); 
     double temp2 = stod(argv[2]);
+    double temp3 = stod(argv[3]);
     int v = stoi(argv[3]);
     int layup;
     layup = 1;
     //double re = dr();
     //cout << temp2 << endl;
-    heat::define_vars(temp,temp2);
+    heat::define_vars(temp,temp2,temp3);
     //-------------------
     if(v==1){
     cout << "Number of Nodes: "<<heat::Num_of_nodes << endl;
     cout << "Grid size: "<<heat::dr << endl;
     cout<<"Time step: "<<heat::dt<<endl;
+    cout<<"Final time: "<<heat::ft<<endl;
+    cout<<"No.of Time steps: "<<heat::Nt<<endl;
     cout << "Heat Flux: "<<heat::heat_flux(layup) << endl;
     }
     //-------------------
