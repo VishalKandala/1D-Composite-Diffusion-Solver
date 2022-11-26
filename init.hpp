@@ -23,10 +23,10 @@ namespace heat {
     extern double ft;
     extern double dt;
     extern double t;
-    extern vector<vector<double>> T; //(Num_of_nodes, vector<double>(8));
-    extern vector<vector<double>> Told; //(Num_of_nodes, vector<double>(8));
-    extern vector<vector<double>> A; //(Num_of_nodes, vector<double>(3));
-    extern vector<double> B; //(Num_of_nodes);
+    extern vector<vector<double>> T; 
+    extern vector<vector<double>> Told; 
+    extern vector<vector<double>> A; 
+    extern vector<double> B; 
     extern vector<double> r;
 
 }
