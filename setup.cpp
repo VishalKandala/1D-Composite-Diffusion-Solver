@@ -1,3 +1,5 @@
+// 11/22 Mingxin
+// 11/25 Vishal Kandala
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -117,15 +119,6 @@ double heat::Define_Alpha(double r, int layup){
     }
     return result;
 } 
-
-// double heat::dr(){
-//     cout << "Please type in the number of nodes N" << endl;
-//     double N;
-//     cin >> N;
-//     Num_of_nodes = N;
-//     double delta = 4/(N-1);
-//     return delta;
-// }
 
 void heat::Define_Vars(int temp,double temp2,double temp3){
  // cout << "Please type in the number of nodes N" << endl;
