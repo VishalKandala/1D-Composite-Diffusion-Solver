@@ -20,8 +20,8 @@ A[i][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(r[i],layup);
 A[i][2] = -1*(dt/pow(dr,2))*Define_Alpha(r[i],layup); 
 }	
 // Boundary condition at edge
-A[N-1][0] =  1 + 2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
-A[N-1][1] =  -1*2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
+A[N-1][0] =  -1*2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
+A[N-1][1] =  1 + 2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
 A[N-1][2] = 0.0;
 // Visualize the A matrix.
 if(v==2){
