@@ -12,16 +12,16 @@ void heat::Form_A(int layup,int v){
 // Boundary condition at center
 A[0][0] = 0.0;
 A[0][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(r[0],layup); // The thermal diffusivity of steel is used here as steel is always the
-A[0][2] = 1*2*(dt/pow(dr,2))*Define_Alpha(r[0],layup); 
+A[0][2] = -1*2*(dt/pow(dr,2))*Define_Alpha(r[0],layup); 
 // Interior points
 for(int i=1;i<N-1;i++){
-A[i][0] = 1*(dt/pow(dr,2))*Define_Alpha(r[i],layup); 
+A[i][0] = -1*(dt/pow(dr,2))*Define_Alpha(r[i],layup); 
 A[i][1] = 1 + 2*(dt/pow(dr,2))*Define_Alpha(r[i],layup);        	
-A[i][2] = 1*(dt/pow(dr,2))*Define_Alpha(r[i],layup); 
+A[i][2] = -1*(dt/pow(dr,2))*Define_Alpha(r[i],layup); 
 }	
 // Boundary condition at edge
 A[N-1][0] =  1 + 2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
-A[N-1][1] =  1*2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
+A[N-1][1] =  -1*2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
 A[N-1][2] = 0.0;
 // Visualize the A matrix.
 if(v==2){
