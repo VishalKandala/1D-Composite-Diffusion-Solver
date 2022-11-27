@@ -26,9 +26,9 @@ namespace heat {
 double heat::Define_Q(int layup){
     double result;
     if(layup==1){
-        result = (2e4/0.15);
+        result = (2e4/(130*20000));
     }else if(layup==2){
-        result = (4e4/0.15);
+        result = (4e4/(130*20000));
     }
     return result;
 }
@@ -129,7 +129,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     avgcput = 0.0;
     N = temp;
-    dr = 4.0/(N-1);
+    dr = 2.0/(N-1);
     t = 0.0;
 // Initializing r
     r.resize(N);

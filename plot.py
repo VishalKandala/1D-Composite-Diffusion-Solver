@@ -20,6 +20,6 @@ print(T[5,1])
 r = linspace(0,4,length)
 #print(r)
 plot(r,T[5,1])
-savefig("plot.png")
+savefig("timeseries.svg")
 show()
 
