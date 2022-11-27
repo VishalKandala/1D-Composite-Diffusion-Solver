@@ -38,7 +38,7 @@ for(int i =0;i<N-1;i++){
 B[i] = Told[i][layup];
 }	
 // Boundary condition
-B[N-1] = Told[N-1][layup] + (Define_Q(layup)*2*dt/dr);
+B[N-1] = Told[N-1][layup] - (Define_Q(layup)*2*dt/dr);
 //Visualize the B vector
 if(v==3){
 cout<<"B vector --layup:"<<layup<<endl;
