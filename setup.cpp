@@ -30,7 +30,11 @@ double heat::Define_Q(int layup){
     }else if(layup==2){
         result = (4e4/(130*20000));
     }
+    else if(layup == 0){
+	    result = 2e4/(8000*510);
+    }
     return result;
+    
 }
 
 /*
@@ -48,23 +52,23 @@ double heat::Define_Alpha(double r, int layup){
     //int layup = layup_det(theta);
     double result;
     if(layup==1){
-        if(r<=0){
-            if (r>=-2 && r<=-1.99){
+        if(r<=2){
+            if(r<=2 && r>1.99){
                 result = 0.15/(130*2e4);
-            }else if(r>-1.99 && r<=-1.965){
+            }else if(r<=1.99 && r>1.965){
                 result = 10/(1850*1100);
-            }else if(r>-1.965 && r<=-1.96){
+            }else if(r<=1.965 && r>1.96){
                 result = 0.44/(300*1730);
-            }else if(r>-1.96 && r<=-1.92){
+            }else if(r<=1.96 && r>1.92){
                 result = 10/(1850*1100);
-            }else if(r>-1.92 && r<=-1.915){
+            }else if(r<=1.92 && r>1.915){
                 result = 0.44/(300*1730);
-            }else if(r>-1.915 && r<=-0.915){
-                result = 210/(2700*890);
+            }else if(r<=1.915 && r>0.915){
+                result = 210/(2710*890);
             }else{
                 result = 21.5/(8000*510);
             }
-        }else if(r>=0){
+        }else if(r>=2){
             if(r<=2 && r>1.99){
                 result = 0.15/(130*2e4);
             }else if(r<=1.99 && r>1.965){
@@ -82,7 +86,7 @@ double heat::Define_Alpha(double r, int layup){
             }
         }
     }
-    if(layup==2){
+    else if(layup==2){
         if(r<=0){
             if (r>=-2 && r<=-1.985){
                 result = 0.15;
@@ -117,6 +121,8 @@ double heat::Define_Alpha(double r, int layup){
             }
         }        
     }
+    else if(layup == 0){ result = 21.5/(8000*510);
+    }
     return result;
 } 
 
@@ -129,7 +135,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     avgcput = 0.0;
     N = temp;
-    dr = 2.0/(N-1);
+    dr = 8.0/(N-1);
     t = 0.0;
 // Initializing r
     r.resize(N);
@@ -142,8 +148,8 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 // Initializing T
     T.resize(N);
     for(int i=0;i<N;i++){
-	T[i].resize(8);
-	for(int j=0;j<8;j++){
+	T[i].resize(4);
+	for(int j=0;j<4;j++){
 	T[i][j] = 200;
 	}
 }
@@ -151,8 +157,8 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 // Initializing Told
     Told.resize(N);
     for(int i=0;i<N;i++){
-	Told[i].resize(8);
-	for(int j=0;j<8;j++){
+	Told[i].resize(4);
+	for(int j=0;j<4;j++){
 	Told[i][j] = 200;
 	}
 }
