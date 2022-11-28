@@ -33,11 +33,12 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 }
 
 void heat::Form_B(int layup,int v){
-
-for(int i =0;i<N-1;i++){
+//r = 0.0 Boundary condition
+B[0] = Told[0][layup] + (Define_Q(layup)*2*dt/dr);	
+for(int i =1;i<N-1;i++){
 B[i] = Told[i][layup];
-}	
-// Boundary condition
+}
+//r = 4.0 Boundary condition
 B[N-1] = Told[N-1][layup] + (Define_Q(layup)*2*dt/dr);
 //Visualize the B vector
 if(v==3){
