@@ -21,16 +21,21 @@ namespace heat {
     void Solve_T(int layup,int v);
     void Advance_dt(int layup,int v);
     void Push_T(int layup);
-    void File_Read(string filename);
+    
     // vars
     //Structure for the file reading operation
-    typedef struct information{
+    /*typedef struct information{
         int count;
         vector <string> headers;
-        vector <double> vals;
+        vector <string> vals;
     }inf;
+    
+    void File_Read(inf* info, string filename);*/
+    
     extern double dr;
     extern int Num_of_nodes;
+    extern int v;
+    extern int outfreq;
     extern int N;
     extern int Nt;
     extern double ft;
