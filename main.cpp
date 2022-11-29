@@ -1,24 +1,24 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
+// Edited by: Thomas Firsich
+// Last Edited: 11/28
 #include<iostream>
 #include<cmath>
 #include "heat.hpp"
 using namespace std;
 int main(int argc, char **argv){
-    int v = stoi(argv[1]);  
-    // v for verbose: when v = 1, basic info.
-    // v = 2, A matrix.
-    // v = 3 , B vector at every time step.
-
-    // Reading command line inputs.	
-    int N = stoi(argv[2]); // Command line input for Number of nodes in radial direction.  
-    double dt = stod(argv[3]); // Command line input for time step size. 
-    double ft = stod(argv[4]); // Command line input for simulation interval.
-    int outfreq = stoi(argv[5]);     
+    
     int layup;
     layup = 1;
-    // Define global variables using inputs.
-    heat::Define_Vars(N,dt,ft);
+
+    // Run the file read function that will read the input file to assign the variables for the solver
+    // No longer needed to define variables!!
+
+    //Read the file name from the command line input
+    string filename = argv[1];
+    //Call function to read the file, sending the filename...
+    heat::File_Read(filename);
+
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
@@ -29,6 +29,8 @@ int main(int argc, char **argv){
     cout<<"No.of Time steps: "<<heat::Nt<<endl;
     cout << "Heat Flux: "<<heat::Define_Q(layup) << endl;
     }
+
+
     //-------------------
     // Time loop
     heat::Print_File(0,0);
