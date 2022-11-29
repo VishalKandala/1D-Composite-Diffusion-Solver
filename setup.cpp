@@ -122,7 +122,8 @@ double heat::Define_Alpha(double r, int layup){
         }        
     }
     else if(layup == 0){ result = 21.5/(8000*510);
-    }
+    } 
+    //cout<<"Alpha"<<result<<endl;
     return result;
 } 
 

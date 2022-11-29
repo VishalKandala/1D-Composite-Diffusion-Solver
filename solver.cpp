@@ -34,12 +34,12 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 
 void heat::Form_B(int layup,int v){
 //r = 0.0 Boundary condition
-B[0] = Told[0][layup] + (Define_Q(layup)*2*dt/dr);	
+B[0] = Told[0][layup] - (Define_Q(layup)*2*dt/dr);	
 for(int i =1;i<N-1;i++){
 B[i] = Told[i][layup];
 }
-//r = 4.0 Boundary condition
-B[N-1] = Told[N-1][layup] + (Define_Q(layup)*2*dt/dr);
+//r = 8.0 Boundary condition
+B[N-1] = Told[N-1][layup] - (Define_Q(layup)*2*dt/dr);
 //Visualize the B vector
 if(v==3){
 cout<<"B vector --layup:"<<layup<<endl;
@@ -56,12 +56,15 @@ void heat::Solve_T(int layup,int v){
   //int N = n.size();
   //begin iterating at the second row (i = 1)
   int i = 1;
+  double ratio;
   while (i < N){
     //update the diagonal value for a gauss elimination
-    A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
-    //A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
+    ratio = (A[i][0] / A[i-1][1]); 
+    A[i][1] = A[i][1] - ratio * A[i - 1][2];
+    A[i][0] = A[i][0] - ratio * A[i-1][1];
+    //cout<<"temp"<<temp<<endl; 
     //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
-    B[i] = B[i] - (A[i][0] / A[i-1][1]) * B[i - 1];
+    B[i] = B[i] - ratio * B[i - 1];
     //iterate through i
     i ++;
   }
@@ -98,7 +101,7 @@ void heat::Advance_dt(int layup,int v){
 	// Form the right hand side vector for the linear equation which depends on Told.
 
 	Form_B(layup,v);
-	if(v==2){cout<<"B"<<endl;}
+	//if(v==2){cout<<"B"<<endl;}
 	// Solve the linear system with A formed outside the implicit function before the temporal loop.
 	Solve_T(layup,v);
 	// Push T values back to Told for next timestep 
