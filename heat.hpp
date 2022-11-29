@@ -1,5 +1,8 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
+// Edited by: Thomas Firsich
+// Last Edited: 11/28
+
 #ifndef INIT_H
 #define INIT_H
 #include<vector>
@@ -18,7 +21,14 @@ namespace heat {
     void Solve_T(int layup,int v);
     void Advance_dt(int layup,int v);
     void Push_T(int layup);
+    void File_Read(string filename);
     // vars
+    //Structure for the file reading operation
+    typedef struct information{
+        int count;
+        vector <string> headers;
+        vector <double> vals;
+    }inf;
     extern double dr;
     extern int Num_of_nodes;
     extern int N;
