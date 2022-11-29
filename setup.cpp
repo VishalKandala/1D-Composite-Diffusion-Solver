@@ -145,6 +145,8 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 	r[i] = r[i-1] + dr;
     }
 
+    heat::Print_Rfile();
+
 // Initializing T
     T.resize(N);
     for(int i=0;i<N;i++){

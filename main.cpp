@@ -15,8 +15,7 @@ int main(int argc, char **argv){
     double dt = stod(argv[3]); // Command line input for time step size. 
     double ft = stod(argv[4]); // Command line input for simulation interval.
     int outfreq = stoi(argv[5]);     
-    int layup;
-    layup = 0;
+    int layup = stoi(argv[6]);
     // Define global variables using inputs.
     heat::Define_Vars(N,dt,ft);
     //-------------------

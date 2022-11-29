@@ -13,6 +13,7 @@ namespace heat {
     double Define_Q(int layup);
     double Define_Alpha(double r, int layup);
     void Define_Vars(int temp,double temp2,double temp3);
+    void Print_Rfile();
     void Form_A(int layup,int v);
     void Form_B(int layup,int v);
     void Solve_T(int layup,int v);

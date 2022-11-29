@@ -15,9 +15,9 @@ for filename in os.listdir(directory):
 T = array(T)
 #T = T.T
 #print(T[1,1])
-print(T[5,1])
+#print(T[5,1])
 #print(length)
-r = linspace(0,4,length) 
+r = loadtxt('data/r.csv',delimiter=','); 
 #print(r)
 plot(r,T[-1,0])
 savefig("timeseries.svg")
