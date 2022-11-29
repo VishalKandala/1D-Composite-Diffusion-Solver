@@ -1,4 +1,4 @@
-// 11/22 Vishal Indivar Kandala
+// 11/22 Vishal Indivar KandL:ala
 // MEEN 689 Computing Concepts Project 3
 #include <iostream>
 #include<cmath>
@@ -39,7 +39,7 @@ for(int i =1;i<N-1;i++){
 B[i] = Told[i][layup];
 }
 //r = 8.0 Boundary condition
-B[N-1] = Told[N-1][layup] - (Define_Q(layup)*2*dt/dr);
+B[N-1] = Told[N-1][layup] + (Define_Q(layup)*2*dt/dr);
 //Visualize the B vector
 if(v==3){
 cout<<"B vector --layup:"<<layup<<endl;
@@ -79,7 +79,6 @@ void heat::Solve_T(int layup,int v){
   // backwards substitution for the first row
   i = N-1; 
   T[i][layup] = B[i] / A[i][1];
-  i--;
   //a bit more complicated backwards substitution
   while (i >= 0){
     T[i][layup] = (B[i]- (A[i][2] * T[i +1][layup])) / A[i][1];

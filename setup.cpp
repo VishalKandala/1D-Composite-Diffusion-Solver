@@ -51,7 +51,9 @@ int heat::layup_det(double theta){
 double heat::Define_Alpha(double r, int layup){
     //int layup = layup_det(theta);
     double result;
-    if(layup==1){
+    if(layup == 0){ result = 21.5/(8000*510);
+    }
+    else if(layup==1){
         if(r<=2){
             if(r<=2 && r>1.99){
                 result = 0.15/(130*2e4);
@@ -121,8 +123,7 @@ double heat::Define_Alpha(double r, int layup){
             }
         }        
     }
-    else if(layup == 0){ result = 21.5/(8000*510);
-    } 
+ 
     //cout<<"Alpha"<<result<<endl;
     return result;
 } 
