@@ -28,16 +28,16 @@ int main(int argc, char **argv){
     cout << "3: B vector a every timestep." << endl;
     cin >> v;
     //number of grid points 
-    cout << "How many grid points would you like?" << endl;
+    cout << "How many grid points would you like? (More points equals a finer mesh.)" << endl;
     cin >> N;
     //time step size of solver
-    cout << "How small would you like your time step size?" << endl;
+    cout << "How small would you like your time step size, in seconds?" << endl;
     cin >> dt;
     //final time that the solver stops at
-    cout << "How long would you like to run the solver?" << endl;
+    cout << "How long would you like to run the solver?, in seconds" << endl;
     cin >> ft;
     //outut frequency of the solver data saving 
-    cout << "How often would you like the solver to save the data?" << endl;
+    cout << "How often would you like the solver to save the data? (Save every X iterations.)" << endl;
     cin >> outfreq;
 
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv){
 
     // Run the file read function that will read the input file to assign the variables for the solver
     // No longer needed to define variables!!
-    heat:Define_Vars(N,dt,ft);
+    heat::Define_Vars(N,dt,ft);
     //Read the file name from the command line input
     //string filename = argv[1];
     //Call function to read the file, sending the filename...
@@ -70,7 +70,7 @@ int main(int argc, char **argv){
     heat::Form_A(layup,v); 
     for(int it = 1;it<=heat::Nt;it++){
     // Advance the solution by one Timestep(dt)	    
-    heat::Advance_dt(layup,heat::v);
+    heat::Advance_dt(layup,v);
     // Update solution monitor time t.
     heat::t+=heat::dt;
     // If statement for outputting to file
