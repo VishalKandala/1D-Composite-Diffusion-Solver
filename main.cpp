@@ -1,7 +1,10 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
-// Edited by: Thomas Firsich
-// Last Edited: 11/28
+// Last Edited: 11/29 Thomas Firsich
+// Edits: Replaced the input file reading and use the command line terminal to ask 
+//			user what the solver configuration should be.
+
+
 #include<iostream>
 #include<cmath>
 #include "heat.hpp"
