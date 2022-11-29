@@ -1,7 +1,7 @@
 //Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
-// Edited by: Thomas Firsich
-// Last Edited: 11/28
+// Last Edited: 11/29 Thomas Firsich
+// Edits: Remove the file read function. Using command line to get solver parameters now. 
 
 #include<iostream>
 #include<fstream>
@@ -12,17 +12,18 @@ using namespace std;
 
 // This file is used to read an input file for the user to run the solver
 // Please follow the structure of the file to ensure the code runs as intended!!
+/*
 void heat::File_Read(inf* info, string filename){
 	//Verbose meaning how much you want to know about your output
-	int v;
+	//int v;
 	//N for grid size
-	int N;
+	//int N;
 	//dt for time step size
-	double dt;
+	//double dt;
 	//ft for simulation interval
-	double ft;
+	//double ft;
 	//outfreq for frequency to output to a file for post-processing
-	int outfreq;
+	//int outfreq;
 
 
 	//Initialize a string variable for the line that will be read
@@ -44,7 +45,7 @@ void heat::File_Read(inf* info, string filename){
 		count = count + 1;
 		info->count = count;
 		//Reset the ifstream back to the first line
-		myfile.clear()
+		myfile.clear();
 		myfile.seekg(0);
 		//Loop through the columns of the first row to read the variables in the header
 		getline(myfile,line);
@@ -63,21 +64,21 @@ void heat::File_Read(inf* info, string filename){
 			info->vals.push_back(temp2);
 		}
 		//Now that we have the array of headers, assign the variables accordingly 
-		for (int i = 0; i <= (info->count); i++;){
+		for (int i = 0; i <= (info->count); i++){
 			if (info->headers[i] == "v"){
-				v = info->vals[i];
+				v = stoi(info->vals[i]);
 			} 
 			else if(info->headers[i] == "N"){
-				N = info->vals[i];
+				N = stoi(info->vals[i]);
 			}
 			else if(info->headers[i] == "dt"){
-				dt = info->vals[i];
+				dt = stod(info->vals[i]);
 			}
 			else if(info->headers[i] == "ft"){
-				ft = info->vals[i];
+				ft = stod(info->vals[i]);
 			}
 			else if(info->headers[i] == "outfreq"){
-				outfreq = info->vals[i];
+				outfreq = stoi(info->vals[i]);
 			}
 			//else if(info->headers[i] == "layup"){
 			//	layup = info->vals[i];
@@ -88,6 +89,7 @@ void heat::File_Read(inf* info, string filename){
 		}
 	}
 }
+*/
 
 void heat::Print_File(int it,int interactive){
 	ofstream outputfile;
