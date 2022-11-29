@@ -58,7 +58,7 @@ void heat::Solve_T(int layup,int v){
   while (i < N){
     //update the diagonal value for a gauss elimination
     A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
-    A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
+    //A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
     //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
     B[i] = B[i] - (A[i][0] / A[i-1][1]) * B[i - 1];
     //iterate through i
