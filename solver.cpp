@@ -80,6 +80,7 @@ void heat::Solve_T(int layup,int v){
   i = N-1; 
   T[i][layup] = B[i] / A[i][1];
   //a bit more complicated backwards substitution
+  i--;
   while (i >= 0){
     T[i][layup] = (B[i]- (A[i][2] * T[i +1][layup])) / A[i][1];
     i--;
