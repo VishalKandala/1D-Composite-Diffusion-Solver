@@ -91,6 +91,36 @@ void heat::File_Read(inf* info, string filename){
 }
 */
 
+
+Struct heat::askUserParams(){
+	Struct s;
+
+	//verbose output?
+    cout << "Please select the how verbose you would like the solver output:" << endl;
+    cout << "1: Basic information." << endl;
+    cout << "2: A matrix otput." << endl;
+    cout << "3: B vector a every timestep." << endl;
+    cin >> s.v;
+    //number of grid points 
+    cout << "How many grid points would you like? (More points equals a finer mesh.)" << endl;
+    cin >> s.N;
+    //time step size of solver
+    cout << "How small would you like your time step size, in seconds?" << endl;
+    cin >> s.dt;
+    //final time that the solver stops at
+    cout << "How long would you like to run the solver?, in seconds" << endl;
+    cin >> s.ft;
+    //outut frequency of the solver data saving 
+    cout << "How often would you like the solver to save the data? (Save every X iterations.)" << endl;
+    cin >> s.outfreq;
+	//ask the user for the filename of the config file for material properties!
+	cout << "What is the name of the config file of material properties?" << endl;
+	cin >> s.filename;
+
+	return s;
+}
+
+
 void heat::Print_File(int it,int interactive){
 	ofstream outputfile;
 	string ofilename;
