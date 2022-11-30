@@ -20,7 +20,7 @@ A[i][1] = 1 + (2*(dt/pow(dr,2))*Define_Alpha(r[i],layup));
 A[i][2] = -1*((dt/pow(dr,2))*Define_Alpha(r[i],layup)); 
 }	
 // Boundary condition at edge
-A[N-1][0] =  -1*2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup);
+A[N-1][0] =  -1*2*((dt/pow(dr,2))*Define_Alpha(r[N-1],layup));
 A[N-1][1] =  1 + (2*(dt/pow(dr,2))*Define_Alpha(r[N-1],layup));
 A[N-1][2] = 0.0;
 // Visualize the A matrix.
@@ -34,12 +34,12 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 
 void heat::Form_B(int layup,int v, int it){
 //r = 0.0 Boundary condition
-B[0] = Told[0][layup] + (Define_Q(layup)*2*dt/dr);	
+B[0] = Told[0][layup] + 2*dr*(Define_Q(layup))*((dt/pow(dr,2))*Define_Alpha(r[0],layup));	// 2*Q/k*(alpha*dt/dx**2)
 for(int i =1;i<N-1;i++){
 B[i] = Told[i][layup];
 }
 //r = 8.0 Boundary condition
-B[N-1] = Told[N-1][layup] + (Define_Q(layup)*2*dt/dr);
+B[N-1] = Told[N-1][layup] +  2*dr*(Define_Q(layup))*((dt/pow(dr,2))*Define_Alpha(r[N-1],layup));	// 2*Q/k*(alpha*dt/dx**2)
 //Visualize the B vector
 if(v==3 && it == 1){
 cout<<"B vector --layup:"<<layup<<endl;

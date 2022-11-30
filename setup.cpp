@@ -26,12 +26,12 @@ namespace heat {
 double heat::Define_Q(int layup){
     double result;
     if(layup==1){
-        result = (2e4/(130*20000));
+        result = (2e4/8000*510);
     }else if(layup==2){
         result = (4e4/(130*20000));
     }
     else if(layup == 0){
-	    result = 2e4/(8000*510);
+	    result = 2e4/(21.5);
     }
     return result;
     
