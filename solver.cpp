@@ -79,7 +79,7 @@ void heat::Solve_T(int layup,int v,int it){
   // backwards substitution for the first row 
   T[N-1][layup] = B[N-1] / A[N-1][1];
   //a bit more complicated backwards substitution 
-  for(int i = N-1;i>=0;i--){
+  for(int i = N-2;i>=0;i--){
     T[i][layup] = (B[i]- (A[i][2] * T[i +1][layup])) / A[i][1];
   }
   //return the temperatures
