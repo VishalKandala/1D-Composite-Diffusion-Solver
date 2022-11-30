@@ -41,7 +41,7 @@ B[i] = Told[i][layup];
 //r = 8.0 Boundary condition
 B[N-1] = Told[N-1][layup] +  2*dr*(Define_Q(layup))*Define_Lambda(r[N-1],layup); //((dt/pow(dr,2))*Define_Alpha(r[N-1],layup));	// 2*Q/k*(alpha*dt/dx**2)
 //Visualize the B vector
-if(v==3 && it == 1){
+if(v==3 && it>0){
 cout<<"B vector --layup:"<<layup<<endl;
 for(int i = 0;i<N;i++){
 cout<<B[i]-200.0<<endl;
@@ -55,6 +55,9 @@ void heat::Solve_T(int layup,int v,int it){
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)
+  A[0][2] = A[0][2]/A[0][1];
+  B[0] = B[0]/A[0][1];
+  A[0][1] = 1.0; 
   int i = 1;
   double ratio;
   while (i < N){
@@ -68,7 +71,7 @@ void heat::Solve_T(int layup,int v,int it){
     //iterate through i
     i ++;
   }
-  if(v==4 && it == 1){
+  if(v==4 && it == 2){
 	cout<<"A matrix -- After Elimination:"<<layup<<endl;
         for(int i = 0;i<N;i++){
         cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
@@ -88,10 +91,16 @@ clock_t cputend = clock();
 double cput = 1000.0*(cputend-cputstart)/CLOCKS_PER_SEC; // calculating the time for calculation in milliseconds from clock speed.
 avgcput+=cput;
 }
-void heat::Push_T(int layup){
+void heat::Push_T(int layup,int v,int it){
 for(int i=0;i<N;i++){
 	Told[i][layup] = T[i][layup];
 	}
+if(v==5 && it>0){
+cout<<"i,Told,T"<<endl;
+for(int i = 0; i<N;i++){
+cout<<i<<","<<Told[i][layup]<<","<<T[i][layup]<<endl;
+}
+}
 }
 
 void heat::Advance_dt(int layup,int v, int it){
@@ -102,5 +111,5 @@ void heat::Advance_dt(int layup,int v, int it){
 	// Solve the linear system with A formed outside the implicit function before the temporal loop.
 	Solve_T(layup,v,it);
 	// Push T values back to Told for next timestep 
-	Push_T(layup);
+	Push_T(layup,v,it);
 }
