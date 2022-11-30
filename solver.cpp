@@ -104,8 +104,9 @@ cout<<i<<","<<Told[i][layup]<<","<<T[i][layup]<<endl;
 }
 
 void heat::Advance_dt(int layup,int v, int it){
+	// Form the co-efficient matrix as it is being modified in Solve_T.
+	Form_A(layup,v);
 	// Form the right hand side vector for the linear equation which depends on Told.
-
 	Form_B(layup,v,it);
 	//if(v==2){cout<<"B"<<endl;}
 	// Solve the linear system with A formed outside the implicit function before the temporal loop.
