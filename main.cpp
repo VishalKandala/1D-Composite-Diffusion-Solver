@@ -34,7 +34,7 @@ int main(int argc, char **argv){
     heat::Form_A(layup,v); 
     for(int it = 1;it<=heat::Nt;it++){
     // Advance the solution by one Timestep(dt)	    
-    heat::Advance_dt(layup,v);
+    heat::Advance_dt(layup,v,it);
     // Update solution monitor time t.
     heat::t+=heat::dt;
     // If statement for outputting to file

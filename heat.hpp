@@ -15,9 +15,9 @@ namespace heat {
     void Define_Vars(int temp,double temp2,double temp3);
     void Print_Rfile();
     void Form_A(int layup,int v);
-    void Form_B(int layup,int v);
-    void Solve_T(int layup,int v);
-    void Advance_dt(int layup,int v);
+    void Form_B(int layup,int v, int it);
+    void Solve_T(int layup,int v,int it);
+    void Advance_dt(int layup,int v,int it);
     void Push_T(int layup);
     // vars
     extern double dr;
