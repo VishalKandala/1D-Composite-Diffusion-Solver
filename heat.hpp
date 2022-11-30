@@ -19,6 +19,7 @@ namespace heat {
     void Solve_T(int layup,int v,int it);
     void Advance_dt(int layup,int v,int it);
     void Push_T(int layup);
+    double Define_Lambda(double r, int layup);
     // vars
     extern double dr;
     extern int Num_of_nodes;

@@ -21,6 +21,7 @@ int main(int argc, char **argv){
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
+    cout<<"Lambda: "<<heat::Define_Lambda(heat::r[0],layup)<<endl;
     cout << "Number of Nodes: "<<heat::Num_of_nodes << endl;
     cout << "Grid size: "<<heat::dr << endl;
     cout<<"Time step: "<<heat::dt<<endl;

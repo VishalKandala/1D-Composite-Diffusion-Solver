@@ -23,6 +23,13 @@ namespace heat {
     vector<double> r;
 }
 
+double heat::Define_Lambda(double r, int layup){
+double result;
+result = Define_Alpha(r,layup);
+result  = result*dt/pow(dr,2);
+return result;
+}
+
 double heat::Define_Q(int layup){
     double result;
     if(layup==1){

@@ -20,14 +20,14 @@ T = array(T)
 #T = T.T
 #print(T[1,1])
 #print(T)
-#print(length)
+print(len(T))
 
 r = loadtxt("data/r.csv",delimiter=',');
 r = r.T
 #print(shape(r))
-#for i in range(len(T)):
+for i in range(len(T)):
     #if(i%1):
-plot(r,T[-1,0])
+    plot(r,T[i,0])
 #savefig("timeseries.svg")
 show()
 
