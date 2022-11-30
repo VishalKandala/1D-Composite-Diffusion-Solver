@@ -13,37 +13,18 @@ int main(int argc, char **argv){
     
 
     // Interface with the user for solver configuration using the terminal command line.
+    
+    //Attempt to create the user interface function
+    Struct solverParam;
+    solverParam = heat::askUserParams();
+
     //define the variables that will be received for the solver
-
-    int v = 0;  //verbose variable for solver output
-    int N = 10; //Number of grid points. The larger the points, the finer the mesh for the solver
-    double dt = 0.1;    //Time step size for the solver (seconds)
-    double ft = 600;    //Final time that the solver will run to (seconds)
-    int outfreq = 1000; //Frequency of output for solver iterations.
-    string filename = "temp";	//Filename of the config file
-
-    //verbose output?
-    cout << "Please select the how verbose you would like the solver output:" << endl;
-    cout << "1: Basic information." << endl;
-    cout << "2: A matrix otput." << endl;
-    cout << "3: B vector a every timestep." << endl;
-    cin >> v;
-    //number of grid points 
-    cout << "How many grid points would you like? (More points equals a finer mesh.)" << endl;
-    cin >> N;
-    //time step size of solver
-    cout << "How small would you like your time step size, in seconds?" << endl;
-    cin >> dt;
-    //final time that the solver stops at
-    cout << "How long would you like to run the solver?, in seconds" << endl;
-    cin >> ft;
-    //outut frequency of the solver data saving 
-    cout << "How often would you like the solver to save the data? (Save every X iterations.)" << endl;
-    cin >> outfreq;
-    //ask the user for the filename of the config file for material properties!
-    cout << "What is the name of the config file of material properties?" << endl;
-    cin >> filename;
-
+    int v = solverParam.v;  //verbose variable for solver output
+    int N = solverParam.N; //Number of grid points. The larger the points, the finer the mesh for the solver
+    double dt = solverParam.dt;    //Time step size for the solver (seconds)
+    double ft = solverParam.ft;    //Final time that the solver will run to (seconds)
+    int outfreq = solverParam.outfreq; //Frequency of output for solver iterations.
+    string filename = solverParam.filename; //File name of the config file for material properties
 
     int layup;
     layup = 1;
