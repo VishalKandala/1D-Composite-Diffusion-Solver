@@ -1,7 +1,7 @@
 ## 11/22 Vishal Indivar Kandala
 ## MEEN 689 Computing  Concepts Project 3
 CC=g++
-CFLAGS= -g -Wall 
+CFLAGS=  # -g -Wall 
 #DEPS = 
 OBJ = main.o setup.o solver.o data.o 
 
