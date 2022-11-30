@@ -15,16 +15,16 @@ int main(int argc, char **argv){
     // Interface with the user for solver configuration using the terminal command line.
     
     //Attempt to create the user interface function
-    struct solverParam;
-    solverParam = heat::askUserParams();
+    heat::userParams solverParams;
+    solverParams = heat::askUserParams();
 
     //define the variables that will be received for the solver
-    int v = solverParam.v;  //verbose variable for solver output
-    int N = solverParam.N; //Number of grid points. The larger the points, the finer the mesh for the solver
-    double dt = solverParam.dt;    //Time step size for the solver (seconds)
-    double ft = solverParam.ft;    //Final time that the solver will run to (seconds)
-    int outfreq = solverParam.outfreq; //Frequency of output for solver iterations.
-    string filename = solverParam.filename; //File name of the config file for material properties
+    int v = solverParams.v;  //verbose variable for solver output
+    int N = solverParams.N; //Number of grid points. The larger the points, the finer the mesh for the solver
+    double dt = solverParams.dt;    //Time step size for the solver (seconds)
+    double ft = solverParams.ft;    //Final time that the solver will run to (seconds)
+    int outfreq = solverParams.outfreq; //Frequency of output for solver iterations.
+    string filename = solverParams.filename; //File name of the config file for material properties
 
     int layup;
     layup = 1;

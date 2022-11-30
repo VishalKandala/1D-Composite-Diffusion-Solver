@@ -21,7 +21,7 @@ namespace heat {
     void Solve_T(int layup,int v);
     void Advance_dt(int layup,int v);
     void Push_T(int layup);
-    Struct askUserParams();
+    
     
     // vars
     //Structure for the file reading operation
@@ -32,12 +32,13 @@ namespace heat {
     }inf;
     void File_Read(inf* info, string filename);*/
     
-    struct userParams {
+    typedef struct{
         int v, N, outfreq;
         double dt, ft;
         string filename;
-    };
-    extern typedef struct userParams Struct;
+    } userParams;
+    extern userParams solverParams;
+    userParams askUserParams();
     extern double dr;
     extern int Num_of_nodes;
     extern int v;

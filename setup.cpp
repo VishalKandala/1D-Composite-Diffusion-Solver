@@ -24,7 +24,7 @@ namespace heat {
     std::vector<std::vector<double>> A;
     std::vector<double> B;
     vector<double> r;
-    struct userParams;
+    userParams solverParams;
 }
 
 double heat::Define_Q(int layup){
