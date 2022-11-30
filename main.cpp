@@ -15,7 +15,7 @@ int main(int argc, char **argv){
     // Interface with the user for solver configuration using the terminal command line.
     
     //Attempt to create the user interface function
-    Struct solverParam;
+    struct solverParam;
     solverParam = heat::askUserParams();
 
     //define the variables that will be received for the solver

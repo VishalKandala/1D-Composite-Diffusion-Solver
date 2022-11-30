@@ -92,8 +92,8 @@ void heat::File_Read(inf* info, string filename){
 */
 
 
-Struct heat::askUserParams(){
-	Struct s;
+struct heat::askUserParams(){
+	struct s;
 
 	//verbose output?
     cout << "Please select the how verbose you would like the solver output:" << endl;
