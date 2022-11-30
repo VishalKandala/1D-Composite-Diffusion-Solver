@@ -20,6 +20,7 @@ int main(int argc, char **argv){
     double dt = 0.1;    //Time step size for the solver (seconds)
     double ft = 600;    //Final time that the solver will run to (seconds)
     int outfreq = 1000; //Frequency of output for solver iterations.
+    string filename = "temp";	//Filename of the config file
 
     //verbose output?
     cout << "Please select the how verbose you would like the solver output:" << endl;
@@ -39,6 +40,9 @@ int main(int argc, char **argv){
     //outut frequency of the solver data saving 
     cout << "How often would you like the solver to save the data? (Save every X iterations.)" << endl;
     cin >> outfreq;
+    //ask the user for the filename of the config file for material properties!
+    cout << "What is the name of the config file of material properties?" << endl;
+    cin >> filename;
 
 
     int layup;
