@@ -1,5 +1,8 @@
 // 11/22 Mingxin, 11/25 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
+// Edited by: Thomas Firsich
+// Last Edited: 11/29
+
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -21,6 +24,7 @@ namespace heat {
     std::vector<std::vector<double>> A;
     std::vector<double> B;
     vector<double> r;
+    struct userParams;
 }
 
 double heat::Define_Q(int layup){
