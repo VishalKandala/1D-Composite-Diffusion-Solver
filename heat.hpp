@@ -1,7 +1,7 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
 // Edited by: Thomas Firsich
-// Last Edited: 11/28
+// Last Edited: 11/29
 
 #ifndef INIT_H
 #define INIT_H
@@ -21,6 +21,7 @@ namespace heat {
     void Solve_T(int layup,int v);
     void Advance_dt(int layup,int v);
     void Push_T(int layup);
+    Struct askUserParams();
     
     // vars
     //Structure for the file reading operation
@@ -29,9 +30,14 @@ namespace heat {
         vector <string> headers;
         vector <string> vals;
     }inf;
-    
     void File_Read(inf* info, string filename);*/
     
+    struct userParams {
+        int v, N, outfreq;
+        double dt, ft;
+        string filename;
+    };
+    extern typedef struct userParams Struct;
     extern double dr;
     extern int Num_of_nodes;
     extern int v;
