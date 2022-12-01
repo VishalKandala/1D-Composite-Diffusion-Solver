@@ -1,4 +1,4 @@
-// 11/22 Mingxin, 11/25 Vishal Indivar Kandala
+// 11/22 Mingxin, 11/25 Vishal Indivar Kandala 11/30 Yash Narendra
 // MEEN 689 Computing Concepts Project 3
 #include <cmath>
 #include <iostream>
@@ -26,13 +26,13 @@ namespace heat {
 double heat::Define_Q(int layup){
     double result;
     if(layup==1){
-        result = (2e4/(130*20000));
+        result = (2e4)/(0.15);
     }else if(layup==2){
-        result = (4e4/(130*20000));
+        result = (4e4/(0.15);
     }else if(layup==3){
-        result = (3.2e4/(130*20000));
+        result = (3.2e4/(0.15));
     }else if(layup==4){
-        result = (5e4/(130*20000));
+        result = (5e4/(0.15));
       }
     return result;
 }

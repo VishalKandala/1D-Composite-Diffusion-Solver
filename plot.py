@@ -11,6 +11,7 @@ directory = 'data'
 #print(length)
 remove = int(sys.argv[1])
 T = []
+t = []
 for filename in os.listdir(directory):
     #print(filename)
     if(filename != "r.csv"):
@@ -24,7 +25,7 @@ T = array(T)
 #print(T[1,1])
 #print(T)
 print(len(T))
-
+layup = int(sys.argv[2])
 r = loadtxt("data/r.csv",delimiter=',');
 r = r.T
 if(remove == 1):
@@ -32,7 +33,7 @@ if(remove == 1):
 #print(shape(r))
 for i in range(len(T)):
     #if(i%1):
-    plot(r,T[i,0])
+    plot(r,T[i,layup])
 #savefig("timeseries.svg")
 show()
 
