@@ -15,6 +15,9 @@ t = []
 for filename in os.listdir(directory):
     #print(filename)
     if(filename != "r.csv"):
+        templist = filename.split("_")
+        templist = templist[-1].split(".")
+        t.append(int(templist[0]))
         T_t = loadtxt("data/"+filename,skiprows = 1, delimiter = ",",dtype = float)
         T.append(T_t.T)
         if(remove == 1):
@@ -24,7 +27,7 @@ T = array(T)
 #T = T.T
 #print(T[1,1])
 #print(T)
-print(len(T))
+#print(len(T))
 layup = int(sys.argv[2])
 r = loadtxt("data/r.csv",delimiter=',');
 r = r.T
@@ -33,7 +36,8 @@ if(remove == 1):
 #print(shape(r))
 for i in range(len(T)):
     #if(i%1):
-    plot(r,T[i,layup])
+    plot(r,T[i,layup],label=str(t[i]))
 #savefig("timeseries.svg")
+legend()
 show()
 

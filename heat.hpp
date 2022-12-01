@@ -10,8 +10,8 @@ using namespace std;
 namespace heat {
     // functions
     void Print_File(int it,int interactive);
-    double Define_Q(int layup);
-    double Define_Alpha(double r, int layup);
+    double Define_Q(double x, int layup);
+    double Define_Alpha(double x, int layup);
     void Define_Vars(int temp,double temp2,double temp3);
     void Print_Rfile();
     void Form_A(int layup,int v);
@@ -19,7 +19,7 @@ namespace heat {
     void Solve_T(int layup,int v,int it);
     void Advance_dt(int layup,int v,int it);
     void Push_T(int layup,int v,int it);
-    double Define_Lambda(double r, int layup);
+    double Define_Lambda(double x, int layup);
     // vars
     extern double dr;
     extern int Num_of_nodes;

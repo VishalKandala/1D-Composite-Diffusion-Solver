@@ -22,10 +22,15 @@ namespace heat {
     std::vector<double> B;
     vector<double> r;
 }
-double heat::Define_Q(int layup){
+double heat::Define_Q(double x, int layup){
     double result;
     if(layup == 0){
-    	result = 2e4/(21.5);
+	if(x == 0.0){    
+    	result = 10e4/(21.5);
+	}
+	else{
+		result = 2e4/(0.15);
+	}
     }
     else if(layup==1){
         result = (2e4)/(0.15);
@@ -39,144 +44,152 @@ double heat::Define_Q(int layup){
     return result;
 }
 
-double heat::Define_Alpha(double r, int layup){
+double heat::Define_Alpha(double x, int layup){
     //int layup = layup_det(theta);
-    double result;
+    double output;
     if(layup == 0){
-    	if(r>=0.0 && r<2.0){
-	     result = 21.5/(8000*510);
+    	if(x<=4.0){ //2.0){
+	     output = 21.5/(8000*510);
+             //output = 0.15/(130*2e4);
+
 	}
-	else if(r>=2.0 && r<=6.0){
-		result = 210/(2700*890);
-	}
-	else if(r>6.0 && r<=8.0){
-	        result = 21.5/(8000*510);
+//	else if(x>=0.02 && x<=7.98){
+		//output = 210/(2700*890);
+                //output = 21.5/(8000*510);
+ //               output = 0.15/(130*2e4);
+
+
+                
+//	}
+	else{
+             output = 0.15/(130*2e4);
+	       //output = 21.5/(8000*510);
 	}
     }
     else if(layup==1){
-            if (r>=0 && r<=0.020){                //Felt
-                result = 0.15/(130*2e4);
-            }else if(r>0.020 && r<=0.025){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.025 && r<=0.026){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.026 && r<=0.034){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.034 && r<=0.035){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.035 && r<=2.035){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>2.035 && r<=5.965){        //Steel
-                result = 21.5/(8000*510);
-            }else if(r>5.965 && r<=7.965){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>7.965 && r<=7.966){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.966 && r<=7.974){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>7.974 && r<=7.975){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.975 && r<=7.980){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if (r>7.980 && r<=8.000){       //Felt
-                result = 0.15/(130*2e4);
+            if (x>=0 && x<=0.020){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.020 && x<=0.025){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.025 && x<=0.026){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.026 && x<=0.034){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.034 && x<=0.035){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.035 && x<=2.035){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>2.035 && x<=5.965){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.965 && x<=7.965){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.965 && x<=7.966){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.966 && x<=7.974){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.974 && x<=7.975){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.975 && x<=7.980){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.980 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
               }
             }
 
     else if(layup==2){
-            if (r>=0 && r<=0.030){                //Felt
-                result = 0.15/(130*2e4);
-            }else if(r>0.030 && r<=0.033){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.033 && r<=0.034){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.034 && r<=0.046){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.046 && r<=0.047){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.047 && r<=2.047){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>2.347 && r<=5.653){        //Steel
-                result = 21.5/(8000*510);
-            }else if(r>5.653 && r<=7.953){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>7.953 && r<=7.954){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.954 && r<=7.966){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>7.966 && r<=7.967){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.967 && r<=7.970){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if (r>7.970 && r<=8.000){       //Felt
-                result = 0.15/(130*2e4);
+            if (x>=0 && x<=0.030){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.030 && x<=0.033){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.033 && x<=0.034){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.034 && x<=0.046){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.046 && x<=0.047){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.047 && x<=2.047){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>2.347 && x<=5.653){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.653 && x<=7.953){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.953 && x<=7.954){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.954 && x<=7.966){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.966 && x<=7.967){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.967 && x<=7.970){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.970 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
               }
             }
 
     else if(layup==3){
-            if (r>=0 && r<=0.020){                //Felt
-                result = 0.15/(130*2e4);
-            }else if(r>0.020 && r<=0.030){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.030 && r<=0.031){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.031 && r<=0.043){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.043 && r<=0.044){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.044 && r<=1.744){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>1.744 && r<=6.256){        //Steel
-                result = 21.5/(8000*510);
-            }else if(r>6.256 && r<=7.956){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>7.956 && r<=7.957){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.957 && r<=7.969){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>7.969 && r<=7.970){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.970 && r<=7.980){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if (r>7.980 && r<=8.000){       //Felt
-                result = 0.15/(130*2e4);
+            if (x>=0 && x<=0.020){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.020 && x<=0.030){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.030 && x<=0.031){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.031 && x<=0.043){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.043 && x<=0.044){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.044 && x<=1.744){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>1.744 && x<=6.256){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>6.256 && x<=7.956){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.956 && x<=7.957){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.957 && x<=7.969){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.969 && x<=7.970){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.970 && x<=7.980){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.980 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
               }
             }
 
     else if(layup==4){
-            if (r>=0 && r<=0.0050){                 //Felt
-                result = 0.15/(130*2e4);
-            }else if(r>0.0050 && r<=0.0051){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.0051 && r<=0.0061){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.0061 && r<=0.0062){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>0.0062 && r<=0.0072){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>0.0072 && r<=2.8072){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>2.8072 && r<=5.1928){        //Steel
-                result = 21.5/(8000*510);
-            }else if(r>5.1928 && r<=7.9928){        //Aluminium
-                result = 210/(2700*890);
-            }else if(r>7.9928 && r<=7.9938){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.9938 && r<=7.9939){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if(r>7.9939 && r<=7.9949){        //Epoxy
-                result = 0.44/(300*1730);
-            }else if(r>7.9949 && r<=7.9950){        //Carbon Fiber
-                result = 10/(1850*1100);
-            }else if (r>7.9950 && r<=8.000){       //Felt
-                result = 0.15/(130*2e4);
+            if (x>=0 && x<=0.0050){                 //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.0050 && x<=0.0051){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.0051 && x<=0.0061){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.0061 && x<=0.0062){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.0062 && x<=0.0072){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.0072 && x<=2.8072){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>2.8072 && x<=5.1928){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.1928 && x<=7.9928){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.9928 && x<=7.9938){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.9938 && x<=7.9939){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.9939 && x<=7.9949){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.9949 && x<=7.9950){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.9950 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
               }
             }
-    return result;
+    return output;
     }
-double heat::Define_Lambda(double r, int layup){
+double heat::Define_Lambda(double x, int layup){
 double result;
-result = Define_Alpha(r,layup);
+result = Define_Alpha(x,layup);
 result  = result*dt/pow(dr,2);
 return result;
 }

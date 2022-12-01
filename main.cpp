@@ -21,13 +21,13 @@ int main(int argc, char **argv){
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
-    cout<<"Lambda: "<<heat::Define_Lambda(heat::r[0],layup)<<endl;
+    cout<<"Lambda: "<<heat::Define_Lambda(heat::r[50],layup)<<endl;
     cout << "Number of Nodes: "<<heat::Num_of_nodes << endl;
     cout << "Grid size: "<<heat::dr << endl;
     cout<<"Time step: "<<heat::dt<<endl;
     cout<<"Final time: "<<heat::ft<<endl;
     cout<<"No.of Time steps: "<<heat::Nt<<endl;
-    cout << "Heat Flux: "<<heat::Define_Q(layup) << endl;
+    cout << "Heat Flux/Conductivity at boundary: "<<heat::Define_Q(heat::r[0],layup) << endl;
     }
     //-------------------
     // Time loop
