@@ -12,7 +12,7 @@ namespace heat {
     void Print_File(int it,int interactive);
     double Define_Q(double x, int layup);
     double Define_Alpha(double x, int layup);
-    void Define_Vars(int temp,double temp2,double temp3);
+    void Define_Vars(int temp,double temp2,double temp3, double temp4);
     void Print_Rfile();
     void Form_A(int layup,int v);
     void Form_B(int layup,int v, int it);
