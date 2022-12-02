@@ -21,6 +21,9 @@ int main(int argc, char **argv){
     double ft = 600;    //Final time that the solver will run to (seconds)
     int outfreq = 1000; //Frequency of output for solver iterations.
     string filename = "temp";	//Filename of the config file
+    int BC = 1;	//boundary condition check
+    string answer = "n";	//Answer for the felt question
+    double felt_Add = 0;	//Thickness of felt to be added on the outer layer
 
     //verbose output?
     cout << "Please select the how verbose you would like the solver output:" << endl;
@@ -35,7 +38,7 @@ int main(int argc, char **argv){
     cout << "How small would you like your time step size, in seconds?" << endl;
     cin >> dt;
     //final time that the solver stops at
-    cout << "How long would you like to run the solver?, in seconds" << endl;
+    cout << "How long would you like to run the solver, in seconds?" << endl;
     cin >> ft;
     //outut frequency of the solver data saving 
     cout << "How often would you like the solver to save the data? (Save every X iterations.)" << endl;
@@ -43,7 +46,29 @@ int main(int argc, char **argv){
     //ask the user for the filename of the config file for material properties!
     cout << "What is the name of the config file of material properties?" << endl;
     cin >> filename;
-
+    
+    cout << "" << endl;
+    cout << "" << endl;
+    
+    //Check what boundary condition is being tested
+    cout << "What boundary condition are you testing?" << endl;
+    cout << "BC1: No applied heat flux at one boundary" << endl;
+    cout << "BC2: Symmetric heat flux along each surface" << endl;
+    cout << "Input 1 for BC1 and 2 for BC2..." << endl;
+    cin >> BC;
+    
+    //Check if BC2, then ask if they want to add felt
+    if (BC == 2){
+    	cout << "Would you like to add more felt insulation? (y/n)" << endl;
+    	cin >> answer;
+    	
+    	//Ask for thickness of felt insulation to add 
+    	if ((answer == "y") || (answer == "Y") || (answer == "yes")){
+    	    cout << "Specify the thickness of felt insulation to be added. (in meters)" << endl;
+    	    cin >> felt_Add;
+    	}
+    }
+    
 
     int layup;
     layup = 1;
