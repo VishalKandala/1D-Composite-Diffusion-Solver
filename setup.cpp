@@ -230,7 +230,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3, double temp4){
     t = 0.0;
 // Initializing r
     r.resize(N);
-    r[0] = 0 - temp4;
+    r[0] = 0.0 - temp4;
     
     for(int i=1;i<N;i++){
 	r[i] = r[i-1] + dr;
