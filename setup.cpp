@@ -121,7 +121,9 @@ double heat::Define_Alpha(double x, int layup){
                 output = 0.44/(300*1730);
             }else if(x>7.967 && x<=7.970){        //Caxbon Fibex
                 output = 10/(1850*1100);
-            }else if (x>7.970 && x<=8.000){       //Felt
+            }else if(x>7.970 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
+              }else{                                //Felt
                 output = 0.15/(130*2e4);
               }
             }
@@ -153,6 +155,8 @@ double heat::Define_Alpha(double x, int layup){
                 output = 10/(1850*1100);
             }else if (x>7.980 && x<=8.000){       //Felt
                 output = 0.15/(130*2e4);
+              }else{                                //Felt
+                output = 0.15/(130*2e4);
               }
             }
 
@@ -183,11 +187,13 @@ double heat::Define_Alpha(double x, int layup){
                 output = 10/(1850*1100);
             }else if (x>7.9950 && x<=8.000){       //Felt
                 output = 0.15/(130*2e4);
+              }else{                                //Felt
+                output = 0.15/(130*2e4);
               }
             }
 	else{
-		cout<<"Layup default to steel"<<endl;
-		output = 21.5/(8000*510);
+		cout<<"Layup not found"<<endl;
+		output = 0.0;
 	}
     return output;
     }
@@ -211,7 +217,7 @@ int heat::layup_det(double theta){
 */
  
 
-void heat::Define_Vars(int temp,double temp2,double temp3){
+void heat::Define_Vars(int temp,double temp2,double temp3, double temp4){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
     dt = temp2;
@@ -220,16 +226,16 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     avgcput = 0.0;
     N = temp;
-    dr = 8.0/(N-1);
+    dr = (8.0+(2*temp4))/(N-1);
     t = 0.0;
 // Initializing r
     r.resize(N);
-    r[0] = 0;
+    r[0] = -temp4;
     
     for(int i=1;i<N;i++){
 	r[i] = r[i-1] + dr;
     }
-
+   
     heat::Print_Rfile();
 
 // Initializing T
