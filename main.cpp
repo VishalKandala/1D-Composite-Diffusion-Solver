@@ -16,8 +16,9 @@ int main(int argc, char **argv){
     double ft = stod(argv[4]); // Command line input for simulation interval.
     int outfreq = stoi(argv[5]);     
     int layup = stoi(argv[6]);
+    double extra_felt = stod(argv[7]);
     // Define global variables using inputs.
-    heat::Define_Vars(N,dt,ft);
+    heat::Define_Vars(N,dt,ft,extra_felt);
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
