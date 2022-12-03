@@ -16,8 +16,10 @@ int main(int argc, char **argv){
     double ft = stod(argv[4]); // Command line input for simulation interval.
     int outfreq = stoi(argv[5]);     
     int layup = stoi(argv[6]);
+    int BC = stoi(argv[7]);
+    double Extra_Felt = stod(argv[8]);
     // Define global variables using inputs.
-    heat::Define_Vars(N,dt,ft,layup);
+    heat::Define_Vars(N,dt,ft,Extra_Felt,layup);
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
@@ -27,7 +29,7 @@ int main(int argc, char **argv){
     cout<<"Time step: "<<heat::dt<<endl;
     cout<<"Final time: "<<heat::ft<<endl;
     cout<<"No.of Time steps: "<<heat::Nt<<endl;
-    cout << "Heat Flux/Conductivity at boundary: "<<heat::Define_Q(heat::r[0],layup) << endl;
+    cout << "Heat Flux/Conductivity at boundary: "<<heat::Define_Q(heat::r[0],layup,BC) << endl;
     }
     //-------------------
     // Time loop
@@ -37,7 +39,7 @@ int main(int argc, char **argv){
     for(int it = 1;it<=heat::Nt;it++){
     if(heat::Crystal_Flag == false){
     // Advance the solution by one Timestep(dt)	   
-    heat::Advance_dt(layup,v,it);
+    heat::Advance_dt(layup,v,it,BC);
     // Update solution monitor time t.
     heat::t+=heat::dt;
     // If statement for outputting to file
