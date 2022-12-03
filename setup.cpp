@@ -23,7 +23,7 @@ namespace heat {
     std::vector<double> B;
     vector<double> r;
     vector<double> Tg;
-    vector<double> alpha = {(0.15/(130*2e4)), (10.0/(1850)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
+    vector<double> alpha = {(0.15/(130*2e4)), (10.0/(1850 * 1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
     vector<double> glass_t = {573.15, 523.15, 396.15, 610.0, 1033.15};
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
