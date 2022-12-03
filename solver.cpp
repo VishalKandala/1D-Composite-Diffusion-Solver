@@ -32,14 +32,14 @@ cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
 }
 }
 
-void heat::Form_B(int layup,int v, int it){
+void heat::Form_B(int layup,int v, int it, int BC){
 //r = 0.0 Boundary condition
-B[0] = Told[0][layup] + 2*dr*(Define_Q(r[0],layup))*Define_Lambda(r[0],layup);  //((dt/pow(dr,2))*Define_Alpha(r[0],layup));	// 2*Q/k*(alpha*dt/dx**2)
+B[0] = Told[0][layup] + 2*dr*(Define_Q(r[0],layup,BC))*Define_Lambda(r[0],layup);  //((dt/pow(dr,2))*Define_Alpha(r[0],layup));	// 2*Q/k*(alpha*dt/dx**2)
 for(int i =1;i<N-1;i++){
 B[i] = Told[i][layup];
 }
 //r = 8.0 Boundary condition
-B[N-1] = Told[N-1][layup] +  2*dr*(Define_Q(r[N-1],layup))*Define_Lambda(r[N-1],layup); //((dt/pow(dr,2))*Define_Alpha(r[N-1],layup));	// 2*Q/k*(alpha*dt/dx**2)
+B[N-1] = Told[N-1][layup] +  2*dr*(Define_Q(r[N-1],layup,BC))*Define_Lambda(r[N-1],layup); //((dt/pow(dr,2))*Define_Alpha(r[N-1],layup));	// 2*Q/k*(alpha*dt/dx**2)
 //Visualize the B vector
 if(v==3 && it>0){
 cout<<"B vector --layup:"<<layup<<endl;
@@ -103,11 +103,11 @@ cout<<i<<","<<Told[i][layup]<<","<<T[i][layup]<<endl;
 }
 }
 
-void heat::Advance_dt(int layup,int v, int it){
+void heat::Advance_dt(int layup,int v, int it, int BC){
 	// Form the co-efficient matrix as it is being modified in Solve_T.
 	Form_A(layup,v);
 	// Form the right hand side vector for the linear equation which depends on Told.
-	Form_B(layup,v,it);
+	Form_B(layup,v,it, BC);
 	//if(v==2){cout<<"B"<<endl;}
 	// Solve the linear system with A formed outside the implicit function before the temporal loop.
 	Solve_T(layup,v,it);
