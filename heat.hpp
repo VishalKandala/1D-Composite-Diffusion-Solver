@@ -1,5 +1,9 @@
 // 11/22 Vishal Indivar Kandala
 // MEEN 689 Computing Concepts Project 3
+
+// Last updated: 12/03
+// Last Edit(s): Added the vector of alpha values from Amira
+
 #ifndef INIT_H
 #define INIT_H
 #include<vector>
@@ -38,6 +42,7 @@ namespace heat {
     extern vector<double> B; 
     extern vector<double> r;
     extern vector<double> Tg;
+    extern vector<double> alpha;
 
 }
 
