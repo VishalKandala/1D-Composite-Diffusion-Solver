@@ -8,7 +8,7 @@ using namespace std;
 //using namespace heat;
 
 namespace heat {
-    bool Crystal_Flag = false;
+    bool Crystal_Flag;
     double dt;
     double dr;
     int Num_of_nodes;
@@ -24,6 +24,14 @@ namespace heat {
     vector<double> r;
     vector<double> Tg;
 }
+double heat::Define_Tg(double x, int layup){
+	double result;
+	if(x >= 0 && x <=8.0){
+		result = 123.0 + 273.0;
+	}
+      return result;
+}
+
 double heat::Define_Q(double x, int layup){
     double result;
     if(layup == 0){
@@ -213,9 +221,10 @@ int heat::layup_det(double theta){
 */
  
 
-void heat::Define_Vars(int temp,double temp2,double temp3){
+void heat::Define_Vars(int temp,double temp2,double temp3,int layup){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
+    Crystal_Flag = false;
     dt = temp2;
     ft = temp3;
     Nt = ceil(ft/dt); // Nt = dt/ft + 1
@@ -262,12 +271,14 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 
 // Initializing B
 B.resize(N);
+
 // Initializing Tg
 Tg.resize(N);
-
+for(int i=0;i<N;i++){
+	Tg[i] = Define_Tg(r[i],layup);
 }
 
-
+}
 // if add more features
 // 
 

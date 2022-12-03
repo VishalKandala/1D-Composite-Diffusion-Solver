@@ -10,9 +10,10 @@ using namespace std;
 namespace heat {
     // functions
     void Print_File(int it,int interactive);
+    double Define_Tg(double x, int layup);
     double Define_Q(double x, int layup);
     double Define_Alpha(double x, int layup);
-    void Define_Vars(int temp,double temp2,double temp3);
+    void Define_Vars(int temp,double temp2,double temp3,int layup);
     void Print_Rfile();
     void Form_A(int layup,int v);
     void Form_B(int layup,int v, int it);
@@ -36,6 +37,7 @@ namespace heat {
     extern vector<vector<double>> A; 
     extern vector<double> B; 
     extern vector<double> r;
+    extern vector<double> Tg;
 
 }
 

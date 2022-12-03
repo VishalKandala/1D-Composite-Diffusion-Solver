@@ -17,7 +17,7 @@ int main(int argc, char **argv){
     int outfreq = stoi(argv[5]);     
     int layup = stoi(argv[6]);
     // Define global variables using inputs.
-    heat::Define_Vars(N,dt,ft);
+    heat::Define_Vars(N,dt,ft,layup);
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
@@ -32,13 +32,16 @@ int main(int argc, char **argv){
     //-------------------
     // Time loop
     heat::Print_File(0,0);
-    heat::Form_A(layup,v); 
+    heat::Form_A(layup,v);
+    int it2 = 0; 
     for(int it = 1;it<=heat::Nt;it++){
+    if(heat::Crystal_Flag == false){
     // Advance the solution by one Timestep(dt)	   
     heat::Advance_dt(layup,v,it);
     // Update solution monitor time t.
     heat::t+=heat::dt;
     // If statement for outputting to file
+    //cout<<it2<<endl;
     if(it%outfreq == 0){
     // Print solution at t to file.
     heat::Print_File(it,0);
@@ -46,8 +49,19 @@ int main(int argc, char **argv){
     cout<<"t = "<<heat::t<<endl;
     	}
     }
+    it2 = it;
+    if(heat::Crystal_Flag == true){break;}
+    }
+    if(heat::Crystal_Flag == true){
+	   if(v==1){ 
+	    cout<<"Crystallization Temperature reached at time:"<<heat::t<<endl;
+	   }
+	   heat::Print_File(it2,0);
+    }
+    else{
     if(v==1){
     cout<<"Average CPU Time for T_Solve in ms: "<<heat::avgcput/heat::Nt<<endl;
+    }
     }
   
 

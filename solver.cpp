@@ -120,14 +120,17 @@ void heat::Advance_dt(int layup,int v, int it){
 	//if(v==2){cout<<"B"<<endl;}
 	// Solve the linear system with A formed outside the implicit function before the temporal loop.
 	Solve_T(layup,v,it);
-	// Push T values back to Told for next timestep 
-	Push_T(layup,v,it);
+	// Check if Glass temperatures are reached.
+	Check_T(layup,v);
+	if(Crystal_Flag == false){
+	Push_T(layup,v,it);}	// Push T values back to Told for next timestep 
 }
 
 void heat::Check_T(int layup,int v){
+//	cout<<Crystal_Flag<<endl;
 	if(Crystal_Flag==false){
 		for(int i = 0;i<N;i++){
-			if T[i][layup] = Tg[i]{
+			if (T[i][layup] >= Tg[i]){
 				Crystal_Flag = true;
 		        }	
 		}	
