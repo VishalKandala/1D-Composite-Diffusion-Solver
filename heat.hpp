@@ -2,7 +2,8 @@
 // MEEN 689 Computing Concepts Project 3
 
 // Last updated: 12/03
-// Last Edit(s): Added the vector of alpha values from Amira
+// Last Edit(s): Added the vector of alpha values from Amira. 
+//		Added the command line user-input functionality by Thomas.
 
 #ifndef INIT_H
 #define INIT_H
@@ -14,7 +15,7 @@ using namespace std;
 namespace heat {
     // functions
     void Print_File(int it,int interactive);
-    double Define_Tg(double x, int layup,double temp4);
+    double Define_Tg(double x, int layup);
     double Define_Q(double x, int layup,int BC);
     double Define_Alpha(double x, int layup);
     void Define_Vars(int temp,double temp2,double temp3,double temp4, int layup);

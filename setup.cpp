@@ -27,7 +27,7 @@ namespace heat {
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
 }
 
-double heat::Define_Tg(double x, int layup,double temp4){
+double heat::Define_Tg(double x, int layup){
 	double result;
 	if(x >= r[0] && x <= 4.0){
 	result = 10500.0 + 123.0 + 273.0;
@@ -492,7 +492,7 @@ B.resize(N);
 // Initializing Tg
 Tg.resize(N);
 for(int i=0;i<N;i++){
-	Tg[i] = heat::Define_Tg(r[i],layup,temp4);
+	Tg[i] = heat::Define_Tg(r[i],layup);
 }
 
 }
