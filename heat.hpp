@@ -39,6 +39,7 @@ namespace heat {
     extern vector<double> r;
     extern vector<double> Tg;
     extern vector<double> alpha;
+    extern vector<double> glass_t;
 
 }
 
