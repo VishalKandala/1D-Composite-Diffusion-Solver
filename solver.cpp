@@ -64,6 +64,7 @@ void heat::Solve_T(int layup,int v,int it){
     //update the diagonal value for a gauss elimination
 <<<<<<< HEAD
     A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
+<<<<<<< HEAD
     A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
 =======
     ratio = (A[i][0] / A[i-1][1]); 
@@ -71,6 +72,9 @@ void heat::Solve_T(int layup,int v,int it){
     A[i][0] = A[i][0] - ratio * A[i-1][1];
     //cout<<"temp"<<temp<<endl; 
 >>>>>>> iss9
+=======
+    //A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
+>>>>>>> 15685ec26f8470b752c66b7897d9480380019640
     //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
     B[i] = B[i] - ratio * B[i - 1];
     //iterate through i
