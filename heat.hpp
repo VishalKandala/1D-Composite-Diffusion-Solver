@@ -19,8 +19,10 @@ namespace heat {
     void Solve_T(int layup,int v,int it);
     void Advance_dt(int layup,int v,int it);
     void Push_T(int layup,int v,int it);
+    void Check_T(int layup,int v);
     double Define_Lambda(double x, int layup);
     // vars
+    extern bool Crystal_Flag;
     extern double dr;
     extern int Num_of_nodes;
     extern int N;

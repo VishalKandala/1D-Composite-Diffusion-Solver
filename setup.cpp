@@ -8,6 +8,7 @@ using namespace std;
 //using namespace heat;
 
 namespace heat {
+    bool Crystal_Flag = false;
     double dt;
     double dr;
     int Num_of_nodes;
@@ -21,6 +22,7 @@ namespace heat {
     std::vector<std::vector<double>> A;
     std::vector<double> B;
     vector<double> r;
+    vector<double> Tg;
 }
 double heat::Define_Q(double x, int layup){
     double result;
@@ -260,6 +262,8 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 
 // Initializing B
 B.resize(N);
+// Initializing Tg
+Tg.resize(N);
 
 }
 

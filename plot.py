@@ -26,14 +26,6 @@ for filename in os.listdir(directory):
 T = array(T)
 #T = T.T
 #print(T[1,1])
-<<<<<<< HEAD
-print(T[5,1])
-#print(length)
-r = linspace(0,4,length)
-#print(r)
-plot(r,T[5,1])
-savefig("timeseries.svg")
-=======
 #print(T)
 #print(len(T))
 layup = int(sys.argv[2])
@@ -47,6 +39,5 @@ for i in range(len(T)):
     plot(r,T[i,layup],label=str(t[i]))
 #savefig("timeseries.svg")
 legend()
->>>>>>> iss9
 show()
 

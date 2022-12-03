@@ -52,47 +52,47 @@ cout<<B[i]-200.0<<endl;
 // 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
 void heat::Solve_T(int layup,int v,int it){
   clock_t cputstart = clock();
+  vector<vector<double>> At;
+  At.resize(N); // Atemp
+  for(int i = 0;i<N;i++){
+  	At[i].resize(3);
+  	for(int j = 0; j<3;j++){
+  		At[i][j] = A[i][j];	
+  	}
+  }
+
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)
-  A[0][2] = A[0][2]/A[0][1];
-  B[0] = B[0]/A[0][1];
-  A[0][1] = 1.0; 
+  At[0][2] = At[0][2]/At[0][1];
+  B[0] = B[0]/At[0][1];
+  At[0][1] = 1.0; 
   int i = 1;
   double ratio;
   while (i < N){
     //update the diagonal value for a gauss elimination
-<<<<<<< HEAD
-    A[i][1] = A[i][1] - (A[i][0] / A[i-1][1]) * A[i - 1][2];
-<<<<<<< HEAD
-    A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
-=======
-    ratio = (A[i][0] / A[i-1][1]); 
-    A[i][1] = A[i][1] - ratio * A[i - 1][2];
-    A[i][0] = A[i][0] - ratio * A[i-1][1];
+    ratio = (At[i][0] / At[i-1][1]); 
+    At[i][1] = At[i][1] - ratio * At[i - 1][2];
+    At[i][0] = At[i][0] - ratio * At[i-1][1];
     //cout<<"temp"<<temp<<endl; 
->>>>>>> iss9
-=======
-    //A[i][0] = A[i][0] - (A[i][0] / A[i-1][1]) * A[i-1][1]; 
->>>>>>> 15685ec26f8470b752c66b7897d9480380019640
     //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
     B[i] = B[i] - ratio * B[i - 1];
     //iterate through i
     i ++;
   }
   if(v==4 && it == 2){
-	cout<<"A matrix -- After Elimination:"<<layup<<endl;
+	cout<<"At & A matrices -- Atfter Elimination:"<<layup<<endl;
         for(int i = 0;i<N;i++){
-        cout<<A[i][0]<<"\t"<<A[i][1]<<"\t"<<A[i][2]<<endl;
+        cout<<At[i][0]<<"\t"<<At[i][1]<<"\t"<<At[i][2]<<"|"<<A[i][0]<<A[i][1]<<A[i][2]<<endl;
         }
   }	
   //initialize a vector x (the temperatures at the current point)
   //vector<double> x (N, 0);
   // backwards substitution for the first row 
-  T[N-1][layup] = B[N-1] / A[N-1][1];
+  T[N-1][layup] = B[N-1] / At[N-1][1];
   //a bit more complicated backwards substitution 
   for(int i = N-2;i>=0;i--){
-    T[i][layup] = (B[i]- (A[i][2] * T[i +1][layup])) / A[i][1];
+    T[i][layup] = (B[i]- (At[i][2] * T[i +1][layup])) / At[i][1];
   }
   //return the temperatures
   
@@ -114,7 +114,7 @@ cout<<i<<","<<Told[i][layup]<<","<<T[i][layup]<<endl;
 
 void heat::Advance_dt(int layup,int v, int it){
 	// Form the co-efficient matrix as it is being modified in Solve_T.
-	Form_A(layup,v);
+	//Form_A(layup,v);
 	// Form the right hand side vector for the linear equation which depends on Told.
 	Form_B(layup,v,it);
 	//if(v==2){cout<<"B"<<endl;}
@@ -122,4 +122,14 @@ void heat::Advance_dt(int layup,int v, int it){
 	Solve_T(layup,v,it);
 	// Push T values back to Told for next timestep 
 	Push_T(layup,v,it);
+}
+
+void heat::Check_T(int layup,int v){
+	if(Crystal_Flag==false){
+		for(int i = 0;i<N;i++){
+			if T[i][layup] = Tg[i]{
+				Crystal_Flag = true;
+		        }	
+		}	
+	}
 }
