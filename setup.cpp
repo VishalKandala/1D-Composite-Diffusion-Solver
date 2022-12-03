@@ -22,15 +22,180 @@ namespace heat {
     std::vector<double> B;
     vector<double> r;
 }
-
-double heat::Define_Q(int layup){
+double heat::Define_Q(double x, int layup){
     double result;
-    if(layup==1){
-        result = (2e4/(130*20000));
-    }else if(layup==2){
-        result = (4e4/(130*20000));
+    if(layup == 0){
+	if(x == 0.0){    
+    	result = 10e4/(21.5);
+	}
+	else{
+		result = 2e4/(0.15);
+	}
     }
+    else if(layup==1){
+        result = (2e4)/(0.15);
+    }else if(layup==2){
+        result = (4e4)/(0.15);
+    }else if(layup==3){
+        result = (3.2e4)/(0.15);
+    }else{
+        result = (5e4)/(0.15);
+      }
     return result;
+}
+
+double heat::Define_Alpha(double x, int layup){
+    //int layup = layup_det(theta);
+    double output;
+    if(layup == 0){
+    	if(x<=4.0){ //2.0){
+	     output = 21.5/(8000*510);
+             //output = 0.15/(130*2e4);
+
+	}
+//	else if(x>=0.02 && x<=7.98){
+		//output = 210/(2700*890);
+                //output = 21.5/(8000*510);
+ //               output = 0.15/(130*2e4);
+
+
+                
+//	}
+	else{
+             output = 0.15/(130*2e4);
+	       //output = 21.5/(8000*510);
+	}
+    }
+    else if(layup==1){
+            if (x>=0 && x<=0.020){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.020 && x<=0.025){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else if(x>0.025 && x<=0.026){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.026 && x<=0.034){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else if(x>0.034 && x<=0.035){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.035 && x<=2.035){        //Aluminium
+                output = 210.0/(2700*890);
+            }else if(x>2.035 && x<=5.965){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.965 && x<=7.965){        //Aluminium
+                output = 210.0/(2700*890);
+            }else if(x>7.965 && x<=7.966){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.966 && x<=7.974){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else if(x>7.974 && x<=7.975){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.975 && x<=7.980){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else{                                //Felt
+                output = 0.15/(130*2e4);
+              }
+            }
+
+    else if(layup==2){
+            if (x>=0 && x<=0.030){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.030 && x<=0.033){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else if(x>0.033 && x<=0.034){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.034 && x<=0.046){        //Caxbon Fibex
+                output = 10.0/(1850*1100);
+            }else if(x>0.046 && x<=0.047){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.047 && x<=2.047){        //Aluminium
+                output = 210.0/(2700*890);
+            }else if(x>2.347 && x<=5.653){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.653 && x<=7.953){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.953 && x<=7.954){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.954 && x<=7.966){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.966 && x<=7.967){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.967 && x<=7.970){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.970 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
+              }
+            }
+
+    else if(layup==3){
+            if (x>=0 && x<=0.020){                //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.020 && x<=0.030){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.030 && x<=0.031){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.031 && x<=0.043){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.043 && x<=0.044){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.044 && x<=1.744){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>1.744 && x<=6.256){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>6.256 && x<=7.956){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.956 && x<=7.957){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.957 && x<=7.969){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.969 && x<=7.970){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.970 && x<=7.980){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.980 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
+              }
+            }
+
+    else if(layup==4){
+            if (x>=0 && x<=0.0050){                 //Felt
+                output = 0.15/(130*2e4);
+            }else if(x>0.0050 && x<=0.0051){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.0051 && x<=0.0061){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.0061 && x<=0.0062){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>0.0062 && x<=0.0072){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>0.0072 && x<=2.8072){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>2.8072 && x<=5.1928){        //Steel
+                output = 21.5/(8000*510);
+            }else if(x>5.1928 && x<=7.9928){        //Aluminium
+                output = 210/(2700*890);
+            }else if(x>7.9928 && x<=7.9938){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.9938 && x<=7.9939){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if(x>7.9939 && x<=7.9949){        //Epoxy
+                output = 0.44/(300*1730);
+            }else if(x>7.9949 && x<=7.9950){        //Caxbon Fibex
+                output = 10/(1850*1100);
+            }else if (x>7.9950 && x<=8.000){       //Felt
+                output = 0.15/(130*2e4);
+              }
+            }
+	else{
+		cout<<"Layup default to steel"<<endl;
+		output = 21.5/(8000*510);
+	}
+    return output;
+    }
+double heat::Define_Lambda(double x, int layup){
+double result;
+result = Define_Alpha(x,layup);
+result  = result*dt/pow(dr,2);
+return result;
 }
 
 /*
@@ -44,81 +209,7 @@ int heat::layup_det(double theta){
     }
 }
 */
-double heat::Define_Alpha(double r, int layup){
-    //int layup = layup_det(theta);
-    double result;
-    if(layup==1){
-        if(r<=0){
-            if (r>=-2 && r<=-1.99){
-                result = 0.15/(130*2e4);
-            }else if(r>-1.99 && r<=-1.965){
-                result = 10/(1850*1100);
-            }else if(r>-1.965 && r<=-1.96){
-                result = 0.44/(300*1730);
-            }else if(r>-1.96 && r<=-1.92){
-                result = 10/(1850*1100);
-            }else if(r>-1.92 && r<=-1.915){
-                result = 0.44/(300*1730);
-            }else if(r>-1.915 && r<=-0.915){
-                result = 210/(2700*890);
-            }else{
-                result = 21.5/(8000*510);
-            }
-        }else if(r>=0){
-            if(r<=2 && r>1.99){
-                result = 0.15/(130*2e4);
-            }else if(r<=1.99 && r>1.965){
-                result = 10/(1850*1100);
-            }else if(r<=1.965 && r>1.96){
-                result = 0.44/(300*1730);
-            }else if(r<=1.96 && r>1.92){
-                result = 10/(1850*1100);
-            }else if(r<=1.92 && r>1.915){
-                result = 0.44/(300*1730);
-            }else if(r<=1.915 && r>0.915){
-                result = 210/(2710*890);
-            }else{
-                result = 21.5/(8000*510);
-            }
-        }
-    }
-    if(layup==2){
-        if(r<=0){
-            if (r>=-2 && r<=-1.985){
-                result = 0.15;
-            }else if(r>-1.985 && r<=-1.97){
-                result = 10;
-            }else if(r>-1.97 && r<=-1.965){
-                result = 0.44;
-            }else if(r>-1.965 && r<=-1.905){
-                result = 10;
-            }else if(r>-1.905 && r<=-1.9){
-                result = 0.44;
-            }else if(r>-1.9 && r<=-0.75){
-                result = 210;
-            }else{
-                result = 21.5;
-            }
-        }else if(r>=0){
-            if(r<=2 && r>1.985){
-                result = 0.15/(130*2e4);
-            }else if(r<=1.985 && r>1.97){
-                result = 10/(1850*1100);
-            }else if(r<=1.97 && r>1.965){
-                result = 0.44/(300*1730);
-            }else if(r<=1.965 && r>1.905){
-                result = 10/(1850*1100);
-            }else if(r<=1.905 && r>1.9){
-                result = 0.44/(300*1730);
-            }else if(r<=1.9 && r>0.75){
-                result = 210/(2710*890);
-            }else{
-                result = 21.5/(8000*510);
-            }
-        }        
-    }
-    return result;
-} 
+ 
 
 void heat::Define_Vars(int temp,double temp2,double temp3){
  // cout << "Please type in the number of nodes N" << endl;
@@ -129,7 +220,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
     Num_of_nodes = temp;
     avgcput = 0.0;
     N = temp;
-    dr = 2.0/(N-1);
+    dr = 8.0/(N-1);
     t = 0.0;
 // Initializing r
     r.resize(N);
@@ -139,11 +230,13 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 	r[i] = r[i-1] + dr;
     }
 
+    heat::Print_Rfile();
+
 // Initializing T
     T.resize(N);
     for(int i=0;i<N;i++){
-	T[i].resize(8);
-	for(int j=0;j<8;j++){
+	T[i].resize(4);
+	for(int j=0;j<4;j++){
 	T[i][j] = 200;
 	}
 }
@@ -151,8 +244,8 @@ void heat::Define_Vars(int temp,double temp2,double temp3){
 // Initializing Told
     Told.resize(N);
     for(int i=0;i<N;i++){
-	Told[i].resize(8);
-	for(int j=0;j<8;j++){
+	Told[i].resize(4);
+	for(int j=0;j<4;j++){
 	Told[i][j] = 200;
 	}
 }

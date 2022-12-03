@@ -7,6 +7,25 @@
 
 using namespace std;
 
+void heat::Print_Rfile(){
+	ofstream outputfile;
+	string ofilename = "data/r.csv";
+	outputfile.open(ofilename);
+	int length = heat::r.size();
+	if(outputfile.is_open()){
+
+// Print values
+	for(int i = 0; i<length; i++){
+			if(i == ((length)-1)){
+				outputfile << heat::r[i] << endl;
+			}
+			else{
+				outputfile << heat::r[i] << ',';
+			}
+		}
+outputfile.close();
+}
+}
 void heat::Print_File(int it,int interactive){
 	ofstream outputfile;
 	string ofilename;
