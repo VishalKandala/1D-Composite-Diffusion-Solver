@@ -150,7 +150,7 @@ def plotball(mapdata, plotdata, alpha=0.6,colormap='plasma'):
    
     figmap = ax.plot_surface(x, y, z, facecolors=actual_color, edgecolor=None, cmap=mycolormap, rstride=1, cstride=1)
     plt.colorbar(figmap,shrink=0.8)
-    #plt.show()
+    plt.show()
 
 
 if __name__=="__main__":
