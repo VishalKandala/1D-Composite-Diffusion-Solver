@@ -27,10 +27,9 @@ namespace heat {
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
     vector<double> alpha = {0.0, 0.0, 0.0, 0.0, 0.0};   //{(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
     vector<double> glass_t = {0.0, 0.0, 0.0, 0.0, 0.0}; //{1273.15, 523.15, 396.15, 610.0, 1033.15}; 
-    vector<double> Cp = {0.0, 0.0, 0.0, 0.0, 0.0};
+    vector<double> cp = {0.0, 0.0, 0.0, 0.0, 0.0};
     vector<double> k = {0.0, 0.0, 0.0, 0.0, 0.0};
     vector<double> rho = {0.0, 0.0, 0.0, 0.0, 0.0};
-
 
     userParams solverParams;
 }
