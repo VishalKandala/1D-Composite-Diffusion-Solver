@@ -28,11 +28,7 @@ int main(int argc, char **argv){
 	//config file check (temporary, remove later!)
 	cout << "Config file name: " << filename << endl;
 
-
     heat::Define_Vars(N,dt,ft,felt_Add,layup, filename);
-
-    cout << "Glass temp: " << heat::glass_t[0] << endl;
-
 
     //-------------------
     if(v==1){
