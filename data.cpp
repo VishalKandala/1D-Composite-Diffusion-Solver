@@ -9,7 +9,7 @@ using namespace std;
 
 void heat::File_Read(string filename){
 	string line;
-	vector<string> ROW
+	vector<string> ROW;
 	int rows = 0;
 	int cols = 2; //There will ALWAYS only be 2 columns (one for variable name and one for value)
 	// Open the file
