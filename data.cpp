@@ -38,8 +38,8 @@ void heat::File_Read(string filename){
 				ROW[j] = temp;
 
 				if (0 <= i <= 4){
-					cp[l] = stod(ROW[1]);
-					cout << "Cp: " << cp[l] << endl;
+					heat::cp[l] = stod(ROW[1]);
+					cout << "Cp: " << heat::cp[l] << endl;
 					if (l < 4){
 						l = l + 1;
 					}
@@ -48,8 +48,8 @@ void heat::File_Read(string filename){
 					}
 				} 
 				else if (5 <= i <= 9){
-					k[l] = stod(ROW[1]);
-					cout << "k: " << k[l] << endl;
+					heat::k[l] = stod(ROW[1]);
+					cout << "k: " << heat::k[l] << endl;
 					if (l < 4){
 						l = l + 1;
 					}
@@ -58,8 +58,8 @@ void heat::File_Read(string filename){
 					}
 				}
 				else if (10 <= i <= 14){
-					rho[l] = stod(ROW[1]);
-					cout << "rho: " << rho[l] << endl;
+					heat::rho[l] = stod(ROW[1]);
+					cout << "rho: " << heat::rho[l] << endl;
 					if (l < 4){
 						l = l + 1;
 					}
@@ -68,8 +68,8 @@ void heat::File_Read(string filename){
 					}
 				}
 				else{
-					glass_t[l] = stod(ROW[1]);
-					cout << "glass_t: " << glass_t[l] << endl;
+					heat::glass_t[l] = stod(ROW[1]);
+					cout << "glass_t: " << heat::glass_t[l] << endl;
 					if (l < 4){
 						l = l + 1;
 					}
