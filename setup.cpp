@@ -449,7 +449,7 @@ for(int i=0;i<N;i++){
     //Assign elements here
     heat::File_Read(filename);
 
-    for (i = 0; i < 5; i++){
+    for (int i = 0; i < 5; i++){
         alpha[i] = k[i]/(rho[i]*cp[i]);
     }
 }
