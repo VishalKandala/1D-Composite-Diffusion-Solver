@@ -37,7 +37,7 @@ void heat::File_Read(string filename){
 				getline(tempstring1, temp, ',');
 				ROW[j] = temp;
 
-				if (0 <= i <= 4){
+				if (i <= 4){
 					heat::cp[l] = stod(ROW[1]);
 					cout << "Cp: " << heat::cp[l] << endl;
 					if (l < 4){
@@ -47,7 +47,7 @@ void heat::File_Read(string filename){
 						l = 0;
 					}
 				} 
-				else if (5 <= i <= 9){
+				else if (i >= 5 && i <= 9){
 					heat::k[l] = stod(ROW[1]);
 					cout << "k: " << heat::k[l] << endl;
 					if (l < 4){
@@ -57,7 +57,7 @@ void heat::File_Read(string filename){
 						l = 0;
 					}
 				}
-				else if (10 <= i <= 14){
+				else if (i >= 10 && i <= 14){
 					heat::rho[l] = stod(ROW[1]);
 					cout << "rho: " << heat::rho[l] << endl;
 					if (l < 4){
