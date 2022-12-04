@@ -56,43 +56,44 @@ for i in range(24):
             PlotT[i][j] = T_plot[1]          
 
 
-def plotIntersection(R=8):
+#The 2d version does not look as good as the 3d one, trying to fix it
+# def plotIntersection(R=8):
 
-    Nr = T_t.shape[0]
-    Ntheta = 40
-    r = np.linspace(0,R,Nr)
-    t1 = T_t[:,0]
-    t2 = T_t[:,1]
-    t3 = T_t[:,2]
-    t4 = T_t[:,3]
-    theta = np.linspace(0,2*np.pi,Ntheta)
-    T1 = np.ndarray((Nr, Ntheta))
-    T2 = np.ndarray((Nr, Ntheta))
+#     Nr = T_t.shape[0]
+#     Ntheta = 40
+#     r = np.linspace(0,R,Nr)
+#     t1 = T_t[:,0]
+#     t2 = T_t[:,1]
+#     t3 = T_t[:,2]
+#     t4 = T_t[:,3]
+#     theta = np.linspace(0,2*np.pi,Ntheta)
+#     T1 = np.ndarray((Nr, Ntheta))
+#     T2 = np.ndarray((Nr, Ntheta))
 
-    # Tried to map the colors of 2D and 3D plots to be the same
-    for i in range(Ntheta):
-        if i < Ntheta/4:
-            T1[:,i] = t1
-            T2[:,i] = t3
-        if Ntheta/4 <= i < Ntheta/2:
-            T1[:,i] = t2
-            T2[:,i] = t4
-        if Ntheta/2 <= i < 3*Ntheta/4:
-            T1[:,i] = t1
-            T2[:,i] = t3
-        if 3*Ntheta/4 <= i < Ntheta:
-            T1[:,i] = t2
-            T2[:,i] = t4
+#     # Tried to map the colors of 2D and 3D plots to be the same
+#     for i in range(Ntheta):
+#         if i < Ntheta/4:
+#             T1[:,i] = t1
+#             T2[:,i] = t3
+#         if Ntheta/4 <= i < Ntheta/2:
+#             T1[:,i] = t2
+#             T2[:,i] = t4
+#         if Ntheta/2 <= i < 3*Ntheta/4:
+#             T1[:,i] = t1
+#             T2[:,i] = t3
+#         if 3*Ntheta/4 <= i < Ntheta:
+#             T1[:,i] = t2
+#             T2[:,i] = t4
 
-    fig = plt.figure()
-    ax = fig.add_subplot(121, polar = True)
-    pc = ax.pcolormesh(theta, r, T1, cmap="plasma", shading='auto')
-    fig.colorbar(pc)
+#     fig = plt.figure()
+#     ax = fig.add_subplot(121, polar = True)
+#     pc = ax.pcolormesh(theta, r, T1, cmap="plasma", shading='auto')
+#     fig.colorbar(pc)
 
-    ax2 = fig.add_subplot(122, polar = True)
-    pc2 = ax2.pcolormesh(theta, r, T2, cmap="plasma",  shading='auto')
-    fig.colorbar(pc2)
-    plt.show()    
+#     ax2 = fig.add_subplot(122, polar = True)
+#     pc2 = ax2.pcolormesh(theta, r, T2, cmap="plasma",  shading='auto')
+#     fig.colorbar(pc2)
+#     plt.show()    
 
 
 def plotball(mapdata, plotdata, alpha=0.6,colormap='plasma'):
@@ -156,5 +157,5 @@ def plotball(mapdata, plotdata, alpha=0.6,colormap='plasma'):
 if __name__=="__main__":
     
     plotball(T_t, PlotT)
-    plotIntersection()
+    # plotIntersection()
 
