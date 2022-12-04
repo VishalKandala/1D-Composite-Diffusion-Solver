@@ -23,10 +23,15 @@ namespace heat {
     std::vector<double> B;
     vector<double> r;
     vector<double> Tg;
-    vector<double> alpha = {(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
+    
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
-    vector<double> glass_t = {1273.15, 523.15, 396.15, 610.0, 1033.15};
-    //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel    
+    vector<double> alpha = {0.0, 0.0, 0.0, 0.0, 0.0};   //{(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
+    vector<double> glass_t = {0.0, 0.0, 0.0, 0.0, 0.0}; //{1273.15, 523.15, 396.15, 610.0, 1033.15}; 
+    vector<double> Cp = {0.0, 0.0, 0.0, 0.0, 0.0};
+    vector<double> k = {0.0, 0.0, 0.0, 0.0, 0.0};
+    vector<double> rho = {0.0, 0.0, 0.0, 0.0, 0.0};
+
+
     userParams solverParams;
 }
 
@@ -384,20 +389,7 @@ double result;
 result = Define_Alpha(x,layup);
 result  = result*dt/pow(dr,2);
 return result;
-}
-
-/*
-int heat::layup_det(double theta){
-    if(theta>=0 && theta<90){
-        return 1;
-    }else if(theta>=180 && theta<270){
-        return 1;
-    }else{
-        return 2;
-    }
-}
-*/
- 
+} 
 
 void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup){
  // cout << "Please type in the number of nodes N" << endl;
@@ -457,27 +449,5 @@ for(int i=0;i<N;i++){
 }
 
 }
-// if add more features
-// 
 
-//  namespace heat{
-    //add new things, the previously defined variables and methods won't disappear
-//(Num_of_nodes,0);
-
-//}
-
-
-//Test
-/*
-int main(int argc, char **argv){
-    using namespace heat;
-    //double re = dr();
-    //cout << re << endl;
-    define_vars();
-    cout << heat_flux(30.0) << endl;
-    cout << Num_of_nodes << endl;
-    cout << dr << endl;
-    return 0;
-}
-*/
 
