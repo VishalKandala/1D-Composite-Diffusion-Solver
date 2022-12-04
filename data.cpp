@@ -27,7 +27,7 @@ void heat::File_Read(string filename){
 		for (int i = 0; i < cols; i++){
 		getline(myfile, line);
 		stringstream tempstring1(line);
-		cout << "Column #: " << cols << endl;
+		cout << "Column #: " << i << endl;
 			for (int i = 0; i < rows; i++){
 				cout << "looping through line: " << i << endl;
 				string temp;
