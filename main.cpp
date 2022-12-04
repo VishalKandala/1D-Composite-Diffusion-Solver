@@ -15,15 +15,15 @@ int main(int argc, char **argv){
 	solverParams = heat::askUserParams();
 
 	// define the variables that will be received for the solver
-	int v = solverParams.v;
-	int N = solverParams.N;
-	double dt = solverParams.dt;
-	double ft = solverParams.ft;
-	int outfreq = solverParams.outfreq;
-	string filename = solverParams.filename;
-	int layup = solverParams.layup;
-	int BC = solverParams.BC;
-	double felt_Add = solverParams.felt_Add;
+	int v = solverParams.v;	//verbose variable for solver output
+	int N = solverParams.N;	//number of grid points. Larger the points, finer the mesh of solver
+	double dt = solverParams.dt;	//time step size for the solver (sec)
+	double ft = solverParams.ft;	//final time that the solver will run to (sec)
+	int outfreq = solverParams.outfreq;	//frequency of output for solver iterations
+	string filename = solverParams.filename;	//file name of the config file for material properties
+	int layup = solverParams.layup;	//material layup number 
+	int BC = solverParams.BC;	//boundary condition for the solver to apply
+	double felt_Add = solverParams.felt_Add;	//amount of felt to add if running boundary condition 2 (symmetric heat flux)
 	
 	//config file check (temporary, remove later!)
 	cout << "Config file name: " << filename << endl;
