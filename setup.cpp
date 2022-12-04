@@ -390,7 +390,7 @@ result  = result*dt/pow(dr,2);
 return result;
 } 
 
-void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup){
+void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup, string filename){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
     Crystal_Flag = false;
@@ -446,7 +446,8 @@ Tg.resize(N);
 for(int i=0;i<N;i++){
 	Tg[i] = heat::Define_Tg(r[i],layup);
 }
-
+    //Assign elements here
+    heat::File_Read(filename);
 }
 
 
