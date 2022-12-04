@@ -9,7 +9,7 @@ using namespace std;
 
 void heat::File_Read(string filename){
 	string line;
-	//vector<string> ROW
+	vector<string> ROW
 	int rows = 0;
 	int cols = 2; //There will ALWAYS only be 2 columns (one for variable name and one for value)
 	// Open the file
@@ -36,11 +36,12 @@ void heat::File_Read(string filename){
 				string temp;
 				getline(tempstring1, temp, ',');
 				cout << "Reading: " << temp << endl;
+				ROW[j] = temp;
 				//heat::Assign_MatConfig(i, temp);
 			}
 
-		cout << "Variable: " << tempstring1 << endl;
-		//cout << "Value: " << tempstring1[1] << endl;
+		cout << "Variable: " << ROW[0] << endl;
+		cout << "Value: " << ROW[1] << endl;
 		}
 	}
 }
