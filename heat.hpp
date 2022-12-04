@@ -19,7 +19,7 @@ namespace heat {
     double Define_Q(double x, int layup,int BC);
     double Define_Alpha(double x, int layup);
     vector<double> Set_Alpha(double alpha1,double alpha2,double alpha3,double alpha4,double alpha5);
-    void Define_Vars(int temp,double temp2,double temp3,double temp4, int layup);
+    void Define_Vars(int temp,double temp2,double temp3,double temp4, int layup, string filename);
     void Print_Rfile();
     void Form_A(int layup,int v);
     void Form_B(int layup,int v, int it,int BC);
