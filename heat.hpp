@@ -45,6 +45,7 @@ namespace heat {
     extern vector<double> r;
     extern vector<double> Tg;
     extern vector<double> alpha;
+    extern vector<double> glass_t;
     
     // create a structure that will store the user-input variables to run the solver
     typedef struct {
