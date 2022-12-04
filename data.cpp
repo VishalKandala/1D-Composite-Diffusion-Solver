@@ -36,7 +36,7 @@ void heat::File_Read(string filename){
 				string temp;
 				getline(tempstring1, temp, ',');
 				ROW[j] = temp;
-
+			}
 				if (i <= 4){
 					heat::cp[l] = stod(ROW[1]);
 					cout << "Cp: " << heat::cp[l] << endl;
@@ -77,7 +77,7 @@ void heat::File_Read(string filename){
 						l = 0;
 					}
 				}
-			}
+			
 			cout << "Variable: " << ROW[0] << endl;
 			cout << "Value: " << stod(ROW[1]) << endl;
 			}
