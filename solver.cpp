@@ -61,10 +61,7 @@ void heat::Solve_T(int layup,int v,int it){
   		At[i][j] = A[i][j];	
   	}
   }
-
-  At[0][2] = At[0][2]/At[0][1];
-  B[0] = B[0]/At[0][1];
-  At[0][1] = 1.0; 
+//begin with the second row
   int i = 1;
   double ratio;
   while (i < N){
