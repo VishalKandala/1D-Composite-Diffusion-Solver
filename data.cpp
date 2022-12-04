@@ -23,6 +23,8 @@ void heat::File_Read(string filename){
 		myfile.clear();
 		myfile.seekg(0);
 
+		cout << "# of rows: " << rows << endl;
+		cout << "# of cols: " << cols << endl;
 		// Parse through the lines of the config file and assign the variables 
 		for (int i = 0; i < rows; i++){
 		getline(myfile, line);
