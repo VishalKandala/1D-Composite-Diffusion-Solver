@@ -27,28 +27,61 @@ void heat::File_Read(string filename){
 		cout << "# of rows: " << rows << endl;
 		cout << "# of cols: " << cols << endl;
 		// Parse through the lines of the config file and assign the variables 
+		int l = 0;
 		for (int i = 0; i <= rows; i++){
-		getline(myfile, line);
-		stringstream tempstring1(line);
-		cout << "Row #: " << i << endl;
+			getline(myfile, line);
+			stringstream tempstring1(line);
+			cout << "Row #: " << i << endl;
 			for (int j = 0; j < cols; j++){
-				cout << "looping through line: " << j << endl;
 				string temp;
 				getline(tempstring1, temp, ',');
-				cout << "Reading: " << temp << endl;
 				ROW[j] = temp;
-				//heat::Assign_MatConfig(i, temp);
+
+				if (0 <= i <= 4){
+					cp[l] = stod(ROW[1]);
+					cout << "Cp: " << cp[l] << endl;
+					if (l < 4){
+						l = l + 1;
+					}
+					else{
+						l = 0;
+					}
+				} 
+				else if (5 <= i <= 9){
+					k[l] = stod(ROW[1]);
+					cout << "k: " << k[l] << endl;
+					if (l < 4){
+						l = l + 1;
+					}
+					else{
+						l = 0;
+					}
+				}
+				else if (10 <= i <= 14){
+					rho[l] = stod(ROW[1]);
+					cout << "rho: " << rho[l] << endl;
+					if (l < 4){
+						l = l + 1;
+					}
+					else{
+						l = 0;
+					}
+				}
+				else{
+					glass_t[l] = stod(ROW[1]);
+					cout << "glass_t: " << glass_t[l] << endl;
+					if (l < 4){
+						l = l + 1;
+					}
+					else{
+						l = 0;
+					}
+				}
 			}
-
-		cout << "Variable: " << ROW[0] << endl;
-		cout << "Value: " << stod(ROW[1]) << endl;
-		}
+			cout << "Variable: " << ROW[0] << endl;
+			cout << "Value: " << stod(ROW[1]) << endl;
+			}
 	}
-}
-
-
-void heat::Assign_MatConfig(int config_it, string variable){
-
 }
 
 heat::userParams heat::askUserParams(){
