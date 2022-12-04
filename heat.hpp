@@ -12,7 +12,7 @@
 // 	Action_Changedvariable()
 using namespace std;
 
-namespace heat {
+namespace heat {  // To use global variables within the scope of the solver, a namespace called heat was created and all the variables of interest are declared in this scope.
     // functions
     void Print_File(int it,int interactive);
     double Define_Tg(double x, int layup);

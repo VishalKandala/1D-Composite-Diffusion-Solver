@@ -7,7 +7,7 @@
 using namespace std;
 //using namespace heat;
 
-namespace heat {
+namespace heat {  // As declared in heat.hpp; all the variables are defineds inside the scope of the namespace heat.
     bool Crystal_Flag;
     double dt;
     double dr;
