@@ -7,6 +7,39 @@
 
 using namespace std;
 
+void heat::File_Read(string filename){
+	string line;
+	int rows = 0;
+	int cols = 2; //There will ALWAYS only be 2 columns (one for variable name and one for value)
+	// Open the file
+	ifstream myfile (filename);
+	if (myfile.is_open()){
+		// Get the first line
+		getline(myfile, line);
+		// Calculate the number of rows
+		while (getline(myfile, line)){
+			length = length + 1;
+		}
+		myfile.clear();
+		myfile.seekg(0);
+	}
+
+	// Parse through the lines of the config file and assign the variables 
+	getline(myfile, line);
+	stringstream tempstring1(line);
+	for (int i = 0; i < rows; i++){
+		string temp;
+		getline(tempstring1, temp, ',');
+		cout << "Reading: " << temp << endl;
+		//heat::Assign_MatConfig(i, temp);
+	}
+}
+
+
+void heat::Assign_MatConfig(int config_it, string variable){
+
+}
+
 heat::userParams heat::askUserParams(){
 	//Define the structure to be populated in this function
 	userParams s;
