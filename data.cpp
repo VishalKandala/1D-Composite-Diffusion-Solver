@@ -41,8 +41,7 @@ void heat::File_Read(string filename){
 			}
 
 		cout << "Variable: " << ROW[0] << endl;
-		cout << "String Value: " << ROW[1] << endl;
-		cout << "Double Value: " << stod(ROW[1]) << endl;
+		cout << "Value: " << stod(ROW[1]) << endl;
 		}
 	}
 }
@@ -150,23 +149,6 @@ void heat::Print_File(int it,int interactive){
 		}
 	}
 
-
-//Ask if user wants to print subheaders to file
-//cout<<"Print Subheaders?(y/n)"<<endl;
-//cin>>print;
-//if(print == "y" || print == "yes" || print =="Y"){
-// Print subeaders
-//	for(int i=0;i<count;i++){
-//		if(i == (count-1)){
-//			outputfile<<info->subheaders[i]<<endl;
-//		}
-//		else{
-//			outputfile<<info->subheaders[i]<<",";
-//		}
-//	}
-//}
-
-
 // Print values
 	for(int i = 0; i<length; i++){
 		for(int j = 0;j<count;j++){
@@ -178,7 +160,7 @@ void heat::Print_File(int it,int interactive){
 			}
 		}
 	}
-outputfile.close();
+	outputfile.close();
 }
 }
 
