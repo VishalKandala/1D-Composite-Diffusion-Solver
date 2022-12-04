@@ -64,9 +64,9 @@ void heat::Solve_T(int layup,int v,int it){
   //set N to the size of the matrix
   //int N = n.size();
   //begin iterating at the second row (i = 1)
-  At[0][2] = At[0][2]/At[0][1];
-  B[0] = B[0]/At[0][1];
-  At[0][1] = 1.0; 
+  //At[0][2] = At[0][2]/At[0][1];
+  //B[0] = B[0]/At[0][1];
+  //At[0][1] = 1.0; 
   int i = 1;
   double ratio;
   while (i < N){
