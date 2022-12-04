@@ -41,7 +41,8 @@ void heat::File_Read(string filename){
 			}
 
 		cout << "Variable: " << ROW[0] << endl;
-		cout << "Value: " << ROW[1] << endl;
+		cout << "String Value: " << ROW[1] << endl;
+		cout << "Double Value: " << stod(ROW[1]) << endl;
 		}
 	}
 }
