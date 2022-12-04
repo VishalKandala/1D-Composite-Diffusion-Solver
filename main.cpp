@@ -5,21 +5,30 @@
 #include "heat.hpp"
 using namespace std;
 int main(int argc, char **argv){
-    int v = stoi(argv[1]);  
-    // v for verbose: when v = 1, basic info.
-    // v = 2, A matrix.
-    // v = 3 , B vector at every time step.
 
-    // Reading command line inputs.	
-    int N = stoi(argv[2]); // Command line input for Number of nodes in radial direction.  
-    double dt = stod(argv[3]); // Command line input for time step size. 
-    double ft = stod(argv[4]); // Command line input for simulation interval.
-    int outfreq = stoi(argv[5]);     
-    int layup = stoi(argv[6]);
-    int BC = stoi(argv[7]);
-    double Extra_Felt = stod(argv[8]);
-    // Define global variables using inputs.
-    heat::Define_Vars(N,dt,ft,Extra_Felt,layup);
+
+	// Interface with the user for solver configuration using the terminal command line
+	
+	// create the structure that stores the solver parameters
+	heat::userParams solverParams;
+	// call the function that gets user inputs on the command line and will return the solver parameters to run
+	solverParams = heat::askUserParams();
+
+	// define the variables that will be received for the solver
+	int v = solverParams.v;
+	int N = solverParams.N;
+	double dt = solverParams.dt;
+	double ft = solverParams.ft;
+	int outfreq = solverParams.outfreq;
+	string filename = solverParams.filename;
+	int layup = solverParams.layup;
+	int BC = solverParams.BC;
+	double felt_Add = solverParams.felt_Add;
+	
+	//config file check (temporary, remove later!)
+	cout << "Config file name: " << filename << endl;
+    
+    heat::Define_Vars(N,dt,ft,felt_Add,layup);
     //-------------------
     if(v==1){
     // Print out basic info when v = 1

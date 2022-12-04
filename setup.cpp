@@ -25,12 +25,14 @@ namespace heat {
     vector<double> Tg;
     vector<double> alpha = {(0.15/(130*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
     //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
+    
+    userParams solverParams;
 }
 
 double heat::Define_Tg(double x, int layup){
 	double result;
 	if(x >= r[0] && x <= 4.0){
-	result = 10500.0 + 123.0 + 273.0;
+	result = 2000;
 	}
 	else if (x>=6.0 && x<= r[N-1]){
 		result = 2000.0;

@@ -7,6 +7,57 @@
 
 using namespace std;
 
+heat::userParams heat::askUserParams(){
+	//Define the structure to be populated in this function
+	userParams s;
+	//define the string for the BC answer
+	string answer = "n";
+	
+	//verbose output
+	cout << "Please select how verbose you would like the solver output:" << endl;
+	cout << "1: Basic information." << endl;
+	cout << "2: Output matrix A." << endl;
+	cout << "3: Output vector B at every timestep." << endl;
+	cin >> s.v;
+	//number of grid points
+	cout << "How many grid points would you like? (More points equals a finer mesh)" << endl;
+	cin >> s.N;
+	//time step size for solver 
+	cout << "How small would you like your time step size? (seconds)" << endl;
+	cin >> s.dt;
+	//final time that the solver will stop at
+	cout << "How long would you like to run the solver? (seconds)" << endl;
+	cin >> s.ft;
+	//output frequency of the solver data saving
+	cout << "How often would you like the solver to save the data? (Save every X iterations)" << endl;
+	cin >> s.outfreq;
+	//ask the user for the filename of the config file of material properties 
+	cout << "What is the name of the config file containing the necessary material properties?" << endl;
+	cin >> s.filename;
+	//create some space to break up the command line 
+	cout << "" << endl;
+	cout << "" << endl;
+	//figure out which material layup the user wants to check
+	cout << "Which material layup would you like to check? (1-4)" << endl;
+	cin >> s.layup;
+	//Check what boundary condition is being tested
+	cout << "What boundary condition are you testing?" << endl;
+	cout << "BC1: Heat flux applied to one boundary." << endl;
+	cout << "BC2: Symmetric heat flux along the surface." << endl;
+	cout << "Input 1 for BC1 and 2 for BC2..." << endl;
+	cin >> s.BC;
+	//Check if BC2, then ask if they would like to add felt
+	if (s.BC == 2){
+		cout << "Would you like to add more felt insulation? (y/n)" << endl;
+		cin >> answer;
+		if ((answer == "y") || (answer == "Y") || (answer == "yes")){
+		cout << "Specify the thickness of felt insulation to be added. (meters)" << endl;
+		cin >> s.felt_Add;
+		}
+	}
+	return s;
+}
+
 void heat::Print_Rfile(){
 	ofstream outputfile;
 	string ofilename = "data/r.csv";

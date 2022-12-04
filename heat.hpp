@@ -27,6 +27,7 @@ namespace heat {
     void Push_T(int layup,int v,int it);
     void Check_T(int layup,int v);
     double Define_Lambda(double x, int layup);
+    
     // vars
     extern bool Crystal_Flag;
     extern double dr;
@@ -44,6 +45,18 @@ namespace heat {
     extern vector<double> r;
     extern vector<double> Tg;
     extern vector<double> alpha;
+    
+    // create a structure that will store the user-input variables to run the solver
+    typedef struct {
+    	int v, N, outfreq, layup, BC;		//verbose, grid points, output frequency, material layup, and boundary condition
+    	double dt, ft, felt_Add;	//time step size, final time, and additional felt
+    	string filename;		//config filename 
+    } userParams;
+    // create global structure for the solver parameters
+    extern userParams solverParams;
+    
+    //define function that will ask the user for the solver parameters
+    userParams askUserParams();
 
 }
 
