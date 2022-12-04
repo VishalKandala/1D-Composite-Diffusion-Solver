@@ -441,20 +441,18 @@ void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup
 // Initializing B
 B.resize(N);
 
-// Initializing Tg
-Tg.resize(N);
-for(int i=0;i<N;i++){
-	Tg[i] = heat::Define_Tg(r[i],layup);
-}
-for (int i = 0; i < 5; i++){
-    cout << "Glass T: " << glass_t[i] << endl;;
-}
     
 //Assign elements here
 heat::File_Read(filename);
 
 for (int i = 0; i < 5; i++){
     alpha[i] = k[i]/(rho[i]*cp[i]);
+}
+
+// Initializing Tg
+Tg.resize(N);
+for(int i=0;i<N;i++){
+	Tg[i] = heat::Define_Tg(r[i],layup);
 }
 }
 
