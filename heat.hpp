@@ -18,6 +18,7 @@ namespace heat {
     double Define_Tg(double x, int layup);
     double Define_Q(double x, int layup,int BC);
     double Define_Alpha(double x, int layup);
+    vector<double> Set_Alpha(double alpha1,double alpha2,double alpha3,double alpha4,double alpha5);
     void Define_Vars(int temp,double temp2,double temp3,double temp4, int layup);
     void Print_Rfile();
     void Form_A(int layup,int v);
@@ -28,7 +29,7 @@ namespace heat {
     void Check_T(int layup,int v);
     double Define_Lambda(double x, int layup);
     void File_Read(string filename);        //Function that will read the config file and assign to variables
-    void Assign_MatConfig(int config_it, string variable);  //Function that will assign the config variable value to the correct global variable for the solver
+    //void Assign_MatConfig(int config_it, string variable);  //Function that will assign the config variable value to the correct global variable for the solver
     
     // vars
     extern bool Crystal_Flag;
@@ -45,9 +46,14 @@ namespace heat {
     extern vector<vector<double>> A; 
     extern vector<double> B; 
     extern vector<double> r;
-    extern vector<double> Tg;
+    extern vector<double> Tg;   //
+    
+    extern vector<double> cp;
+    extern vector<double> rho;
+    extern vector<double> k;
+    extern vector<double> glass_t;  //
     extern vector<double> alpha;
-    extern vector<double> glass_t;
+    
     
     // create a structure that will store the user-input variables to run the solver
     typedef struct {
@@ -60,7 +66,6 @@ namespace heat {
     
     //define function that will ask the user for the solver parameters
     userParams askUserParams();
-
 }
 
 #endif
