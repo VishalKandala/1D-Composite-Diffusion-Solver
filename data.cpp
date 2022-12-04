@@ -24,8 +24,8 @@ void heat::File_Read(string filename){
 		myfile.clear();
 		myfile.seekg(0);
 
-		cout << "# of rows: " << rows << endl;
-		cout << "# of cols: " << cols << endl;
+		//cout << "# of rows: " << rows << endl;
+		//cout << "# of cols: " << cols << endl;
 		// Parse through the lines of the config file and assign the variables 
 		int l = 0;
 		for (int i = 0; i <= rows; i++){
@@ -37,50 +37,50 @@ void heat::File_Read(string filename){
 				getline(tempstring1, temp, ',');
 				ROW[j] = temp;
 			}
-				if (i <= 4){
-					heat::cp[l] = stod(ROW[1]);
-					cout << "Cp: " << heat::cp[l] << endl;
-					if (l < 4){
-						l = l + 1;
-					}
-					else{
-						l = 0;
-					}
-				} 
-				else if (i >= 5 && i <= 9){
-					heat::k[l] = stod(ROW[1]);
-					cout << "k: " << heat::k[l] << endl;
-					if (l < 4){
-						l = l + 1;
-					}
-					else{
-						l = 0;
-					}
-				}
-				else if (i >= 10 && i <= 14){
-					heat::rho[l] = stod(ROW[1]);
-					cout << "rho: " << heat::rho[l] << endl;
-					if (l < 4){
-						l = l + 1;
-					}
-					else{
-						l = 0;
-					}
+			if (i <= 4){
+				heat::cp[l] = stod(ROW[1]);
+				//cout << "Cp: " << heat::cp[l] << endl;
+				if (l < 4){
+					l = l + 1;
 				}
 				else{
-					heat::glass_t[l] = stod(ROW[1]);
-					cout << "glass_t: " << heat::glass_t[l] << endl;
-					if (l < 4){
-						l = l + 1;
-					}
-					else{
-						l = 0;
-					}
+					l = 0;
 				}
-			
-			cout << "Variable: " << ROW[0] << endl;
-			cout << "Value: " << stod(ROW[1]) << endl;
+			} 
+			else if (i >= 5 && i <= 9){
+				heat::k[l] = stod(ROW[1]);
+				//cout << "k: " << heat::k[l] << endl;
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
 			}
+			else if (i >= 10 && i <= 14){
+				heat::rho[l] = stod(ROW[1]);
+				//cout << "rho: " << heat::rho[l] << endl;
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			}
+			else{
+				heat::glass_t[l] = stod(ROW[1]);
+				//cout << "glass_t: " << heat::glass_t[l] << endl;
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			}
+			
+			//cout << "Variable: " << ROW[0] << endl;
+			//cout << "Value: " << stod(ROW[1]) << endl;
+		}
 	}
 }
 
