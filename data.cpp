@@ -23,15 +23,17 @@ void heat::File_Read(string filename){
 		myfile.clear();
 		myfile.seekg(0);
 
-			// Parse through the lines of the config file and assign the variables 
+		// Parse through the lines of the config file and assign the variables 
+		for (int i = 0; i < cols, i++){
 		getline(myfile, line);
 		stringstream tempstring1(line);
-		for (int i = 0; i < rows; i++){
-			cout << "looping through line: " << i << endl;
-			string temp;
-			getline(tempstring1, temp, ',');
-			cout << "Reading: " << temp << endl;
-			//heat::Assign_MatConfig(i, temp);
+			for (int i = 0; i < rows; i++){
+				cout << "looping through line: " << i << endl;
+				string temp;
+				getline(tempstring1, temp, ',');
+				cout << "Reading: " << temp << endl;
+				//heat::Assign_MatConfig(i, temp);
+			}
 		}
 	}
 
