@@ -27,9 +27,9 @@ int main(int argc, char **argv){
 	
 	//config file check (temporary, remove later!)
 	cout << "Config file name: " << filename << endl;
-    heat::File_Read(filename);
-    
-    heat::Define_Vars(N,dt,ft,felt_Add,layup);
+
+
+    heat::Define_Vars(N,dt,ft,felt_Add,layup, filename);
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
