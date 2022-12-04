@@ -54,6 +54,7 @@ void heat::Solve_T(int layup,int v,int it){
   clock_t cputstart = clock();
   vector<vector<double>> At;
   At.resize(N); // Atemp
+  //copy A matrix into At
   for(int i = 0;i<N;i++){
   	At[i].resize(3);
   	for(int j = 0; j<3;j++){
@@ -61,36 +62,33 @@ void heat::Solve_T(int layup,int v,int it){
   	}
   }
 
-  //set N to the size of the matrix
-  //int N = n.size();
-  //begin iterating at the second row (i = 1)
   At[0][2] = At[0][2]/At[0][1];
   B[0] = B[0]/At[0][1];
   At[0][1] = 1.0; 
   int i = 1;
   double ratio;
   while (i < N){
-    //update the diagonal value for a gauss elimination
-    ratio = (At[i][0] / At[i-1][1]); 
+    //set the elimination ratio
+    ratio = (At[i][0] / At[i-1][1]);
+    //update diagonal values 
     At[i][1] = At[i][1] - ratio * At[i - 1][2];
+    //update lower diagonal values
     At[i][0] = At[i][0] - ratio * At[i-1][1];
-    //cout<<"temp"<<temp<<endl; 
-    //update the collumB of temperatures iB accordaBce w/Gauss elimiBatioB
+    //update the collumB of temperatures in accordaBce w/Gauss elimiBatioB
     B[i] = B[i] - ratio * B[i - 1];
     //iterate through i
     i ++;
   }
+  //print a matrix if verbose v is chosen
   if(v==4 && it == 2){
 	cout<<"At & A matrices -- Atfter Elimination:"<<layup<<endl;
         for(int i = 0;i<N;i++){
         cout<<At[i][0]<<"\t"<<At[i][1]<<"\t"<<At[i][2]<<"|"<<A[i][0]<<A[i][1]<<A[i][2]<<endl;
         }
   }	
-  //initialize a vector x (the temperatures at the current point)
-  //vector<double> x (N, 0);
   // backwards substitution for the first row 
   T[N-1][layup] = B[N-1] / At[N-1][1];
-  //a bit more complicated backwards substitution 
+  //iterate through back substitution in accordance w/Thomas algorithm
   for(int i = N-2;i>=0;i--){
     T[i][layup] = (B[i]- (At[i][2] * T[i +1][layup])) / At[i][1];
   }
