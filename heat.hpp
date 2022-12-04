@@ -27,6 +27,8 @@ namespace heat {
     void Push_T(int layup,int v,int it);
     void Check_T(int layup,int v);
     double Define_Lambda(double x, int layup);
+    void File_Read(string filename);        //Function that will read the config file and assign to variables
+    void Assign_MatConfig(int config_it, string variable);  //Function that will assign the config variable value to the correct global variable for the solver
     
     // vars
     extern bool Crystal_Flag;
