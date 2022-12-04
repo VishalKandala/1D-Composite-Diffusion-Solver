@@ -20,7 +20,6 @@ void heat::File_Read(string filename){
 		while (getline(myfile, line)){
 			rows = rows + 1;
 		}
-		rows = rows + 1;
 		myfile.clear();
 		myfile.seekg(0);
 
