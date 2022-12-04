@@ -30,6 +30,9 @@ void heat::File_Read(string filename){
 		getline(myfile, line);
 		stringstream tempstring1(line);
 		cout << "Row #: " << i << endl;
+		cout << "Variable: " << tempstring1[0] << endl;
+		cout << "Value: " << tempstring1[1] << endl;
+			/*
 			for (int j = 0; j < cols; j++){
 				cout << "looping through line: " << j << endl;
 				string temp;
@@ -37,6 +40,7 @@ void heat::File_Read(string filename){
 				cout << "Reading: " << temp << endl;
 				//heat::Assign_MatConfig(i, temp);
 			}
+			*/
 		}
 	}
 }
