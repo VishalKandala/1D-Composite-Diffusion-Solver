@@ -446,13 +446,16 @@ Tg.resize(N);
 for(int i=0;i<N;i++){
 	Tg[i] = heat::Define_Tg(r[i],layup);
 }
-    //Assign elements here
-    heat::File_Read(filename);
+for (int i = 0; i < 5; i++){
+    cout << "Glass T: " << glass_t[i] << endl;;
+}
+    
+//Assign elements here
+heat::File_Read(filename);
 
-    for (int i = 0; i < 5; i++){
-        alpha[i] = k[i]/(rho[i]*cp[i]);
-        cout << "Glass T: " << glass_t[i] << endl;;
-    }
+for (int i = 0; i < 5; i++){
+    alpha[i] = k[i]/(rho[i]*cp[i]);
+}
 }
 
 
