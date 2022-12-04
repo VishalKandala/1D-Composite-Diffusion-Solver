@@ -24,9 +24,10 @@ void heat::File_Read(string filename){
 		myfile.seekg(0);
 
 		// Parse through the lines of the config file and assign the variables 
-		for (int i = 0; i < cols, i++){
+		for (int i = 0; i < cols; i++){
 		getline(myfile, line);
 		stringstream tempstring1(line);
+		cout << "Column #: " << cols << endl;
 			for (int i = 0; i < rows; i++){
 				cout << "looping through line: " << i << endl;
 				string temp;
