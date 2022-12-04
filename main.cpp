@@ -31,7 +31,7 @@ int main(int argc, char **argv){
 
     heat::Define_Vars(N,dt,ft,felt_Add,layup, filename);
 
-    cout << "Glass temp: " << glass_t[0] << endl;
+    cout << "Glass temp: " << heat::glass_t[0] << endl;
 
 
     //-------------------
