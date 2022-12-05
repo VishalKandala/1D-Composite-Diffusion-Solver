@@ -65,13 +65,20 @@ Please select how verbose you would like the solver output:
 You could enter the following values:
  
 Input: Output
+
 1: Basic information; $\lambda$ , No. of nodes , Grid size $\Delta x$ , Time step $\Delta t$ , No. of time steps , $\frac{Q}{k}$*
-2: Matrix A 
+
+2: Matrix A
+
 3: Vector B 
+
 4: Matrix A after forward elimination in TDMA
+
 5: Vectors $T^{n+1}$ $T^{n}$ at desired time step **
 
+
 *"you can choose the location to display $\frac{Q}{k}$ in main.cpp"
+
 **"You can choose time step to display $T^{n+1}$ $T^{n}$ in Push_T() function in solver.cpp"
 
 
