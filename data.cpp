@@ -7,6 +7,81 @@
 
 using namespace std;
 
+
+// Function that will read the config file, formatted as a .csv, and assign the global vectors to the respective material properties
+// This code has been reused from the project 2 csv functions that Team Nebula created.
+void heat::File_Read(string filename){
+	string line;
+	vector<string> ROW = {"0", "0"};	//string vector used to hold the row variable and value
+	int rows = 0;
+	int cols = 2; //There will ALWAYS only be 2 columns (one for variable name and one for value)
+	// Open the file
+	ifstream myfile (filename);
+	if (myfile.is_open()){
+		// Get the first line
+		getline(myfile, line);
+		// Calculate the number of rows
+		while (getline(myfile, line)){
+			rows = rows + 1;
+		}
+		myfile.clear();
+		myfile.seekg(0);
+
+		// Parse through the lines of the config file and assign the variables accordingly
+		//**This will only work following the style of the MatCon.csv file in the gitlab/main repository!!
+		int l = 0;
+		for (int i = 0; i <= rows; i++){
+			getline(myfile, line);
+			stringstream tempstring1(line);
+			for (int j = 0; j < cols; j++){
+				string temp;
+				getline(tempstring1, temp, ',');
+				ROW[j] = temp;
+			}
+			// Assign the first 5 row values to the Cp vector 
+			if (i <= 4){
+				heat::cp[l] = stod(ROW[1]);	//convert the string in .csv to a double!
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			} 
+			// Assign the next 5 row values to the k vector 
+			else if (i >= 5 && i <= 9){
+				heat::k[l] = stod(ROW[1]);
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			}
+			// Assign the next 5 row values to the rho vector 
+			else if (i >= 10 && i <= 14){
+				heat::rho[l] = stod(ROW[1]);
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			}
+			// Assign the last 5 row values to the glass temperature vector 
+			else{
+				heat::glass_t[l] = stod(ROW[1]);
+				if (l < 4){
+					l = l + 1;
+				}
+				else{
+					l = 0;
+				}
+			}
+		}
+	}
+}
+
 heat::userParams heat::askUserParams(){
 	//Define the structure to be populated in this function
 	userParams s;
@@ -105,23 +180,6 @@ void heat::Print_File(int it,int interactive){
 		}
 	}
 
-
-//Ask if user wants to print subheaders to file
-//cout<<"Print Subheaders?(y/n)"<<endl;
-//cin>>print;
-//if(print == "y" || print == "yes" || print =="Y"){
-// Print subeaders
-//	for(int i=0;i<count;i++){
-//		if(i == (count-1)){
-//			outputfile<<info->subheaders[i]<<endl;
-//		}
-//		else{
-//			outputfile<<info->subheaders[i]<<",";
-//		}
-//	}
-//}
-
-
 // Print values
 	for(int i = 0; i<length; i++){
 		for(int j = 0;j<count;j++){
@@ -133,7 +191,7 @@ void heat::Print_File(int it,int interactive){
 			}
 		}
 	}
-outputfile.close();
+	outputfile.close();
 }
 }
 
