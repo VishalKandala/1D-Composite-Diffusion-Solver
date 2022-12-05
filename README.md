@@ -7,7 +7,9 @@ This code is based on the Implicit Solution of the Backward in Time- Central in 
 
 $$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} } $$
 
-$$ -\lambda({T^{n+1}}_{i+1}) - \lambda({T^{n+1}}_{i-1}) + (1 + 2\lambda)(T^{n+1}_{i}) = T^{n}_{i} $$ 
+$$ -\lambda{T^{n+1}}_{i-1} $$ 
+
+$$ -\lambda{T^{n+1}}_{i+1} - \lambda({T^{n+1}}_{i-1}) + (1 + 2\lambda)(T^{n+1}_{i}) = T^{n}_{i} $$
 
 The Linear system obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on Thomas Algorithm (TDMA).
 
