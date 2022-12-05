@@ -52,11 +52,11 @@ double heat::Define_Tg(double x, int layup){
 	else if(layup==1){
             if (x>=0 && x<=0.020){                //Felt
                 output = glass_t[0];
-            }else if(x>0.020 && x<=0.025){        //Caxbon Fibex
+            }else if(x>0.020 && x<=0.025){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.025 && x<=0.026){        //Epoxy
                 output = glass_t[2];
-            }else if(x>0.026 && x<=0.034){        //Caxbon Fibex
+            }else if(x>0.026 && x<=0.034){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.034 && x<=0.035){        //Epoxy
                 output = glass_t[2];
@@ -68,11 +68,11 @@ double heat::Define_Tg(double x, int layup){
                 output = glass_t[3];
             }else if(x>7.965 && x<=7.966){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.966 && x<=7.974){        //Caxbon Fibex
+            }else if(x>7.966 && x<=7.974){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>7.974 && x<=7.975){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.975 && x<=7.980){        //Caxbon Fibex
+            }else if(x>7.975 && x<=7.980){        //Carbon Fiber
                 output = glass_t[1];
             }else{                                //Felt
                 output = glass_t[0];
@@ -82,11 +82,11 @@ double heat::Define_Tg(double x, int layup){
     else if(layup==2){
             if (x>=0 && x<=0.030){                //Felt
                 output = glass_t[0];
-            }else if(x>0.030 && x<=0.033){        //Caxbon Fibex
+            }else if(x>0.030 && x<=0.033){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.033 && x<=0.034){        //Epoxy
                 output = glass_t[2];
-            }else if(x>0.034 && x<=0.046){        //Caxbon Fibex
+            }else if(x>0.034 && x<=0.046){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.046 && x<=0.047){        //Epoxy
                 output = glass_t[2];
@@ -98,11 +98,11 @@ double heat::Define_Tg(double x, int layup){
                 output = glass_t[3];
             }else if(x>7.953 && x<=7.954){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.954 && x<=7.966){        //Caxbon Fibex
+            }else if(x>7.954 && x<=7.966){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>7.966 && x<=7.967){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.967 && x<=7.970){        //Caxbon Fibex
+            }else if(x>7.967 && x<=7.970){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>7.970 && x<=8.000){       //Felt
                 output = glass_t[0];
@@ -114,11 +114,11 @@ double heat::Define_Tg(double x, int layup){
     else if(layup==3){
             if (x>=0 && x<=0.020){                //Felt
                 output = glass_t[0];
-            }else if(x>0.020 && x<=0.030){        //Caxbon Fibex
+            }else if(x>0.020 && x<=0.030){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.030 && x<=0.031){        //Epoxy
                 output = glass_t[2];
-            }else if(x>0.031 && x<=0.043){        //Caxbon Fibex
+            }else if(x>0.031 && x<=0.043){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>0.043 && x<=0.044){        //Epoxy
                 output = glass_t[2];
@@ -130,11 +130,11 @@ double heat::Define_Tg(double x, int layup){
                 output = glass_t[3];
             }else if(x>7.956 && x<=7.957){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.957 && x<=7.969){        //Caxbon Fibex
+            }else if(x>7.957 && x<=7.969){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>7.969 && x<=7.970){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.970 && x<=7.980){        //Caxbon Fibex
+            }else if(x>7.970 && x<=7.980){        //Carbon Fiber
                 output = glass_t[1];
             }else if (x>7.980 && x<=8.000){       //Felt
                 output = glass_t[0];
@@ -162,11 +162,11 @@ double heat::Define_Tg(double x, int layup){
                 output = glass_t[3];
             }else if(x>7.9928 && x<=7.9938){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.9938 && x<=7.9939){        //Caxbon Fibex
+            }else if(x>7.9938 && x<=7.9939){        //Carbon Fiber
                 output = glass_t[1];
             }else if(x>7.9939 && x<=7.9949){        //Epoxy
                 output = glass_t[2];
-            }else if(x>7.9949 && x<=7.9950){        //Caxbon Fibex
+            }else if(x>7.9949 && x<=7.9950){        //Carbon Fiber
                 output = glass_t[1];
             }else if (x>7.9950 && x<=8.000){       //Felt
                 output = glass_t[0];
@@ -255,11 +255,11 @@ double heat::Define_Alpha(double x, int layup){
     else if(layup==1){
             if (x>=0 && x<=0.020){                //Felt
                 output = alpha[0];
-            }else if(x>0.020 && x<=0.025){        //Caxbon Fibex
+            }else if(x>0.020 && x<=0.025){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.025 && x<=0.026){        //Epoxy
                 output = alpha[2];
-            }else if(x>0.026 && x<=0.034){        //Caxbon Fibex
+            }else if(x>0.026 && x<=0.034){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.034 && x<=0.035){        //Epoxy
                 output = alpha[2];
@@ -271,11 +271,11 @@ double heat::Define_Alpha(double x, int layup){
                 output = alpha[3];
             }else if(x>7.965 && x<=7.966){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.966 && x<=7.974){        //Caxbon Fibex
+            }else if(x>7.966 && x<=7.974){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>7.974 && x<=7.975){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.975 && x<=7.980){        //Caxbon Fibex
+            }else if(x>7.975 && x<=7.980){        //Carbon Fiber
                 output = alpha[1];
             }else{                                //Felt
                 output = alpha[0];
@@ -285,11 +285,11 @@ double heat::Define_Alpha(double x, int layup){
     else if(layup==2){
             if (x>=0 && x<=0.030){                //Felt
                 output = alpha[0];
-            }else if(x>0.030 && x<=0.033){        //Caxbon Fibex
+            }else if(x>0.030 && x<=0.033){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.033 && x<=0.034){        //Epoxy
                 output = alpha[2];
-            }else if(x>0.034 && x<=0.046){        //Caxbon Fibex
+            }else if(x>0.034 && x<=0.046){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.046 && x<=0.047){        //Epoxy
                 output = alpha[2];
@@ -301,11 +301,11 @@ double heat::Define_Alpha(double x, int layup){
                 output = alpha[3];
             }else if(x>7.953 && x<=7.954){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.954 && x<=7.966){        //Caxbon Fibex
+            }else if(x>7.954 && x<=7.966){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>7.966 && x<=7.967){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.967 && x<=7.970){        //Caxbon Fibex
+            }else if(x>7.967 && x<=7.970){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>7.970 && x<=8.000){       //Felt
                 output = alpha[0];
@@ -317,11 +317,11 @@ double heat::Define_Alpha(double x, int layup){
     else if(layup==3){
             if (x>=0 && x<=0.020){                //Felt
                 output = alpha[0];
-            }else if(x>0.020 && x<=0.030){        //Caxbon Fibex
+            }else if(x>0.020 && x<=0.030){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.030 && x<=0.031){        //Epoxy
                 output = alpha[2];
-            }else if(x>0.031 && x<=0.043){        //Caxbon Fibex
+            }else if(x>0.031 && x<=0.043){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>0.043 && x<=0.044){        //Epoxy
                 output = alpha[2];
@@ -333,11 +333,11 @@ double heat::Define_Alpha(double x, int layup){
                 output = alpha[3];
             }else if(x>7.956 && x<=7.957){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.957 && x<=7.969){        //Caxbon Fibex
+            }else if(x>7.957 && x<=7.969){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>7.969 && x<=7.970){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.970 && x<=7.980){        //Caxbon Fibex
+            }else if(x>7.970 && x<=7.980){        //Carbon Fiber
                 output = alpha[1];
             }else if (x>7.980 && x<=8.000){       //Felt
                 output = alpha[0];
@@ -365,11 +365,11 @@ double heat::Define_Alpha(double x, int layup){
                 output = alpha[3];
             }else if(x>7.9928 && x<=7.9938){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.9938 && x<=7.9939){        //Caxbon Fibex
+            }else if(x>7.9938 && x<=7.9939){        //Carbon Fiber
                 output = alpha[1];
             }else if(x>7.9939 && x<=7.9949){        //Epoxy
                 output = alpha[2];
-            }else if(x>7.9949 && x<=7.9950){        //Caxbon Fibex
+            }else if(x>7.9949 && x<=7.9950){        //Carbon Fiber
                 output = alpha[1];
             }else if (x>7.9950 && x<=8.000){       //Felt
                 output = alpha[0];
