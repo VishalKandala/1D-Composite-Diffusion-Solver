@@ -7,7 +7,7 @@ This code is based on the Implicit Solution of the Backward in Time- Central in 
 
 $$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} } $$
 
-$$ -{\lambda T^{n+1}_{i-1}}$ - ${\lambda T^{n+1}_{i-1}} $$ 
+$$-{\lambda T_{n+1}^{i+1}}  - \lambda {T_{i-1}}^{n+1} $$
 
 $$ -\lambda{T^{n+1}}_{i+1} - \lambda({T^{n+1}}_{i-1}) + (1 + 2\lambda)(T^{n+1}_{i}) = T^{n}_{i} $$
 
