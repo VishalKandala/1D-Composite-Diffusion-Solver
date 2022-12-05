@@ -7,7 +7,7 @@
 using namespace std;
 //using namespace heat;
 
-namespace heat {  // As declared in heat.hpp; all the variables are defineds inside the scope of the namespace heat.
+namespace heat {
     bool Crystal_Flag;
     double dt;
     double dr;
@@ -22,11 +22,16 @@ namespace heat {  // As declared in heat.hpp; all the variables are defineds ins
     std::vector<std::vector<double>> A;
     std::vector<double> B;
     vector<double> r;
-    vector<double> Tg;
-    vector<double> alpha = {(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
-    //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
-    vector<double> glass_t = {1273.15, 523.15, 396.15, 610.0, 1033.15};
-    //0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel    
+    vector<double> Tg;  //vector which is used to flag the glass temperature (same length as vector r but created using vector glass_t values)
+    
+    // Material order for the property vectors:
+    // 0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
+    vector<double> alpha = {0.0, 0.0, 0.0, 0.0, 0.0};   //{(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
+    vector<double> glass_t = {0.0, 0.0, 0.0, 0.0, 0.0}; //{1273.15, 523.15, 396.15, 610.0, 1033.15}; 
+    vector<double> cp = {0.0, 0.0, 0.0, 0.0, 0.0};
+    vector<double> k = {0.0, 0.0, 0.0, 0.0, 0.0};
+    vector<double> rho = {0.0, 0.0, 0.0, 0.0, 0.0};
+
     userParams solverParams;
 }
 
@@ -226,25 +231,15 @@ double heat::Define_Q(double x, int layup, int BC){
 }
 
 double heat::Define_Alpha(double x, int layup){
-    //int layup = layup_det(theta);
     double output;
     if(layup == 0){
-    	if(x<=4.0){ //2.0){
+    	if(x<=4.0){
 	     output = 21.5/(8000*510);
-             //output = 0.15/(130*2e4);
 
 	}
-//	else if(x>=0.02 && x<=7.98){
-		//output = 210/(2700*890);
-                //output = 21.5/(8000*510);
- //               output = 0.15/(130*2e4);
 
-
-                
-//	}
 	else{
              output = 0.15/(130*2e4);
-	       //output = 21.5/(8000*510);
 	}
     }
     else if(layup==1){
@@ -384,22 +379,9 @@ double result;
 result = Define_Alpha(x,layup);
 result  = result*dt/pow(dr,2);
 return result;
-}
+} 
 
-/*
-int heat::layup_det(double theta){
-    if(theta>=0 && theta<90){
-        return 1;
-    }else if(theta>=180 && theta<270){
-        return 1;
-    }else{
-        return 2;
-    }
-}
-*/
- 
-
-void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup){
+void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup, string filename){
  // cout << "Please type in the number of nodes N" << endl;
  //   cin >> N;
     Crystal_Flag = false;
@@ -450,34 +432,20 @@ void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup
 // Initializing B
 B.resize(N);
 
-// Initializing Tg
+    
+// Call the function that will read in the config file and assign the material properties to the respective global vectors
+heat::File_Read(filename);
+
+// Calculate the alpha values once the config values have updated the global variables (5 different materials to calculate)
+for (int i = 0; i < 5; i++){
+    alpha[i] = k[i]/(rho[i]*cp[i]);
+}
+
+// Initializing Tg 
 Tg.resize(N);
 for(int i=0;i<N;i++){
 	Tg[i] = heat::Define_Tg(r[i],layup);
 }
-
 }
-// if add more features
-// 
 
-//  namespace heat{
-    //add new things, the previously defined variables and methods won't disappear
-//(Num_of_nodes,0);
-
-//}
-
-
-//Test
-/*
-int main(int argc, char **argv){
-    using namespace heat;
-    //double re = dr();
-    //cout << re << endl;
-    define_vars();
-    cout << heat_flux(30.0) << endl;
-    cout << Num_of_nodes << endl;
-    cout << dr << endl;
-    return 0;
-}
-*/
 
