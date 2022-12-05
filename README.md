@@ -7,7 +7,7 @@ This code is based on the Implicit Backward in Time- Central in Space (BTCS) dis
 
 $$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} }$$
 
-$$-{\lambda T_{i+1}^{n+1}}  - \lambda T_{i-1}^{n+1} + (1 + 2\lambda)(T_{i+1}^{n}) = T_{n}^{i}$$
+$$-{\lambda T_{i+1}^{n+1}}  - \lambda T_{i-1}^{n+1} + (1 + 2\lambda)(T_{i+1}^{n}) = T_{i}^{n}$$
 
 With Neumann Boundary conditions applied at both boundaries. 
 
