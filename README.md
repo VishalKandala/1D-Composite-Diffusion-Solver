@@ -82,7 +82,45 @@ Input: Output
 **"You can choose time step to display $T^{n+1}$ $T^{n}$ in Push_T() function in solver.cpp"
 
 
+Then you would be prompted to input the desired grid size
+```bash
+How many grid points would you like? (More points equals a finer mesh)
+```
+Following this, you would be prompted to input the time step size.
+```bash
+How small would you like your time step size? (seconds)
+```
+This is followed by asking for the simulation time in seconds.
 
+```bash
+How long would you like to run the solver? (seconds)
+```
+
+Then you are asked the frequency at which to save the time history, followed by the config file name and the layup choice along with the Boundary condition choice.
+```bash
+How often would you like the solver to save the data? (Save every X iterations)
+What is the name of the config file containing the necessary material properties?
+Which material layup would you like to check? (1-4)
+What boundary condition are you testing?
+BC1: Heat flux applied to one boundary.
+BC2: Symmetric heat flux along the surface.
+Input 1 for BC1 and 2 for BC2..
+```
+If you choose BC1 it would apply a heat flux on one end of the 1D domain (i.e radial) and an adiabatic condition on the other end.
+
+If you choose BC2 it would apply a heat flux at both ends and give you an option to add insulation(felt) on both sides of the domain.
+
+```bash
+What boundary condition are you testing?
+BC1: Heat flux applied to one boundary.
+BC2: Symmetric heat flux along the surface.
+Input 1 for BC1 and 2 for BC2...
+2
+Would you like to add more felt insulation? (y/n)
+y
+Specify the thickness of felt insulation to be added. (meters)
+10.0
+```
 
 ## Contributing
 
