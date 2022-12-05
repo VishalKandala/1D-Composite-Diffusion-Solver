@@ -63,7 +63,7 @@ Please select how verbose you would like the solver output:
 You could enter the following values: 1, 2, 3, 4, 5
  
 
-1: Basic information; $\lambda$ , No. of nodes , Grid size $\Delta x$ , Time step $\Delta t$ , No. of time steps , $\frac{Q}{k}$*
+1: Basic information; $\lambda$ , No. of nodes , Grid size $\Delta x$ , Time step $\Delta t$ , No. of time steps , $\frac{q}{k}$*
 
 2: Matrix A
 
@@ -74,7 +74,8 @@ You could enter the following values: 1, 2, 3, 4, 5
 5: Vectors $T^{n+1}$ $T^{n}$ at desired time step **
 
 
-*"you can choose the location to display $\frac{Q}{k}$ in main.cpp"
+
+*"you can choose the location to display $\frac{q}{k}$ in main.cpp"
 
 **"You can choose time step to display $T^{n+1}$ $T^{n}$ in Push_T() function in solver.cpp"
 
