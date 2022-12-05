@@ -5,21 +5,23 @@ This code simulates the heat conduction in a spherical body with multiple layers
 
 This code is based on the Implicit Solution of the Backward in Time- Central in Space (BTCS) discretization of the One Dimensional heat equation.
 
-$$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} } $$
+$$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} }$$
 
-$$-{\lambda T_{i+1}^{n+1}}  - \lambda T_{i-1}^{n+1} + (1 + 2\lambda)(T_{i+1}^{n}) = T_{n}^{i} $$
+$$-{\lambda T_{i+1}^{n+1}}  - \lambda T_{i-1}^{n+1} + (1 + 2\lambda)(T_{i+1}^{n}) = T_{n}^{i}$$
 
 With Neumann Boundary conditions applied at both boundaries. 
 
-$$ Q=-k\frac{\partial T}{\partial x }$$
+$$ Q=-k\frac{\partial T}{\partial x}$$
 
 Discretizing the boundaries using ghost points, we get the following linear system.
+$$ T^{n+1} = A$$
+$$
+A 
+-2\lambda , 1 +2 , 3 
+4 , 5 , 6 
+7 , 8 , 9
+$$
 
-$$\begin{matrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
-7 & 8 & 9
-\end{matrix}$$
 
 The Linear system obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on Thomas Algorithm (TDMA).
 
