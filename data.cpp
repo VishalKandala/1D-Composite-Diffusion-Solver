@@ -130,6 +130,9 @@ heat::userParams heat::askUserParams(){
 		cin >> s.felt_Add;
 		}
 	}
+	else{
+		s.felt_Add = 0.0;
+	}
 	return s;
 }
 
