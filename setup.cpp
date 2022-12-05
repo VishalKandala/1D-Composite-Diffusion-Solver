@@ -23,11 +23,11 @@ namespace heat {
     std::vector<double> B;
     vector<double> r;
     vector<double> Tg;  //vector which is used to flag the glass temperature (same length as vector r but created using vector glass_t values)
-    
+
     // Material order for the property vectors:
     // 0:felt 1:carbon fiber 2:epoxy 3:aluminum 4:steel
-    vector<double> alpha = {0.0, 0.0, 0.0, 0.0, 0.0};   //{(0.107/(145*2e4)), (10.0/(1850*1100)), (0.44/(300*1730)), (210.0/(2700*890)), (21.5/(8000*510))};
-    vector<double> glass_t = {0.0, 0.0, 0.0, 0.0, 0.0}; //{1273.15, 523.15, 396.15, 610.0, 1033.15}; 
+    vector<double> alpha = {0.0, 0.0, 0.0, 0.0, 0.0};   
+    vector<double> glass_t = {0.0, 0.0, 0.0, 0.0, 0.0}; 
     vector<double> cp = {0.0, 0.0, 0.0, 0.0, 0.0};
     vector<double> k = {0.0, 0.0, 0.0, 0.0, 0.0};
     vector<double> rho = {0.0, 0.0, 0.0, 0.0, 0.0};
@@ -35,9 +35,13 @@ namespace heat {
     userParams solverParams;
 }
 
+/*The Define_Tg function is used for creating a vector of doubles "Tg" which contain the glassing
+temperatures corresponding to each location in the grid*/
 double heat::Define_Tg(double x, int layup){
-	double output;
-	if (layup == 0){
+	double output; // placeholder variable used to set glassing temperature for each location within the grid
+
+//Layup 0 is a dummy layup used for testing purposes only
+  if (layup == 0){
 		if (x <= 4.0){
 			output = glass_t[4];
 		}
@@ -177,11 +181,14 @@ double heat::Define_Tg(double x, int layup){
       return output;
 }
 
-
+/* The function "Define_Q" is written for applying the two different heat flux boundary conditions.
+BC = 1 corresponds to BC1 in the project statement where heat flux is applied at the boundaries of Layup 1, 2, 3 and 4;
+while the boundaries of Layup 5, 6, 7 and 8 are insulated, For any other value of BC, BC2 is applied,
+i.e., heat flux is applied at the boundaries of all layups.*/
 double heat::Define_Q(double x, int layup, int BC){
     double result;
     if(layup == 0){
-	if(x == 0.0){    
+	if(x == 0.0){
     	result = 10e4/(21.5);
 	}
 	else{
@@ -196,8 +203,8 @@ double heat::Define_Q(double x, int layup, int BC){
             else {result = 0.0;}
          }
          else {result = (2e4)/(0.15);}
-    
-        
+
+
     }else if(layup==2){
         if (BC == 1){
             if (x == 0.0){
@@ -206,8 +213,8 @@ double heat::Define_Q(double x, int layup, int BC){
             else {result = 0.0;}
         }
         else {result = (4e4)/(0.15);}
-    
-    
+
+
     }else if(layup==3){
         if (BC == 1){
         if (x == 0.0){
@@ -216,8 +223,8 @@ double heat::Define_Q(double x, int layup, int BC){
             else {result = 0.0;}
         }
         else {result = (3.2e4)/(0.15);}
-    
-    
+
+
     }else{
         if (BC == 1){
         if (x == 0.0){
@@ -230,6 +237,9 @@ double heat::Define_Q(double x, int layup, int BC){
     return result;
 }
 
+/*The function "Define_Alpha" is wriiten for fetching the thermal diffusivity value for each material
+from the alpha vector defined earlier, and then sending that value to another function "Define_Lambda"
+*/
 double heat::Define_Alpha(double x, int layup){
     double output;
     if(layup == 0){
@@ -373,32 +383,36 @@ double heat::Define_Alpha(double x, int layup){
 	}
     return output;
     }
-//----------------------------------------    
+
+/*The function "Define_Lambda" is written for calculating Lambda from alpha, dt and dr for each material,
+and then use the Lambda values for forming the A matrix and B vector.*/
 double heat::Define_Lambda(double x, int layup){
 double result;
 result = Define_Alpha(x,layup);
 result  = result*dt/pow(dr,2);
 return result;
-} 
+}
 
+
+/*The Define_Vars function is used to define all the basic information needed for the solution process,
+i.g., time step, final time, no of iterations, grid size etc.
+*/
 void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup, string filename){
- // cout << "Please type in the number of nodes N" << endl;
- //   cin >> N;
-    Crystal_Flag = false;
-    dt = temp2;
-    ft = temp3;
-    Nt = ceil(ft/dt); // Nt = dt/ft + 1
-    Num_of_nodes = temp;
+    Crystal_Flag = false; // used for checking if glassing temperature is reached in any layer
+    dt = temp2; //time step (in seconds)
+    ft = temp3; // final solution time (in seconds)
+    Nt = ceil(ft/dt); // Nt = no of iterations = dt/ft + 1
+    Num_of_nodes = temp; //no of grid points
     avgcput = 0.0;
     N = temp;
-    dr = (8.0 + (2*temp4))/(N-1);
-    t = 0.0;
-// Initializing r
+    dr = (8.0 + (2*temp4))/(N-1); // grid size; extra felt is added on both layups to increase total length from 8 meters to (8+(2*extra_felt))
+    t = 0.0; //initial time (in seconds)
+    // Initializing r
     r.resize(N);
     r[0] = 0.0 - temp4;
-    
+
     for(int i=1;i<N;i++){
-	r[i] = r[i-1] + dr;
+  	r[i] = r[i-1] + dr;
     }
 
     heat::Print_Rfile();
@@ -432,7 +446,7 @@ void heat::Define_Vars(int temp,double temp2,double temp3,double temp4,int layup
 // Initializing B
 B.resize(N);
 
-    
+
 // Call the function that will read in the config file and assign the material properties to the respective global vectors
 heat::File_Read(filename);
 
@@ -441,11 +455,9 @@ for (int i = 0; i < 5; i++){
     alpha[i] = k[i]/(rho[i]*cp[i]);
 }
 
-// Initializing Tg 
+// Initializing Tg
 Tg.resize(N);
 for(int i=0;i<N;i++){
 	Tg[i] = heat::Define_Tg(r[i],layup);
 }
 }
-
-
