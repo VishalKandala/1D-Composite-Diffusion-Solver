@@ -1,7 +1,7 @@
 # Project Orion
 This C++ code is written by Team Nebula for Project 3 of MEEN 689 Computing Concepts course.
 
-This code simulates the heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses.
+This code simulates the 1D heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses in the radial direction.
 
 This code is based on the Implicit Solution of the Backward in Time- Central in Space (BTCS) discretization of the One Dimensional heat equation.
 
@@ -16,14 +16,7 @@ $$ Q=-k\frac{\partial T}{\partial x}$$
 Discretizing the boundaries using ghost points, we get the following linear system.
 $$ A*T^{n+1} = T_{n} + B$$
 
-
-	\begin{bmatrix} 
-	a & b & c \\
-	c & d & d\\
-	e & f & g \\
-	\end{bmatrix}
-	\quad
-
+A = 
 
 and $B = [2*Q[0]*\alpha[0]*\Delta x]$
 
