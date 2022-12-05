@@ -134,9 +134,24 @@ To run this, use the following:
 python3 visualize.py <time> <layer>
 ```
 The two arguments that this takes are:
-$<time>$: specifies the time at which the profile is visualized
+$<time>$: specifies the time at which the profile is visualized.
 
-$<layer>$: specifies the layer which is visualized 
+$<layer>$: specifies the layer which is visualized (layer away from the center)
+
+## Material Configuration 
+To change the material properties, MatCon.csv is used where only the values must be changed, the order of properties and the names of variables cannot be changed.
+
+## Constraints
+### I/O
+-If the frequency of saving data is greater than number of time steps, no data will be saved.
+- Config file name must match the input. (if not material properties would be considered to be zero.) 
+- Only predefined Layups (1-4) [Define_Alpha() defaults to Layup 4 if any value other 1-3 is entered. Other functions show "layup does not exist"]
+- Only predefined Boundary conditions
+- Only predifined geometric compositions
+- For the felt addition prompt "yes", "Y","y" allow to add felt to the domain.
+## Physical
+- The variation in material properties K(x), $\rho(x)$ and $C_{p}(x)$ is not considered in formulating the governing equations.
+- For felt, we assume that it fails anyway, we do not consider it's crystalization when checking for glass temperature of other interior materials. 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
