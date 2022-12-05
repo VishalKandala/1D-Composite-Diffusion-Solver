@@ -18,7 +18,8 @@ int main(int argc, char **argv){
     int layup = stoi(argv[6]);
     int BC = stoi(argv[7]);
     double Extra_Felt = stod(argv[8]);
-    string flag1, flag2, flag3, flag4, flag5;
+    //Asking the user if he/she wants to change material properties for each layer
+    string flag1, flag2, flag3, flag4, flag5; //these flags are used in the Define_Vars function later
     cout<<"Do you want to manually define material properties for Felt?(y/n): ";
     getline(cin,flag1);
     cout<<"Do you want to manually define material properties for Carbon Fiber?(y/n): ";
