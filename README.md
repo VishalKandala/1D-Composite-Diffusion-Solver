@@ -63,11 +63,11 @@ This would first prompt you to enter how verbose your terminal output would be.
 Please select how verbose you would like the solver output:
 ```
 You could enter the following values:
-
-
-Input Output
-1: which will output  Basic Information such as Config file name, Lambda(Von Neumann Number) of grid points, 
-2. 
+ 
+| Input  | Output |
+| 1 | Basic information: Config file name, $\lambda$, No. of nodes (N), Time step size (dt), Final time, $frac{Q[0]}{k[0]}$  |
+|    2    |        |
+|        |        |
 
 
 
