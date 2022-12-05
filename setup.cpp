@@ -1,4 +1,4 @@
-// 11/22 Mingxin, 11/25 Vishal Indivar Kandala
+// Team Nebula
 // MEEN 689 Computing Concepts Project 3
 #include <cmath>
 #include <iostream>
