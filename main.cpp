@@ -26,7 +26,7 @@ int main(int argc, char **argv){
 	int BC = solverParams.BC;	//boundary condition for the solver to apply
 	double felt_Add = solverParams.felt_Add;	//amount of felt to add if running boundary condition 2 (symmetric heat flux)
 	
-    
+    //function defined in setup.cpp
     heat::Define_Vars(N,dt,ft,felt_Add,layup, filename);
 
     //-------------------
@@ -60,9 +60,12 @@ int main(int argc, char **argv){
     cout<<"t = "<<heat::t<<endl;
     	}
     }
+
     it2 = it;
+    //Stop the solver if any material reaches it's glass temperature
     if(heat::Crystal_Flag == true){break;}
     }
+    //Report out the location and temperature of failure
     if(heat::Crystal_Flag == true){
 	   if(v==1){ 
 	    cout<<"Crystallization Temperature reached at time:"<<heat::t<<endl;
@@ -71,7 +74,7 @@ int main(int argc, char **argv){
     }
     else{
     if(v==1){
-    cout<<"Average CPU Time for T_Solve in ms: "<<heat::avgcput/heat::Nt<<endl;
+    cout<<"Average CPU Time for T_Solve in ms: "<<heat::avgcput/heat::Nt<<endl; //Output the average computation time 
     }
     }
   
