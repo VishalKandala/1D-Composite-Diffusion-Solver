@@ -9,8 +9,9 @@ int main(int argc, char **argv){
 
 	// Interface with the user for solver configuration using the terminal command line
 	
-	// create the structure that stores the solver parameters
+	// create the structure that stores the solver parameters from the user
 	heat::userParams solverParams;
+
 	// call the function that gets user inputs on the command line and will return the solver parameters to run
 	solverParams = heat::askUserParams();
 
@@ -25,13 +26,13 @@ int main(int argc, char **argv){
 	int BC = solverParams.BC;	//boundary condition for the solver to apply
 	double felt_Add = solverParams.felt_Add;	//amount of felt to add if running boundary condition 2 (symmetric heat flux)
 	
-	//config file check (temporary, remove later!)
-	cout << "Config file name: " << filename << endl;
     
-    heat::Define_Vars(N,dt,ft,felt_Add,layup);
+    heat::Define_Vars(N,dt,ft,felt_Add,layup, filename);
+
     //-------------------
     if(v==1){
     // Print out basic info when v = 1
+    cout << "Config file name: " << filename << endl;
     cout<<"Lambda: "<<heat::Define_Lambda(heat::r[50],layup)<<endl;
     cout << "Number of Nodes: "<<heat::Num_of_nodes << endl;
     cout << "Grid size: "<<heat::dr << endl;
@@ -52,7 +53,6 @@ int main(int argc, char **argv){
     // Update solution monitor time t.
     heat::t+=heat::dt;
     // If statement for outputting to file
-    //cout<<it2<<endl;
     if(it%outfreq == 0){
     // Print solution at t to file.
     heat::Print_File(it,0);
