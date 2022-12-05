@@ -3,7 +3,7 @@ This C++ code is written by Team Nebula for Project 3 of MEEN 689 Computing Conc
 
 This code simulates the 1D heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses in the radial direction.
 
-This code is based on the Implicit Solution of the Backward in Time- Central in Space (BTCS) discretization of the One Dimensional heat equation.
+This code is based on the Implicit Backward in Time- Central in Space (BTCS) discretization scheme of the 1D heat equation.
 
 $$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} }$$
 
