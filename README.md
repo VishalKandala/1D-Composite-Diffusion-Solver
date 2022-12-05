@@ -21,7 +21,7 @@ A =
 and $B = [2*Q[0]*\alpha[0]*\Delta x]$
 
 
-The Linear system obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on Thomas Algorithm (TDMA).
+The Linear system of equations obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on the Thomas Algorithm (TDMA).
 
   
 ## Dependencies
