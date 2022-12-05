@@ -54,6 +54,7 @@ If you want to keep the object files you can use
 make 1dheat
 ```
 ## Usage
+### Solver
 To run a simulation, type in the following:
 ```bash
 ./1dheat
@@ -124,6 +125,18 @@ Specify the thickness of felt insulation to be added. (meters)
 The program would output information based on verbose selection and also outputs the time(seconds) at which the temperature profile is stored in /data folder.
 
 At the end of the run, it would output the CPU time (ms) for the Thomas Algorithm solver averaged over all the time steps.
+### Visualization
+
+visualize.py produces a 3D plot of the temperature distribution at a given timestep and at a layer that we choose.
+
+To run this, use the following:
+```bash
+python3 visualize.py <time> <layer>
+```
+The two arguments that this takes are:
+<time>: specifies the time at which the profile is visualized
+
+<layer>: specifies the layer which is visualized 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
