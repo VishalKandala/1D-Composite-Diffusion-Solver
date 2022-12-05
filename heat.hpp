@@ -1,9 +1,5 @@
-// 11/22 Vishal Indivar Kandala
+// Team Nebula
 // MEEN 689 Computing Concepts Project 3
-
-// Last updated: 12/03
-// Last Edit(s): Added the vector of alpha values from Amira. 
-//		Added the command line user-input functionality by Thomas.
 
 #ifndef INIT_H
 #define INIT_H
