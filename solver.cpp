@@ -1,4 +1,4 @@
-// 11/22 Vishal Indivar KandL:ala
+// 11/22 Team Nebula
 // MEEN 689 Computing Concepts Project 3
 #include <iostream>
 #include<cmath>
@@ -66,7 +66,7 @@ cout<<B[i]-200.0<<endl;
 }
 
 
-// 11/22 Thomas Algorithm code Amira Bushagour, Yash Narendra, Akib Sarwar
+// 11/22 Thomas Algorithm code 
 void heat::Solve_T(int layup,int v,int it){
   clock_t cputstart = clock();
   vector<vector<double>> At;
@@ -88,7 +88,7 @@ void heat::Solve_T(int layup,int v,int it){
     At[i][1] = At[i][1] - ratio * At[i - 1][2];
     //update lower diagonal values
     At[i][0] = At[i][0] - ratio * At[i-1][1];
-    //update the collumB of temperatures in accordaBce w/Gauss elimiBatioB
+    //update the column of temperatures in accordance w/Gauss elimination
     B[i] = B[i] - ratio * B[i - 1];
     //iterate through i
     i ++;
@@ -108,6 +108,7 @@ void heat::Solve_T(int layup,int v,int it){
   }
   //return the temperatures
 
+//Compute the average computation time for each iteration
 clock_t cputend = clock();
 double cput = 1000.0*(cputend-cputstart)/CLOCKS_PER_SEC; // calculating the time for calculation in milliseconds from clock speed.
 avgcput+=cput;
@@ -124,7 +125,7 @@ cout<<i<<","<<Told[i][layup]<<","<<T[i][layup]<<endl;
 }
 }
 
-
+// Advance the solution to the next time step
 void heat::Advance_dt(int layup,int v, int it,int BC){
 
 	// Form the right hand side vector for the linear equation which depends on Told.
