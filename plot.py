@@ -39,6 +39,7 @@ for i in range(len(T)):
     plot(r,T[i,layup],label=str(t[i]))
 #savefig("timeseries.svg")
 legend()
+#input name
 name = str(input("Title: "))
 title(name)
 ylabel("Temperature (K)")
