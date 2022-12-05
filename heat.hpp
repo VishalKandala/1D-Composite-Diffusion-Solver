@@ -29,24 +29,24 @@ namespace heat {
     void Push_T(int layup,int v,int it);
     void Check_T(int layup,int v);
     double Define_Lambda(double x, int layup);
-    void File_Read(string filename);        //Function that will read the config file and assign to variables    //void Assign_MatConfig(int config_it, string variable);  //Function that will assign the config variable value to the correct global variable for the solver
+    void File_Read(string filename);        
     
     // vars
-    extern bool Crystal_Flag;
-    extern double dr;
-    extern int Num_of_nodes;
-    extern int N;
-    extern int Nt;
-    extern double ft;
-    extern double dt;
-    extern double t;
-    extern double avgcput;
-    extern vector<vector<double>> T; 
-    extern vector<vector<double>> Told; 
-    extern vector<vector<double>> A; 
-    extern vector<double> B; 
-    extern vector<double> r;
-    extern vector<double> Tg;   //
+    extern bool Crystal_Flag;   //flag used to check if material has reached glassing temperature
+    extern double dr;   //step size in r-direction
+    extern int Num_of_nodes;    //number of nodes for the mesh
+    extern int N;   //total number of nodes 
+    extern int Nt;  //number of time steps
+    extern double ft;   //final time step
+    extern double dt;   //time step size
+    extern double t;    //current time step
+    extern double avgcput;  //commputation time variable
+    extern vector<vector<double>> T;    //matrix of temperatures for solver 
+    extern vector<vector<double>> Told;     //matrix of old temperatures for solver
+    extern vector<vector<double>> A;    //A matrix for implicit solver (Ax=B)
+    extern vector<double> B;    //B matrix for implicit solver (Ax=B)
+    extern vector<double> r;    //vector of steps in r-direction
+    extern vector<double> Tg;   //vector of glass temperatures (same size as r for glass check)
     
     extern vector<double> cp;   //vector that stores all Cp values of the materials
     extern vector<double> rho;  //vector that stores all rho values of the materials
