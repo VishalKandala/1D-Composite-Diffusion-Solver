@@ -121,7 +121,9 @@ y
 Specify the thickness of felt insulation to be added. (meters)
 10.0
 ```
+The program would output information based on verbose selection and also outputs the time(seconds) at which the temperature profile is stored in /data folder.
 
+At the end of the run, it would output the CPU time (ms) for the Thomas Algorithm solver averaged over all the time steps.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
