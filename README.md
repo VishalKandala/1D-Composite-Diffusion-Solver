@@ -16,9 +16,9 @@ $$ q=-k\frac{\partial T}{\partial x}$$
 Discretizing the boundaries using ghost points, we get the following linear system.
 $$ A*T^{n+1} = T^{n} + B$$
 
-A = 
+Matrix A has $1+2*\lambda$ on the main diagonals, then -$\lambda$ on the super and sub diagonals (except the first and last rows). For the first and last rows - which correspond to the boundary conditions - the first row has $-2*\lambda$ on the super diagonal, while the last row has $-2*\lambda$ on the sub-diagonal.
 
-and $B = [2*Q[0]*\alpha[0]*\Delta x]$
+Vector B has the temperature values at all grid locations from the previous timestep. Again, the first and last element are modified to incorporate the Neumann boundary condition. 
 
 
 The Linear system of equations obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on the Thomas Algorithm (TDMA).
@@ -124,14 +124,16 @@ The program would output information based on verbose selection and also outputs
 At the end of the run, it would output the CPU time (ms) for the Thomas Algorithm solver averaged over all the time steps.
 ### Visualization
 
-plot.py produces a line plot of the temperature distribution at the previously user-defined frequency for a certain layer (also defined by the user)
+plot.py produces a line plot of the temperature distribution at the previously user-defined frequency for a certain layup (also defined by the user)
 
 To run this, use the following:
 ```bash
-./plot.py v <0 or 1> <layer>
+./plot.py <0 or 1> <layup>
 ```
 0: for keeping the csv files after plotting
 1: for deleting the csv files after plotting
+
+The user will then be given the opportunity to name the plot
 
 visualize.py produces a 3D plot of the temperature distribution at a given timestep and at a layer that we choose.
 
