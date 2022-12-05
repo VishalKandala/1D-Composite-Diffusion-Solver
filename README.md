@@ -15,12 +15,13 @@ $$ Q=-k\frac{\partial T}{\partial x}$$
 
 Discretizing the boundaries using ghost points, we get the following linear system.
 $$ A*T^{n+1} = T_{n} + B$$
-$$
-A 
--2\lambda , 1 +2 , 3 ;
-4 , 5 , 6 ;
-7 , 8 , 9
-$$
+
+$
+\begin{pmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{pmatrix}
+$
 and $B = [2*Q[0]*\alpha[0]*\Delta x]$
 
 
