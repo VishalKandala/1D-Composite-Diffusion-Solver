@@ -1,4 +1,4 @@
-//Vishal Indivar Kandala
+// Team Nebula
 // MEEN 689 Computing Concepts Project 3
 #include<iostream>
 #include<fstream>
@@ -82,6 +82,7 @@ void heat::File_Read(string filename){
 	}
 }
 
+// Function that will update the solver parameters to the respective global variables. This will use the command line to ask the user for them.
 heat::userParams heat::askUserParams(){
 	//Define the structure to be populated in this function
 	userParams s;
@@ -130,16 +131,17 @@ heat::userParams heat::askUserParams(){
 		cin >> s.felt_Add;
 		}
 	}
+	// If BC1, assign no additional felt
 	else{
 		s.felt_Add = 0.0;
 	}
 	return s;
 }
-
+// Print the grid to a csv file for post processing and visualization.
 void heat::Print_Rfile(){
-	ofstream outputfile;
-	string ofilename = "data/r.csv";
-	outputfile.open(ofilename);
+	ofstream outputfile; // Create an output filename
+	string ofilename = "data/r.csv"; // The filename is predetermined to be r.csv
+	outputfile.open(ofilename); 
 	int length = heat::r.size();
 	if(outputfile.is_open()){
 
@@ -155,6 +157,8 @@ void heat::Print_Rfile(){
 outputfile.close();
 }
 }
+
+// Print the data to an output file 
 void heat::Print_File(int it,int interactive){
 	ofstream outputfile;
 	string ofilename;
