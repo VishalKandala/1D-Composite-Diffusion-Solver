@@ -45,6 +45,7 @@ namespace heat {
 
 }
 
+//Used for crerating a Material class that is used for defining different objects corresponding to each layer
 class Material {
 public:
   double conductivity;
