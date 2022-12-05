@@ -1,4 +1,4 @@
-# Working Title
+# Project Orion
 This C++ code is written by Team Nebula for Project 3 of MEEN 689 Computing Concepts course.
 
 This code simulates the heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses.
@@ -17,8 +17,8 @@ Discretizing the boundaries using ghost points, we get the following linear syst
 $$ A*T^{n+1} = T_{n} + B$$
 $$
 A 
--2\lambda , 1 +2 , 3 
-4 , 5 , 6 
+-2\lambda , 1 +2 , 3 ;
+4 , 5 , 6 ;
 7 , 8 , 9
 $$
 and $B = [2*Q[0]*\alpha[0]*\Delta x]$
