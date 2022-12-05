@@ -60,9 +60,8 @@ This would first prompt you to enter how verbose your terminal output would be.
 ```bash
 Please select how verbose you would like the solver output:
 ```
-You could enter the following values:
+You could enter the following values: 1, 2, 3, 4, 5
  
-Input: Output
 
 1: Basic information; $\lambda$ , No. of nodes , Grid size $\Delta x$ , Time step $\Delta t$ , No. of time steps , $\frac{Q}{k}$*
 
