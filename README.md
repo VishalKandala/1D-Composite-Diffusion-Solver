@@ -14,7 +14,7 @@ With Neumann Boundary conditions applied at both boundaries.
 $$ Q=-k\frac{\partial T}{\partial x}$$
 
 Discretizing the boundaries using ghost points, we get the following linear system.
-$$ A*T^{n+1} = T_{n} + B$$
+$$ A*T^{n+1} = T^{n} + B$$
 
 A = 
 
