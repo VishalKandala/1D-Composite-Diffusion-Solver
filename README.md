@@ -15,13 +15,11 @@ $$ Q=-k\frac{\partial T}{\partial x }$$
 
 Discretizing the boundaries using ghost points, we get the following linear system.
 
-$$
-\begin{matrix}
+$$\begin{matrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{matrix}
-$$
+\end{matrix}$$
 
 The Linear system obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on Thomas Algorithm (TDMA).
 
