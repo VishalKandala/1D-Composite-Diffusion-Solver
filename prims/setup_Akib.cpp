@@ -459,9 +459,9 @@ for(int i=0;i<N;i++){
 
 //Setting up material properties
 //Felt
-string k_s, rho_s, cp_s;
-double k, rho, cp;
-double alpha;
+string k_s, rho_s, cp_s; // these will be assigned values by the user from the command line
+double k, rho, cp; //used for calculating alpha for each material object
+double alpha; // used for assigning diffusuivity to each material object
 if (flag1=="y"){
   cout<<"Thermal conductivity for Felt: ";
   getline(cin,k_s);
