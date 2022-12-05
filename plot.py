@@ -1,20 +1,18 @@
-#!/usr/bin/env python3
+#plot timesteps 
 import os
 import sys
 from numpy import *
 from matplotlib.pyplot import *
+#pull data from directory 'data'
 directory = 'data'
-#count = len(os.listdir(directory))
 
-#T0 = loadtxt('data/t_profile_0.csv',skiprows = 1,delimiter=',')
-#length = len(T0)
-#print(length)
 remove = int(sys.argv[1])
-T = []
-t = []
+T = [] #an array containing temperatures for different time steps
+t = [] #time step labels
 for filename in os.listdir(directory):
-    #print(filename)
+    #iterate through rows
     if(filename != "r.csv"):
+        #parse lines
         templist = filename.split("_")
         templist = templist[-1].split(".")
         t.append(int(templist[0]))
@@ -24,26 +22,26 @@ for filename in os.listdir(directory):
             os.remove("data/"+filename)
 
 T = array(T)
-#T = T.T
-#print(T[1,1])
-#print(T)
-#print(len(T))
+#create array from data
 layup = int(sys.argv[2])
+#create list of r steps
 r = loadtxt("data/r.csv",delimiter=',');
 r = r.T
 if(remove == 1):
     os.remove("data/r.csv")
-#print(shape(r))
+#delete data from directory
 for i in range(len(T)):
-    #if(i%1):
+    #iterate through time steps and plot temperature data
     plot(r,T[i,layup],label=str(t[i]))
-#savefig("timeseries.svg")
+
 legend()
-#input name
+#input title, which will title the plot and the file
 name = str(input("Title: "))
+#plot will be titled with input
 title(name)
 ylabel("Temperature (K)")
 xlabel("Distance (m)")
+#save figure with as 'name'.png
 savefig(name, dpi=1000)
 show()
 
