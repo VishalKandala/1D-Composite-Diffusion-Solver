@@ -5,7 +5,7 @@ This code simulates the heat conduction in a spherical body with multiple layers
 
 This code is based on the Implicit Solution of the Backward in Time- Central in Space (BTCS) discretization of the One Dimensional heat equation.
 
-$$\frac{1}{2}$$
+$$\frac{\partial T}{\partial t } = \alpha\frac{\partial^{2} T}{\partial x^{2} } $$
 
 The Linear system obtained from BTCS formulation is solved using an optimized Tridiagonal Matrix Solver based on Thomas Algorithm (TDMA).
 
