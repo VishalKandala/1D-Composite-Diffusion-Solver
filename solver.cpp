@@ -1,4 +1,4 @@
-// 11/22 Team Nebula
+// Team Nebula
 // MEEN 689 Computing Concepts Project 3
 #include <iostream>
 #include<cmath>
