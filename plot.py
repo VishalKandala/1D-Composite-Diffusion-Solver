@@ -14,6 +14,7 @@ for filename in os.listdir(directory):
     if(filename != "r.csv"):
         #parse lines
         templist = filename.split("_")
+        layup = int(filename[-2])
         templist = templist[-1].split(".")
         t.append(int(templist[0]))
         T_t = loadtxt("data/"+filename,skiprows = 1, delimiter = ",",dtype = float)
