@@ -134,9 +134,9 @@ To run this, use the following:
 python3 visualize.py <time> <layer>
 ```
 The two arguments that this takes are:
-<time>: specifies the time at which the profile is visualized
+$<time>$: specifies the time at which the profile is visualized
 
-<layer>: specifies the layer which is visualized 
+$<layer>$: specifies the layer which is visualized 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
