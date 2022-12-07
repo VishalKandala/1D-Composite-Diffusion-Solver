@@ -94,6 +94,7 @@ heat::userParams heat::askUserParams(){
 	cout << "1: Basic information." << endl;
 	cout << "2: Output matrix A." << endl;
 	cout << "3: Output vector B at every timestep." << endl;
+	cout << "4: At & A matrices after elimination step." << endl;
 	cin >> s.v;
 	//number of grid points
 	cout << "How many grid points would you like? (More points equals a finer mesh)" << endl;
