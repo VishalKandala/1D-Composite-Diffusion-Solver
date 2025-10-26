@@ -1,5 +1,3 @@
-# Project Orion
-This C++ code is written by Team Nebula for Project 3 of MEEN 689 Computing Concepts course.
 
 This code simulates the 1D heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses in the radial direction.
 
