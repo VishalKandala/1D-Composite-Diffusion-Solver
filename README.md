@@ -1,4 +1,6 @@
 
+![spherical Composite Heat Transfer](1D-Composite-Diffusion-Solver.png)
+
 This code simulates the 1D heat conduction in a spherical body with multiple layers of different material compositions of varying thicknesses in the radial direction.
 
 This code is based on the Implicit Backward in Time- Central in Space (BTCS) discretization scheme of the 1D heat equation.
